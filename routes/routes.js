@@ -67,10 +67,11 @@ module.exports = function (app, passport) {
     // CS APP Home Section =================
     // =====================================
 
-    app.get('/',function (req,res) {
+    app.get('/', function (req, res) {
         res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
         res.render('homepage.ejs', {
             message: req.flash('loginMessage'),
             error: "Your username and password don't match."
         })
     });
+};
