@@ -455,7 +455,7 @@ module.exports = function (app, passport) {
 
 
 
-
+*/
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
             successRedirect: '/authentication', // redirect to the secure profile section
@@ -467,10 +467,10 @@ module.exports = function (app, passport) {
                 req.session.cookie.maxAge = 1000 * 60 * 3;
                 req.session.cookie.expires = false;
             }
-            //res.redirect('/login');
+            res.redirect('/login');
         },);
 
-
+/*
     // //Detects if user is admin
     app.get('/authentication', function (req, res) {
         dateNtime();
