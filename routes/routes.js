@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const serverConfig = require('../config/serverConfig');
 const fs = require("fs");
 const fsextra = require('fs-extra');
-const request = require("request");
+//const request = require("request");
 const bcrypt = require('bcrypt-nodejs');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -75,7 +75,7 @@ module.exports = function (app, passport) {
         })
     });
 
-    app.get('/homepageLI', isLoggedIn, function (req, res) {
+    /*app.get('/homepageLI', isLoggedIn, function (req, res) {
         let myStat = "Select userrole From UserLogin WHERE username = ? ;";
         let state = "SELECT firstName FROM UserProfile WHERE username = ? ;";
         con_CS.query(myStat + state, [req.user.username, req.user.username], (err, results) => {
@@ -91,8 +91,8 @@ module.exports = function (app, passport) {
             }
         });
     });
-
-    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'", function (err, result) {
+*/
+    /*con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'", function (err, result) {
         EQstations = result;
         // console.log(result)
 
@@ -104,7 +104,7 @@ module.exports = function (app, passport) {
             }
         }
     });
-
+*/
     // app.get('/currentLayer',function (req,res) {
     //     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
     //     let thirdlayer = req.query.thirdlayer;
@@ -161,7 +161,7 @@ module.exports = function (app, passport) {
         })
     });*/
     app.get('/login', function (req, res) {
-        res.sendFile(path.join(__dirname, 'login', 'login-1.html'));
+        res.sendFile(path.join(__dirname, '../login', 'login-1.html'));
     });
     /*app.get('/historical', isLoggedIn, function (req, res) {
         res.render('historical.ejs', {});
