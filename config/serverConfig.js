@@ -19,10 +19,10 @@ let serverConfig = {
         'port'    :  3306
     },
 
-    Session_db: 'ESP2',
-    Login_db: 'ESP2',
+    Session_db: 'fblawebcoding',
+    Login_db: 'fblawebcoding',
     Login_table: 'UserLogin',
-    Upload_db: 'ESP2',
+    Upload_db: 'fblawebcoding',
 
     Server_Port: 9092,
 
