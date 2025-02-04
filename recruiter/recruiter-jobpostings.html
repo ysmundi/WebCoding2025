@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        /* Set the background color for the entire table */
+        table.dataTable {
+            background-color: #ffffff; /* Green background */
+            color: white; /* Optional: Make the text white for better contrast */
+            padding-left: 20px; /* Add left padding */
+            padding-right: 20px; /* Add right padding */
+            padding-top: 20px; /* Add top padding */
+            padding-bottom: 20px; /* Add bottom padding */
+        }
+
+        /* Adjust header background and text color */
+        table.dataTable thead th {
+            background-color: #ADBA5E; /* Same green for header */
+            color: white; /* White text */
+        }
+
+        /* Alternate row colors */
+        table.dataTable tbody tr:nth-child(even) {
+            background-color: #ADBA5E; /* Green for even rows */
+        }
+
+        table.dataTable tbody tr:nth-child(odd) {
+            background-color: white; /* White for odd rows */
+            color: #333; /* Dark gray text for odd rows */
+        }
+
+        /* Set the first row height to 10vh */
+        table.dataTable tbody tr:first-child td {
+            height: 10vh;
+        }
+
+        /* Set the height of all other rows to 30vh */
+        table.dataTable tbody tr:not(:first-child) td {
+            height: 30vh;
+        }
+
+        /* Set the width of the columns */
+        table.dataTable thead th:first-child,
+        table.dataTable tbody td:first-child {
+            width: 30vw; /* 30% of the viewport width */
+        }
+
+        table.dataTable thead th:nth-child(2),
+        table.dataTable tbody td:nth-child(2) {
+            width: 30vw; /* 30% of the viewport width */
+        }
+
+        table.dataTable thead th:last-child,
+        table.dataTable tbody td:last-child {
+            width: 10vw; /* 10% of the viewport width */
+        }
+
+        /* Increase the font size of the cell text */
+        table.dataTable tbody td {
+            font-size: 18px; /* Increase the font size as needed */
+        }
+
+        /* Increase the size of the edit button */
+        table.dataTable .edit-btn {
+            font-size: 16px; /* Increase the font size as needed */
+            padding: 8px 16px; /* Increase the padding as needed */
+        }
+
+        /* Adjust row hover effect */
+        table.dataTable tbody tr:hover {
+            background-color: #4E6F28; /* Darker shade of green for hover */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>DASHBOARD</h1>
+    <h2>Your Job Postings</h2>
+    
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+                <td><button class="edit-btn">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+                <td><button class="edit-btn">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Row 3 Data 1</td>
+                <td>Row 3 Data 2</td>
+                <td><button class="edit-btn">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Row 4 Data 1</td>
+                <td>Row 4 Data 2</td>
+                <td><button class="edit-btn">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize the DataTable
+            const table = $('#myTable').DataTable();
+
+            // Add click event for edit buttons
+            $('#myTable').on('click', '.edit-btn', function () {
+                const row = $(this).closest('tr');
+                const rowData = row.find('td').map(function () {
+                    return $(this).text();
+                }).get();
+
+                alert('Edit this row: ' + rowData.join(', '));
+            });
+
+            // Filter the table based on input
+            $('#searchInput').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+        });
+    </script>
+</body>
+</html>
