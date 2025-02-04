@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     'user': 'AppUser',
     'password': 'Special888%',
     'port'    :  3306,
-    'database': 'fblawebcoding'
+    'database': 'fbla_webcoding'
 });
 const bcrypt = require('bcrypt-nodejs');
 
