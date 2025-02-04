@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f080fe5-2c80-4b6c-8b00-8bf7060155da" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Samuel" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;coincil&quot;
+  }
+}</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="21b34115-ab85-472c-b066-49d4c969aa99" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ysmundi/WebCoding2025.git&quot;,
+    &quot;accountId&quot;: &quot;21b34115-ab85-472c-b066-49d4c969aa99&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2rwpBtbOYuVweAnN9MHkQUjDjrP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f080fe5-2c80-4b6c-8b00-8bf7060155da" name="Changes" comment="" />
+      <created>1737479861282</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737479861282</updated>
+      <workItem from="1737479869791" duration="615000" />
+      <workItem from="1737566054873" duration="1505000" />
+      <workItem from="1737651830707" duration="2179000" />
+      <workItem from="1737737926915" duration="2255000" />
+      <workItem from="1737997386872" duration="2100000" />
+      <workItem from="1738083652558" duration="2005000" />
+      <workItem from="1738170201677" duration="2159000" />
+      <workItem from="1738256458392" duration="1773000" />
+      <workItem from="1738258312496" duration="420000" />
+      <workItem from="1738258752319" duration="114000" />
+      <workItem from="1738342813846" duration="155000" />
+      <workItem from="1738343009046" duration="19000" />
+      <workItem from="1738343035185" duration="58000" />
+      <workItem from="1738343142717" duration="273000" />
+      <workItem from="1738343418818" duration="1225000" />
+      <workItem from="1738602747586" duration="1398000" />
+    </task>
+    <task id="LOCAL-00001" summary="adding files">
+      <option name="closed" value="true" />
+      <created>1737567582651</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737567582651</updated>
+    </task>
+    <task id="LOCAL-00002" summary="typo">
+      <option name="closed" value="true" />
+      <created>1737567663116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737567663116</updated>
+    </task>
+    <task id="LOCAL-00003" summary="typo">
+      <option name="closed" value="true" />
+      <created>1737654008182</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737654008182</updated>
+    </task>
+    <task id="LOCAL-00004" summary="typo">
+      <option name="closed" value="true" />
+      <created>1737740070224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737740070224</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add modules">
+      <option name="closed" value="true" />
+      <created>1737740430220</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1737740430220</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add modules">
+      <option name="closed" value="true" />
+      <created>1737740441214</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737740441214</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add modules">
+      <option name="closed" value="true" />
+      <created>1737998567767</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737998567767</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add modules">
+      <option name="closed" value="true" />
+      <created>1737999619200</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737999619200</updated>
+    </task>
+    <task id="LOCAL-00009" summary="manual add added and serverconfig changed">
+      <option name="closed" value="true" />
+      <created>1738171661827</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738171661827</updated>
+    </task>
+    <task id="LOCAL-00010" summary="node_modules added to gitignore">
+      <option name="closed" value="true" />
+      <created>1738256622993</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738256622993</updated>
+    </task>
+    <task id="LOCAL-00011" summary="node_modules added to gitignore">
+      <option name="closed" value="true" />
+      <created>1738256812604</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738256812604</updated>
+    </task>
+    <task id="LOCAL-00012" summary="node_modules added to gitignore">
+      <option name="closed" value="true" />
+      <created>1738257526931</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738257526931</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding files" />
+    <MESSAGE value="typo" />
+    <MESSAGE value="add modules" />
+    <MESSAGE value="manual add added and serverconfig changed" />
+    <MESSAGE value="node_modules added to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="node_modules added to gitignore" />
+  </component>
+</project>
