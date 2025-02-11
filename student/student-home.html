@@ -94,6 +94,45 @@
             background-color: #4E6F28; /* Darker shade of green for hover */
         }
 
+        /* Style for the fixed search and dropdown container */
+        .datatable-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Add spacing between controls and the table */
+            background-color: #fff; /* Optional: Background color for clarity */
+            padding: 10px; /* Optional: Padding for better spacing */
+            position: sticky; /* Keep it fixed at the top */
+            top: 0; /* Stick to the top of the parent container */
+            z-index: 10; /* Ensure it stays above the table */
+        }
+
+        /* Make the table container scrollable */
+        .table-container {
+            height: 50vh; /* Set the height of the scrollable area */
+            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Optional: Style adjustments for the table */
+        table.dataTable {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        table.dataTable thead th {
+            background-color: #ADBA5E;
+            color: white;
+        }
+
+         .vertical-buttons {
+             display: flex;
+             flex-direction: column;
+             gap: 5px; /* Space between buttons */
+         }
+
+    </style>
+
     </style>
 </head>
 <body>
@@ -124,87 +163,81 @@
         </div>
     </div>
 </section>
-<table class="display" id="myTable">
-  <thead>
-  <tr>
-    <th>Column 1</th>
-    <th>Column 2</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Row 1 Data 1</td>
-    <td>Row 1 Data 2</td>
-    <td>
-      <button class="edit-btn">Edit</button>
-    </td>
-  </tr>
-  <tr>
-    <td>Row 2 Data 1</td>
-    <td>Row 2 Data 2</td>
-    <td>
-      <button class="edit-btn">Edit</button>
-    </td>
-  </tr>
-  <tr>
-    <td>Row 3 Data 1</td>
-    <td>Row 3 Data 2</td>
-    <td>
-      <button class="edit-btn">Edit</button>
-    </td>
-  </tr>
-  <tr>
-    <td>Row 4 Data 1</td>
-    <td>Row 4 Data 2</td>
-    <td>
-      <button class="edit-btn">Edit</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
 <section class="dashboard">
-
     <div class="w-layout-blockcontainer container-179 w-container">
         <h1 class="heading-37">DASHBOARD</h1>
         <div class="w-layout-blockcontainer container-180 w-container">
             <h1 class="heading-38" id="Your-Applications">Your Applications</h1>
             <div class="w-layout-blockcontainer container-181 w-container"></div>
         </div>
-        <div class="w-layout-blockcontainer container-182 w-container">
-            <!-- <table id="myTable" class="display">
-              <thead>
-                  <tr>
-                      <th>Column 1</th>
-                      <th>Column 2</th>
-                      <th>Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>Row 1 Data 1</td>
-                      <td>Row 1 Data 2</td>
-                      <td><button class="edit-btn">Edit</button></td>
-                  </tr>
-                  <tr>
-                      <td>Row 2 Data 1</td>
-                      <td>Row 2 Data 2</td>
-                      <td><button class="edit-btn">Edit</button></td>
-                  </tr>
-                  <tr>
-                      <td>Row 3 Data 1</td>
-                      <td>Row 3 Data 2</td>
-                      <td><button class="edit-btn">Edit</button></td>
-                  </tr>
-                  <tr>
-                      <td>Row 4 Data 1</td>
-                      <td>Row 4 Data 2</td>
-                      <td><button class="edit-btn">Edit</button></td>
-                  </tr>
-              </tbody>
-          </table> -->
+        <div class="datatable-controls">
+            <label>
+                Show
+                <select id="entriesSelect">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                entries
+            </label>
+            <label>
+                Search: <input type="text" id="searchInput">
+            </label>
         </div>
-
+        <div class="w-layout-blockcontainer container-182 w-container">
+            <table class="display" id="myTable">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                    <td>
+                        <div class="vertical-buttons">
+                            <button class="edit-btn">QUIT</button>
+                            <button class="edit-btn">DETAIL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                    <td>
+                        <div class="vertical-buttons">
+                            <button class="edit-btn">QUIT</button>
+                            <button class="edit-btn">DETAIL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Row 3 Data 1</td>
+                    <td>Row 3 Data 2</td>
+                    <td>
+                        <div class="vertical-buttons">
+                            <button class="edit-btn">QUIT</button>
+                            <button class="edit-btn">DETAIL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Row 4 Data 1</td>
+                    <td>Row 4 Data 2</td>
+                    <td>
+                        <div class="vertical-buttons">
+                            <button class="edit-btn">QUIT</button>
+                            <button class="edit-btn">DETAIL</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="w-layout-blockcontainer container-180 w-container">
             <h1 class="heading-38" id="Positions">Positions</h1>
             <div class="w-layout-blockcontainer container-183 w-container"></div>
@@ -383,21 +416,29 @@
 <script>
     $(document).ready(function () {
         // Initialize the DataTable
-        const table = $('#myTable').DataTable();
+        const table = $('#myTable').DataTable({
+            dom: 'lrtip', // Remove default search and dropdown from DataTables
+            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        });
+
+        // Handle custom "Show entries" dropdown
+        $('#entriesSelect').on('change', function () {
+            table.page.len($(this).val()).draw();
+        });
+
+        // Handle custom search input
+        $('#searchInput').on('keyup', function () {
+            table.search(this.value).draw();
+        });
 
         // Add click event for edit buttons
-        table.on('click', '.edit-btn', function () {
+        $('#myTable').on('click', '.edit-btn', function () {
             const row = $(this).closest('tr');
             const rowData = row.find('td').map(function () {
                 return $(this).text();
             }).get();
 
             alert('Edit this row: ' + rowData.join(', '));
-        });
-
-        // Filter the table based on input
-        $('#searchInput').on('keyup', function () {
-            table.search(this.value).draw();
         });
     });
 </script>
