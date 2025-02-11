@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Feb 10 2025 21:15:53 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67717869e48403be61d8e533" data-wf-site="676715cb815e8f01731dca22">
 <head>
     <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -20,62 +20,41 @@
     }(window, document);</script>
     <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="../images/webclip.png" rel="apple-touch-icon">
-
-    <!-- Webflow Stuff -->
 <!--    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">-->
     <link href="../lib/datatables/dataTables.css" rel="stylesheet">
 <!--    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
     <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
     <script src="../lib/jquery/jquery.dataTables.min.js"></script>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-
         /* Set the background color for the entire table */
         table.dataTable {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Green background */
+            color: white; /* Optional: Make the text white for better contrast */
+            padding-left: 20px; /* Add left padding */
+            padding-right: 20px; /* Add right padding */
+            padding-top: 20px; /* Add top padding */
+            padding-bottom: 20px; /* Add bottom padding */
         }
 
-        /* Header row styling */
+        /* Adjust header background and text color */
         table.dataTable thead th {
-            background-color: #EC9440; /* Blue background for header */
-            color: white; /* White text for header */
-            padding: 10px;
-            text-align: left; /* Center-align text */
-            font-size: 24px; /* Larger font size for header text */
-            height: 10vh; /* Set header height to 25% of the viewport height */
-            vertical-align: middle; /* Center align text vertically */
+            background-color: #ADBA5E; /* Same green for header */
+            color: white; /* White text */
         }
 
-        /* Alternating row colors */
+        /* Alternate row colors */
+        table.dataTable tbody tr:nth-child(even) {
+            background-color: #ADBA5E; /* Green for even rows */
+        }
+
         table.dataTable tbody tr:nth-child(odd) {
             background-color: white; /* White for odd rows */
+            color: #333; /* Dark gray text for odd rows */
         }
-
-        table.dataTable tbody tr:nth-child(even) {
-            background-color: #EC9440; /* Light blue for even rows */
-        }
-
-        /* Table cell styling */
-        table.dataTable tbody td {
-            padding: 12px;
-            font-size: 18px; /* Increased font size */
-            vertical-align: middle;
-        }
-
-        /*!* Hover effect *!*/
-        /*table.dataTable tbody tr:hover {*/
-        /*  background-color: #B3E5FC; !* Slightly darker blue on hover *!*/
-        /*}*/
 
         /* Set the first row height to 10vh */
         table.dataTable tbody tr:first-child td {
-            height: 30vh;
+            height: 10vh;
         }
 
         /* Set the height of all other rows to 30vh */
@@ -99,507 +78,315 @@
             width: 10vw; /* 10% of the viewport width */
         }
 
+        /* Increase the font size of the cell text */
+        table.dataTable tbody td {
+            font-size: 18px; /* Increase the font size as needed */
+        }
+
         /* Increase the size of the edit button */
-        .datatable-controls {
-            display: flex;
-            justify-content: flex-end; /* Align items to the right */
-            align-items: center; /* Keep vertical alignment */
-            width: 100%; /* Ensure the container spans the full width of the screen */
-            box-sizing: border-box; /* Include padding in width calculations */
+        table.dataTable .edit-btn {
+            font-size: 16px; /* Increase the font size as needed */
+            padding: 8px 16px; /* Increase the padding as needed */
         }
 
-        .datatable-controls label:last-child {
-            margin-left: auto; /* Push the search bar to the far right */
-        }
-
-        .datatable-controls input[type="text"] {
-            text-align: left; /* Optional: Keeps text inside the search bar aligned to the left */
-        }
-
-        /* Make the table container scrollable */
-        .table-container {
-            height: 50vh; /* Set the height of the scrollable area */
-            overflow-y: auto; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        /* Optional: Style adjustments for the table */
-        table.dataTable {
-            background-color: #ffffff;
-            color: black;
-        }
-
-        .vertical-buttons {
-            height: 100%; /* Fill the entire height of the parent cell */
-            display: flex; /* Use flexbox for alignment */
-            flex-direction: column; /* Stack buttons vertically */
-            justify-content: space-around; /* Space buttons evenly */
-            align-items: center; /* Center buttons horizontally */
-        }
-
-        /* Style for the Info button */
-        .edit-btn.applicants {
-            background-color: #64AAC3; /* Blue background */
-            color: white; /* Default white text */
-            border: 1px solid black; /* Black border */
-            padding: 0; /* Remove padding to rely on width and height */
-            font-size: 20px; /* Font size */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            width: 90%; /* Adjust width as needed */
-            height: 30%;/* Set height to 20% of the cell */
-            align-items: center; /* Vertically center the text */
-            margin: auto; /* Center the button within the cell */
-            text-align: center; /* Center-align text (fallback) */
-            position: relative; /* Set the button as the positioning context for the dot */
-            display: inline-flex; /* Keep the button's content aligned */
-            justify-content: center; /* Center content horizontally */
-            overflow: visible; /* Ensure the dot isn't clipped */
-        }
-
-
-        /* Change Info button to white in blue columns */
-        table.dataTable tbody tr:nth-child(even) .edit-btn.applicants {
-            background-color: white; /* White background for the button */
-            color: #64AAC3; /* Black text for contrast */
-        }
-
-        .edit-btn.detail {
-            background-color: #727070; /* Blue background */
-            color: white; /* Default white text */
-            border: 1px solid black; /* Black border */
-            padding: 0; /* Remove padding to rely on width and height */
-            font-size: 20px; /* Font size */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
-            width: 90%; /* Adjust width as needed */
-            height: 30%; /* Set ight to 20% of the cell */
-            display: flex; /* Use flexbox for alignment */
-            justify-content: center; /* Horizontally center the text */
-            align-items: center; /* Vertically center the text */
-            margin: auto; /* Center the button within the cell */
-            text-align: center; /* Center-align text (fallback) */
-        }
-
-        /* Add "Apply Data" heading above Date column text */
-        table.dataTable tbody td.date-column {
-            position: relative;
-            padding-top: 20px; /* Add space for the heading */
-        }
-
-        /* Default style for the "SUBMITTED" text in the date-column */
-        table.dataTable tbody td.date-column::before {
-            content: "SUBMITTED"; /* Add the heading */
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            font-size: 25px; /* Font size for the heading */
-            font-weight: bold; /* Bold text */
-            color: black; /* Default black color for white rows */
-        }
-
-        /* Make the "SUBMITTED" text white in blue rows (even rows) */
-        table.dataTable tbody tr:nth-child(even) td.date-column::before {
-            color: white; /* Change text to white for blue rows */
-        }
-
-        /* Remove hover effect but maintain the original row colors */
-
-        /* For odd rows (white background) */
-        table.dataTable tbody tr:nth-child(odd):hover {
-            background-color: white !important; /* Explicitly set white for odd rows */
-        }
-
-        /* For even rows (blue background) */
-        table.dataTable tbody tr:nth-child(even):hover {
-            background-color: #EC9440 !important; /* Explicitly set blue for even rows */
-        }
-
-        /* Increase the font size of the Name column */
-        table.dataTable tbody td.name-column {
-            font-size: 60px; /* Larger font size */
-            font-weight: bold; /* Make it bold */
-            line-height: 1.2;
-        }
-
-        table.dataTable tbody tr:nth-child(even) td.name-column,
-        table.dataTable tbody tr:nth-child(even) td.date-column {
-            color: white; /* White text for names and dates in blue rows */
-        }
-
-        table.dataTable tbody tr:nth-child(odd) td.name-column,
-        table.dataTable tbody tr:nth-child(odd) td.date-column {
-            color: black; /* Black text for names and dates in white rows */
-        }
-
-        /* Add a border to the entire table */
-        table.dataTable {
-            border: 2px solid #000; /* Black border around the table */
-            border-collapse: separate; /* Prevents collapsing borders between columns */
-            border-spacing: 0; /* Ensures no space between cells */
-        }
-
-        /* Remove borders between columns */
-        table.dataTable td,
-        table.dataTable th {
-            border: none; /* No borders between columns */
-        }
-
-        /* Optional: Add borders to rows for better structure */
-        table.dataTable tbody tr {
-            border-bottom: 1px solid #ccc; /* Light gray border between rows */
-        }
-
-        /* Style for the notification dot */
-        .notification-dot {
-            position: absolute; /* Position relative to the button */
-            top: -5px; /* Adjust the position to the top-right corner */
-            right: -5px; /* Adjust the position to the top-right corner */
-            width: 15px; /* Diameter of the dot */
-            height: 15px; /* Diameter of the dot */
-            background-color: #C03C29; /* Red color for the dot */
-            border-radius: 50%; /* Make it circular */
-            z-index: 1; /* Ensure it appears above the button */
-        }
-
-
-        /* Set the width of the Name column to 45vw */
-        table.dataTable thead th.name-column,
-        table.dataTable tbody td.name-column {
-            width: 50%; /* 45% of the viewport width */
-        }
-
-        /* Set the width of the Date column to 22.5vw */
-        table.dataTable thead th.date-column,
-        table.dataTable tbody td.date-column {
-            width: 25%; /* 22.5% of the viewport width */
-        }
-
-        /* Set the width of the Submitted column to 22.5vw */
-        table.dataTable thead th.submitted-column,
-        table.dataTable tbody td.submitted-column {
-            width: 25%; /* 22.5% of the viewport width */
-        }
-
-        @media (max-width: 700px) {
-            .container-220,  .container-221 {
-                overflow: auto;
-            }
-
-            table.dataTable {
-                width: 750px !important;
-            }
-
-            table.dataTable tbody td.name-column {
-                font-size: 40px; /* Larger font size */
-                font-weight: bold; /* Make it bold */
-            }
+        /* Adjust row hover effect */
+        table.dataTable tbody tr:hover {
+            background-color: #4E6F28; /* Darker shade of green for hover */
         }
 
     </style>
 </head>
 <body>
-  <section id="Events-Home" data-w-id="ab86c2ac-6271-8bb9-289d-0d86d72adbe9" class="track">
+<section class="track" data-w-id="e7358393-15df-48ee-aaed-0fe02b9a21da" id="Events-Home">
     <div class="camera">
-      <div class="frame">
-        <div class="item">
-          <section class="section-6">
-            <div class="text-block-5">JOB FEST</div>
-            <div class="text-block-6">10/20 - 10/25</div>
-            <div class="w-layout-blockcontainer container-7 w-container"></div>
-            <p class="paragraph">Norem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
-          </section>
-        </div>
-        <div class="item">
-          <section class="section-21">
-            <div class="w-layout-blockcontainer container-272 w-container">
-              <div class="w-layout-blockcontainer container-273 w-container">
-                <h1 class="heading-56">OCT 08</h1>
-                <div class="text-block-74">ANNA STEINER</div><img src="../images/photo-1507019778-966512024b86.avif" loading="lazy" width="Auto" alt="" class="image-31">
-              </div>
-              <h1 class="heading-57">BASKING</h1>
-              <h1 class="heading-58">IN THE LIGHTS</h1>
-              <h1 class="heading-59">ROYAL ALBERT HALL. LDN</h1>
+        <div class="frame">
+            <div class="item">
+                <section class="section-6">
+                    <div class="text-block-5">JOB FEST</div>
+                    <div class="text-block-6">10/20 - 10/25</div>
+                    <div class="w-layout-blockcontainer container-7 w-container"></div>
+                    <p class="paragraph">Norem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
+                        molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem
+                        sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet
+                        feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                        himenaeos. </p>
+                </section>
             </div>
-          </section>
-        </div>
-        <div class="item">
-          <section class="section-22">
-            <div class="w-layout-blockcontainer container-256 w-container">
-              <h1 class="heading-49">MODERN ART</h1>
-              <h1 class="heading-49">ARE ART CRITICS STILL</h1>
-              <h1 class="heading-49"><span class="text-span-9">RELEVANT</span>?</h1>
-              <div class="w-layout-blockcontainer container-257 w-container"></div>
-              <div class="w-layout-blockcontainer container-258 w-container"><img src="../images/photo-1504275490777-45f30792f13f.avif" loading="lazy" alt="" class="image-27">
-                <div class="text-block-66">SOFIA SMITH</div><img src="../images/photo-1474533410427-a23da4fd49d0.avif" loading="lazy" alt="" class="image-28">
-                <div class="text-block-67">LLOYD FRANCESCO</div>
-              </div>
-              <h1 class="heading-50">NOV. 5 - EDEN GALLERY, PAR</h1>
+            <div class="item">
+                <section class="section-21"></section>
             </div>
-          </section>
-        </div>
-        <div class="item">
-          <section class="section-23">
-            <div class="w-layout-blockcontainer container-259 w-container">
-              <div class="w-layout-blockcontainer container-260 w-container">
-                <h1 class="heading-51">HOW TO BE</h1><img src="../images/photo-1474176857210-7287d38d27c6.avif" loading="lazy" width="Auto" alt="" class="image-29">
-                <div class="text-block-68">SGT. JAMES FAVREAU</div>
-              </div>
-              <h1 class="heading-52">A MOUNTAINEER</h1>
-              <h1 class="heading-53">OCT. 20 - LINCOLN CENTER, NYC</h1>
+            <div class="item">
+                <section class="section-22"></section>
             </div>
-          </section>
+            <div class="item">
+                <section class="section-23"></section>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-  <section class="dashboard">
+</section>
+<table class="display" id="myTable">
+  <thead>
+  <tr>
+    <th>Column 1</th>
+    <th>Column 2</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Row 1 Data 1</td>
+    <td>Row 1 Data 2</td>
+    <td>
+      <button class="edit-btn">Edit</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Row 2 Data 1</td>
+    <td>Row 2 Data 2</td>
+    <td>
+      <button class="edit-btn">Edit</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Row 3 Data 1</td>
+    <td>Row 3 Data 2</td>
+    <td>
+      <button class="edit-btn">Edit</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Row 4 Data 1</td>
+    <td>Row 4 Data 2</td>
+    <td>
+      <button class="edit-btn">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<section class="dashboard">
+
     <div class="w-layout-blockcontainer container-179 w-container">
-      <h1 id="Dashboard" class="heading-37">DASHBOARD</h1>
-      <div class="w-layout-blockcontainer container-180 w-container">
-        <h1 id="Your-Applications" class="heading-38">Your Applications</h1>
-      </div>
-      <div class="w-layout-blockcontainer container-182 w-container">
-          <div class="datatable-controls">
-              <label>
-                  Show
-                  <select id="entriesSelect">
-                      <option value="10">10</option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
-                  </select>
-                  entries
-              </label>
-              <label>
-                  Search: <input type="text" id="searchInput">
-              </label>
-          </div>
-          <div class="w-layout-blockcontainer container-182 w-container">
-              <table class="display" id="myTable">
-                  <thead>
+        <h1 class="heading-37">DASHBOARD</h1>
+        <div class="w-layout-blockcontainer container-180 w-container">
+            <h1 class="heading-38" id="Your-Applications">Your Applications</h1>
+            <div class="w-layout-blockcontainer container-181 w-container"></div>
+        </div>
+        <div class="w-layout-blockcontainer container-182 w-container">
+            <!-- <table id="myTable" class="display">
+              <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Date</th>
-                      <th>Status</th>
+                      <th>Column 1</th>
+                      <th>Column 2</th>
+                      <th>Actions</th>
                   </tr>
-                  </thead>
-                  <tbody>
+              </thead>
+              <tbody>
                   <tr>
-                      <td class="name-column">Row 1 Data 1</td>
-                      <td class="date-column">Row 1 Data 2</td>
-                      <td>Approved</td>
+                      <td>Row 1 Data 1</td>
+                      <td>Row 1 Data 2</td>
+                      <td><button class="edit-btn">Edit</button></td>
                   </tr>
                   <tr>
-                      <td class="name-column">Row 2 Data 1</td>
-                      <td class="date-column">Row 2 Data 2</td>
-                      <td>Approved</td>
+                      <td>Row 2 Data 1</td>
+                      <td>Row 2 Data 2</td>
+                      <td><button class="edit-btn">Edit</button></td>
                   </tr>
                   <tr>
-                      <td class="name-column">Row 3 Data 1</td>
-                      <td class="date-column">Row 3 Data 2</td>
-                      <td>Approved</td>
+                      <td>Row 3 Data 1</td>
+                      <td>Row 3 Data 2</td>
+                      <td><button class="edit-btn">Edit</button></td>
                   </tr>
                   <tr>
-                      <td class="name-column">Row 4 Data 1</td>
-                      <td class="date-column">Row 4 Data 2</td>
-                      <td>Approved</td>
+                      <td>Row 4 Data 1</td>
+                      <td>Row 4 Data 2</td>
+                      <td><button class="edit-btn">Edit</button></td>
                   </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-      <div class="w-layout-blockcontainer container-180 w-container">
-        <h1 id="Positions" class="heading-38">New Positions</h1>
-        <a href="../student/student-positions.html" target="_blank" class="button-9 w-button">View More</a>
-      </div>
-      <div class="w-layout-blockcontainer container-184 w-container"></div>
-      <div class="w-layout-grid grid">
-        <a href="../student/student-appicationpage.html" class="link-block-4 w-inline-block">
-          <div class="w-layout-blockcontainer container-28 w-container">
-            <div class="w-layout-blockcontainer container-31 w-container">
-              <div class="text-block-14">USNPS</div>
-              <div class="text-block-14">Forest Service</div>
-              <div class="text-block-14">Jackson, WY</div>
+              </tbody>
+          </table> -->
+        </div>
+
+        <div class="w-layout-blockcontainer container-180 w-container">
+            <h1 class="heading-38" id="Positions">Positions</h1>
+            <div class="w-layout-blockcontainer container-183 w-container"></div>
+            <a class="button-9 w-button" href="#">View More</a>
+        </div>
+        <div class="w-layout-blockcontainer container-184 w-container"></div>
+        <div class="w-layout-grid grid">
+            <div class="w-layout-blockcontainer container-28 w-container"
+                 id="w-node-_19b95752-0c08-c640-f984-30c422ea9671-61d8e533">
+                <div class="w-layout-blockcontainer container-31 w-container">
+                    <div class="text-block-14">USNPS</div>
+                    <div class="text-block-14">Forest Service</div>
+                    <div class="text-block-14">Jackson, WY</div>
+                </div>
             </div>
-          </div>
-        </a>
-        <a href="../student/student-appicationpage.html" class="link-block-3 w-inline-block">
-          <div class="w-layout-blockcontainer container-268 w-container">
-            <div class="w-layout-blockcontainer container-269 w-container">
-              <div class="text-block-71">Feitian College</div>
-              <div class="text-block-72">Graphic Designer</div>
-              <div class="text-block-73">Middletown, NY</div>
+            <div class="w-layout-blockcontainer container-28 w-container"
+                 id="w-node-_19b95752-0c08-c640-f984-30c422ea9680-61d8e533">
+                <div class="w-layout-blockcontainer container-31 w-container">
+                    <div class="text-block-14">USNPS</div>
+                    <div class="text-block-14">Forest Service</div>
+                    <div class="text-block-14">Jackson, WY</div>
+                </div>
             </div>
-          </div>
-        </a>
-        <a href="../student/student-appicationpage.html" class="link-block-5 w-inline-block">
-          <div class="w-layout-blockcontainer container-270 w-container">
-            <div class="w-layout-blockcontainer container-271 w-container">
-              <div class="text-block-92">State of Hawaii</div>
-              <div class="text-block-93">MARINE BIOLOGIST</div>
-              <div class="text-block-94">Honolulu, HI</div>
+            <div class="w-layout-blockcontainer container-28 w-container"
+                 id="w-node-_19b95752-0c08-c640-f984-30c422ea968f-61d8e533">
+                <div class="w-layout-blockcontainer container-31 w-container">
+                    <div class="text-block-14">USNPS</div>
+                    <div class="text-block-14">Forest Service</div>
+                    <div class="text-block-14">Jackson, WY</div>
+                </div>
             </div>
-          </div>
-        </a>
-        <a href="../student/student-appicationpage.html" class="link-block-6 w-inline-block">
-          <div class="w-layout-blockcontainer container-328 w-container">
-            <div class="w-layout-blockcontainer container-329 w-container">
-              <div>James Huntington</div>
-              <div class="text-block-95">Photographer</div>
-              <div>NYC</div>
+            <div class="w-layout-blockcontainer container-28 w-container"
+                 id="w-node-c2bb0a55-f341-32fb-e166-84cd74e73cda-61d8e533">
+                <div class="w-layout-blockcontainer container-31 w-container">
+                    <div class="text-block-14">USNPS</div>
+                    <div class="text-block-14">Forest Service</div>
+                    <div class="text-block-14">Jackson, WY</div>
+                </div>
             </div>
-          </div>
-        </a>
-        <a href="../student/student-appicationpage.html" class="link-block-7 w-inline-block">
-          <div class="w-layout-blockcontainer container-330 w-container">
-            <div class="w-layout-blockcontainer container-331 w-container">
-              <div>Tennessee Medical Center</div>
-              <div class="text-block-96">Nurse (RN)</div>
-              <div>Nasheville, TN</div>
+            <div class="w-layout-blockcontainer container-28 w-container"
+                 id="w-node-_32cc80ec-6a3e-83b0-6d2e-120ba615d986-61d8e533">
+                <div class="w-layout-blockcontainer container-31 w-container">
+                    <div class="text-block-14">USNPS</div>
+                    <div class="text-block-14">Forest Service</div>
+                    <div class="text-block-14">Jackson, WY</div>
+                </div>
             </div>
-          </div>
-        </a>
-      </div>
+        </div>
     </div>
-  </section>
-  <section id="tutorial" class="tutorial">
+</section>
+<section class="tutorial" id="tutorial">
     <div class="w-layout-blockcontainer container-37 w-container">
-      <h1 class="heading-3">Tutorial</h1>
-      <div class="w-layout-blockcontainer container-12 w-container">
-        <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FdQw4w9WgXcQ%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FdQw4w9WgXcQ%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" width="940" height="528" scrolling="no" allowfullscreen="" title="Rick Astley - Never Gonna Give You Up (Official Music Video)"></iframe></div>
-      </div>
-      <p class="paragraph-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        <h1 class="heading-3">Tutorial</h1>
+        <div class="w-layout-blockcontainer container-12 w-container">
+            <div class="video w-video w-embed" style="padding-top:56.17021276595745%">
+                <iframe allowfullscreen=""
+                        class="embedly-embed"
+                        height="528" scrolling="no" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FdQw4w9WgXcQ%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FdQw4w9WgXcQ%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
+                        width="940"></iframe>
+            </div>
+        </div>
+        <p class="paragraph-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero
+            vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
+            tristique posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero
+            vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
+            tristique posuere.</p>
     </div>
-  </section>
-  <section class="footer">
+</section>
+<section class="testimonials" id="testimonials">
+    <div class="slider w-slider" data-animation="slide" data-autoplay="false" data-autoplay-limit="0" data-delay="4000"
+         data-disable-swipe="false" data-duration="500" data-easing="ease" data-hide-arrows="false"
+         data-infinite="true" data-nav-spacing="5">
+        <div class="w-slider-mask">
+            <div class="slide w-slide">
+                <div class="w-layout-blockcontainer container-185 w-container">
+                    <p class="paragraph-11"><em class="italic-text-3">&quot;I can&#x27;t thank JOB CONN enough for the
+                        incredible opportunity to connect with top recruiters! The platform made it so easy to showcase
+                        my skills and connect with industry leaders. I landed an internship at Tech Innovations Inc.
+                        That turned into a full-time job offer. The personalized support and valuable resources helped
+                        me navigate the job market with confidence. I highly recommend this service to any student
+                        looking to kickstart their career!&quot;</em></p>
+                    <div class="text-block-36"><strong>Julia Anderson, Graphic Designer at Tech Innovations,
+                        INC</strong></div>
+                </div>
+            </div>
+            <div class="w-slide">
+                <div class="w-layout-blockcontainer container-32 w-container">
+                    <p class="paragraph-3"><em class="italic-text">&quot;I found my first job on this site and it stuck
+                        with me ever since!&quot;</em></p>
+                    <div class="text-block-16"><strong class="bold-text">Ann Taylor, Junior Manager at Boeing</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="w-slide">
+                <div class="w-layout-blockcontainer container-186 w-container">
+                    <p class="paragraph-12"><em class="italic-text-4">&quot;Working with JOB CONN has streamlined our
+                        hiring process. Highly recommend it!&quot;</em></p>
+                    <div class="text-block-37"><strong>David Kim, Director at General Motors</strong></div>
+                </div>
+            </div>
+            <div class="w-slide">
+                <div class="w-layout-blockcontainer container-187 w-container">
+                    <p class="paragraph-13"><em class="italic-text-5">I landed my dream job through JOB CONN! The
+                        support and resources were fantastic.</em></p>
+                    <div class="text-block-38"><strong>Maya Patel, Engineering Graduate from the University of
+                        Michigan</strong></div>
+                </div>
+            </div>
+            <div class="w-slide">
+                <div class="w-layout-blockcontainer container-188 w-container">
+                    <p class="paragraph-14"><em class="italic-text-6">&quot;The candidates from JOB CONN are impressive
+                        and well-prepared. This platform is a game-changer for finding talent!&quot;</em></p>
+                    <div class="text-block-39"><strong>Melody Wu, Chief Architect at Sattlers</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="w-slider-arrow-left">
+            <div class="w-icon-slider-left"></div>
+        </div>
+        <div class="w-slider-arrow-right">
+            <div class="w-icon-slider-right"></div>
+        </div>
+        <div class="slide-nav w-slider-nav w-round"></div>
+    </div>
+</section>
+<section class="footer">
     <div class="w-layout-blockcontainer container-189 w-container">
-      <div class="w-layout-blockcontainer container-190 w-container">
-        <div class="text-block-44"><strong class="bold-text-8">Guide</strong></div>
-        <a href="#Events-Home" class="link-block-22 w-inline-block">
-          <div class="text-block-40">Home</div>
-        </a>
-        <a href="#Your-Applications" class="link-block-23 w-inline-block">
-          <div class="text-block-41">Your Applications</div>
-        </a>
-        <a href="../student/student-positions.html" class="link-block-24 w-inline-block">
-          <div class="text-block-42">Positions</div>
-        </a>
-        <a href="#tutorial" class="link-block-25 w-inline-block">
-          <div class="text-block-43">Tutorial</div>
-        </a>
-        <a href="../student/student-yourprofile.html" class="link-block-26 w-inline-block">
-          <div class="text-block-97">Your Profile</div>
-        </a>
-      </div>
-      <div class="w-layout-blockcontainer container-190 w-container">
-        <div class="text-block-44"><strong class="bold-text-8">Help</strong></div>
-          <a href="../help/terms&conditions.html" class="link-block-27 w-inline-block">
-          <div>Terms &amp; Coditions</div>
-        </a>
-          <a href="../help/privacy-policy.html" class="link-block-28 w-inline-block">
-          <div>Privacy Policy</div>
-        </a>
-      </div>
-      <div class="w-layout-blockcontainer container-190 w-container">
-        <div class="text-block-44"><strong class="bold-text-8">Contact Us</strong></div>
-        <a href="mailto:jobconn@gmail.com?subject=Help%20Needed" class="link-block-29 w-inline-block">
-          <div>jobconn@gmail.com</div>
-        </a>
-      </div>
-      <div class="w-layout-blockcontainer container-194 w-container"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-21"></div>
+        <div class="w-layout-blockcontainer container-190 w-container">
+            <div class="text-block-44"><strong class="bold-text-8">Guide</strong></div>
+            <div class="text-block-40">Your Profile</div>
+            <div class="text-block-41">Dashboard</div>
+            <div class="text-block-42">My List</div>
+            <div class="text-block-43">Potential Applicants</div>
+        </div>
+        <div class="w-layout-blockcontainer container-190 w-container">
+            <div class="text-block-44"><strong class="bold-text-8">Help</strong></div>
+            <div>Settings</div>
+            <div>Terms &amp; Coditions</div>
+            <div>Privacy Policy</div>
+        </div>
+        <div class="w-layout-blockcontainer container-190 w-container">
+            <div class="text-block-44"><strong class="bold-text-8">Contact Us</strong></div>
+            <div>jobconn@gmail.com</div>
+        </div>
+        <div class="w-layout-blockcontainer container-194 w-container"><img alt="" class="image-21"
+                                                                            loading="lazy" src="../images/Group-102.png"></div>
     </div>
-  </section>
-  <div class="w-layout-blockcontainer container-5 w-container"><img loading="lazy" src="../images/Group-102.png" alt="" class="image-2">
+    <div class="w-layout-blockcontainer container-191 w-container">
+        <div class="w-layout-blockcontainer container-195 w-container"></div>
+        <div class="w-layout-blockcontainer container-196 w-container"><img alt="" class="image-22"
+                                                                            loading="lazy" src="../images/image-22.png"><img
+                alt="" class="image-23" loading="lazy" src="../images/image-22.png"><img alt=""
+                                                                                         class="image-24" loading="lazy"
+                                                                                         src="../images/image-22.png"><img
+                alt="" class="image-25" loading="lazy" src="../images/image-22.png"></div>
+    </div>
+</section>
+<div class="w-layout-blockcontainer container-5 w-container"><img alt="" class="image-2" loading="lazy"
+                                                                  src="../images/Group-102.png">
     <div class="text-block-3">
-      <a href="#Events-Home" class="link-4"><strong class="bold-text-30">Home</strong></a>
+        <a class="link-4" href="#Events-Home"><strong>Home</strong></a>
     </div>
     <div class="text-block-3">
-      <a href="#Your-Applications" class="link-5"><strong class="bold-text-13">Your Applications</strong></a>
+        <a class="link-5" href="#Your-Applications"><strong>Your Applications</strong></a>
     </div>
     <div class="text-block-3">
-      <a href="#Positions" class="link-2"><strong class="bold-text-14">Positions</strong></a>
+        <a class="link-2" href="#Positions"><strong>Positions</strong></a>
     </div>
     <div class="text-block-3">
-      <a href="#tutorial" class="link"><strong class="bold-text-15">Tutorial</strong></a>
+        <a class="link" href="#tutorial"><strong>Tutorial</strong></a>
     </div>
-    <a href="../student/student-yourprofile.html" class="button-3 w-button">YM</a>
-  </div>
-  <section class="section-33">
-    <div data-hover="false" data-delay="0" class="dropdown-4 w-dropdown">
-      <div class="dropdown-toggle-4 w-dropdown-toggle">
-        <div class="text-block-75">NAVIGATION</div>
-      </div>
-      <nav class="dropdown-list-3 w-dropdown-list">
-        <a href="#Events-Home" class="dropdown-link-5 w-dropdown-link">Home</a>
-        <a href="#Dashboard" class="dropdown-link-6 w-dropdown-link">Dashboard</a>
-        <a href="../student/student-positions.html" class="dropdown-link-7 w-dropdown-link">Positions</a>
-        <a href="#tutorial" class="dropdown-link-8 w-dropdown-link">Tutorials</a>
-        <a href="../student/student-yourprofile.html" class="dropdown-link-17 w-dropdown-link">Your Profile</a>
-        <a href="#" class="dropdown-link-18 w-dropdown-link">Log-Out</a>
-      </nav>
-    </div>
-    <div data-hover="false" data-delay="0" class="dropdown-5 w-dropdown">
-      <div class="dropdown-toggle-3 w-dropdown-toggle">
-        <div class="text-block-76">HELP</div>
-      </div>
-      <nav class="dropdown-list-4 w-dropdown-list">
-        <a href="#" class="dropdown-link-9 w-dropdown-link">Terms &amp; Conditions</a>
-        <a href="#" class="dropdown-link-10 w-dropdown-link">Privacy Policy</a>
-      </nav>
-    </div>
-    <div data-hover="false" data-delay="0" class="dropdown-6 w-dropdown">
-      <div class="dropdown-toggle-5 w-dropdown-toggle">
-        <div class="text-block-77">CONTACT US</div>
-      </div>
-      <nav class="dropdown-list-5 w-dropdown-list">
-        <a href="mailto:jobconn@gmail.com?subject=Help%20Required" class="dropdown-link-11 w-dropdown-link">jobconn@gmail.com</a>
-      </nav>
-    </div>
-    <div class="w-layout-blockcontainer container-277 w-container">
-      <div class="text-block-78">2024-2025</div>
-      <h1 class="heading-60">JOB CONN</h1>
-    </div>
-  </section>
-  <div class="w-layout-blockcontainer container-325 w-container">
-    <div class="w-layout-blockcontainer container-326 w-container">
-      <div data-hover="false" data-delay="0" class="dropdown-9 w-dropdown">
-        <div class="dropdown-toggle-7 w-dropdown-toggle"><img src="../images/image-47.png" loading="lazy" alt="" class="image-35"></div>
-        <nav class="dropdown-list-8 w-dropdown-list"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-36">
-          <a href="#Events-Home" class="dropdown-link-13 w-dropdown-link">Home</a>
-          <a href="#Dashboard" class="dropdown-link-16 w-dropdown-link">Dashboard</a>
-          <a href="../student/student-positions.html" class="dropdown-link-15 w-dropdown-link">Positions</a>
-          <a href="#tutorial" class="dropdown-link-14 w-dropdown-link">Tutorial</a>
-          <a href="#" class="dropdown-link-12 w-dropdown-link">Log Out</a>
-        </nav>
-      </div>
-    </div>
-    <div class="w-layout-blockcontainer container-327 w-container">
-      <a href="../student/student-yourprofile.html" class="link-block-11 w-inline-block">
-        <h1 class="heading-75">John Doe</h1>
-      </a>
-    </div>
-  </div>
+    <a class="button-3 w-button" href="#"></a>
+</div>
 <script>
     $(document).ready(function () {
         // Initialize the DataTable
-        const table = $('#myTable').DataTable({
-            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
-        });
-
-        // Handle custom "Show entries" dropdown
-        $('#entriesSelect').on('change', function () {
-            table.page.len($(this).val()).draw();
-        });
-
-        // Handle custom search input
-        $('#searchInput').on('keyup', function () {
-            table.search(this.value).draw();
-        });
+        const table = $('#myTable').DataTable();
 
         // Add click event for edit buttons
-        $('#myTable').on('click', '.edit-btn', function () {
+        table.on('click', '.edit-btn', function () {
             const row = $(this).closest('tr');
             const rowData = row.find('td').map(function () {
                 return $(this).text();
@@ -607,12 +394,14 @@
 
             alert('Edit this row: ' + rowData.join(', '));
         });
+
+        // Filter the table based on input
+        $('#searchInput').on('keyup', function () {
+            table.search(this.value).draw();
+        });
     });
-
 </script>
-
-<!-- load this lib at the bottom !-->
-<script src="../js/webflow.js" type="text/javascript"></script>
+<script src="../js/webflow.js" type="text/javascript"></script> // load this lib at the bottom
 
 
 
