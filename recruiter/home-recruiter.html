@@ -385,14 +385,10 @@
         table.search(this.value).draw();
       });
 
-      // Add click event for edit buttons
-      $('#myTable').on('click', '.edit-btn', function () {
-        const row = $(this).closest('tr');
-        const rowData = row.find('td').map(function () {
-          return $(this).text();
-        }).get();
-
-        alert('Edit this row: ' + rowData.join(', '));
+      // Add click event for the DETAILS button
+      $('#myTable').on('click', '.edit-btn.detail', function () {
+        // Navigate to the project info page
+        window.location.href = 'recruiter-projectinfo.html';
       });
     });
 
