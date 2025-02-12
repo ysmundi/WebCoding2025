@@ -138,13 +138,21 @@
       border-radius: 5px; /* Rounded corners */
       cursor: pointer; /* Pointer cursor */
     }
-.dataTableC{
-  font:
 
-}
     /* Style for the Info button */
     .edit-btn.info {
       background-color: #727070; /* Grey background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 8px 16px; /* Padding for better appearance */
+      font-size: 16px; /* Font size */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor */
+    }
+
+    /* Style for the accept button */
+    .edit-btn.accept {
+      background-color: blue; /* Red background */
       color: white; /* White text */
       border: none; /* No border */
       padding: 8px 16px; /* Padding for better appearance */
@@ -361,6 +369,57 @@
         </label>
       </div>
       <div class="w-layout-blockcontainer container-221 w-container">
+        <table class="display" id="myTable2">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="name-column">Row 1 Data 1</td>
+            <td class="date-column">Row 1 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 2 Data 1</td>
+            <td class="date-column">Row 2 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 3 Data 1</td>
+            <td class="date-column">Row 3 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 4 Data 1</td>
+            <td class="date-column">Row 4 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -390,6 +449,37 @@
 
       // Add click event for edit buttons
       $('#myTable').on('click', '.edit-btn', function () {
+        const row = $(this).closest('tr');
+        const rowData = row.find('td').map(function () {
+          return $(this).text();
+        }).get();
+
+        alert('Edit this row: ' + rowData.join(', '));
+      });
+
+      // Initialize the DataTable
+      const table2 = $('#myTable2').DataTable({
+        dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+        lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+      });
+
+      // Handle custom "Show entries" dropdown
+      $('#entriesSelect').on('change', function () {
+        table.page.len($(this).val()).draw();
+      });
+
+      // Handle custom "Show entries" dropdown
+      $('#entriesSelect2').on('change', function () {
+        table.page.len($(this).val()).draw();
+      });
+
+      // Handle custom search input
+      $('#searchInput').on('keyup', function () {
+        table2.search(this.value).draw();
+      });
+
+      // Add click event for edit buttons
+      $('#myTable2').on('click', '.edit-btn', function () {
         const row = $(this).closest('tr');
         const rowData = row.find('td').map(function () {
           return $(this).text();
