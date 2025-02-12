@@ -417,7 +417,7 @@
     $(document).ready(function () {
         // Initialize the DataTable
         const table = $('#myTable').DataTable({
-            dom: 'lrtip', // Remove default search and dropdown from DataTables
+            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
             lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
         });
 
@@ -441,6 +441,7 @@
             alert('Edit this row: ' + rowData.join(', '));
         });
     });
+
 </script>
 <script src="../js/webflow.js" type="text/javascript"></script> // load this lib at the bottom
 
