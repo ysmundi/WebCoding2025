@@ -346,8 +346,7 @@
   margin-bottom: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 75px;
   overflow: hidden;
 }
 
@@ -858,6 +857,9 @@
 }
 
 .section-13 {
+  background-image: url('../images/photo-1658591637535-46dba8f4bdf9.avif');
+  background-position: 50%;
+  background-size: cover;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -873,7 +875,7 @@
 }
 
 .heading-4 {
-  color: #000;
+  color: #fff;
   margin-top: 2%;
   margin-bottom: 2%;
   font-size: 9vw;
@@ -889,7 +891,7 @@
 }
 
 .paragraph-4 {
-  color: #000;
+  color: #fff;
   text-align: center;
 }
 
@@ -902,10 +904,9 @@
 }
 
 .container-40 {
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  width: 85vw;
   max-width: none;
   height: 85vh;
   display: flex;
@@ -2220,7 +2221,7 @@
   color: #fff;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 33.3333%;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 34px;
@@ -2854,14 +2855,14 @@
   grid-row-gap: 0px;
   justify-content: flex-start;
   align-items: center;
-  width: 25%;
+  width: 33.3333%;
   max-width: none;
   height: 100%;
   display: flex;
 }
 
 .container-150 {
-  width: 25%;
+  width: 33.3333%;
   max-width: none;
   height: 100%;
 }
@@ -3031,10 +3032,10 @@
 
 .container-164 {
   background-color: #fff;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 50px;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 35%;
   max-width: none;
   height: 100%;
   margin-left: 0;
@@ -3351,6 +3352,21 @@
 .container-182 {
   width: 100%;
   max-width: none;
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container-182V2 {
+  width: 100%;
+  max-width: none;
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .container-183 {
@@ -3728,7 +3744,7 @@
   flex-flow: row;
   width: 100%;
   max-width: none;
-  height: 75vh;
+  height: 55vh;
   display: flex;
 }
 
@@ -4049,216 +4065,6 @@
   color: #fff;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.section-32 {
-  width: 100%;
-}
-
-.container-228 {
-  background-color: #ec9440;
-  width: 100%;
-  max-width: none;
-  height: 10vh;
-  display: flex;
-}
-
-.container-229 {
-  background-color: #fff;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 25px;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-  max-width: none;
-  height: 100%;
-  display: flex;
-}
-
-.container-230 {
-  background-color: #ec9440;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  max-width: none;
-  height: 100%;
-  display: flex;
-}
-
-.container-231 {
-  background-color: #ec9440;
-  width: 25%;
-  max-width: none;
-  height: 100%;
-}
-
-.heading-45 {
-  color: #000;
-}
-
-.container-232 {
-  width: 80%;
-  max-width: none;
-  margin-left: 10%;
-  margin-right: 10%;
-  padding-bottom: 0;
-}
-
-.container-233 {
-  border: 1px solid #000;
-  border-left-width: 3px;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: none;
-  height: 75vh;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  display: flex;
-}
-
-.container-234, .container-235, .container-236, .container-237, .container-238, .container-239, .container-240, .container-241 {
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  max-width: none;
-  height: 9%;
-  padding-left: 20px;
-  display: flex;
-}
-
-.text-block-54 {
-  font-size: 20px;
-}
-
-.text-block-55 {
-  color: #ec9440;
-  margin-left: 25px;
-  font-size: 25px;
-  line-height: 25px;
-}
-
-.text-block-56, .text-block-57 {
-  color: #ec9440;
-  margin-left: 25px;
-  font-size: 20px;
-}
-
-.container-242 {
-  background-color: #000;
-  width: 2px;
-  max-width: none;
-  height: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.text-block-58 {
-  color: #ec9440;
-  font-size: 20px;
-}
-
-.container-243 {
-  background-color: #ec9440;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  max-width: none;
-  height: auto;
-  margin-left: 25px;
-  margin-right: 0;
-  padding: 10px 25px;
-  display: flex;
-}
-
-.text-block-59 {
-  color: #fff;
-  font-size: 20px;
-}
-
-.container-244 {
-  background-color: #000;
-  width: 2px;
-  max-width: none;
-  height: 100%;
-  margin-left: 25px;
-  margin-right: 0;
-}
-
-.container-245 {
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: none;
-  height: 12.5%;
-  margin-top: 20px;
-  padding-left: 25px;
-  display: flex;
-}
-
-.paragraph-16 {
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 0;
-  margin-left: 20px;
-  display: flex;
-}
-
-.heading-46 {
-  color: #000;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 50px;
-  line-height: 50px;
-}
-
-.container-246, .container-247 {
-  width: 100%;
-  max-width: none;
-}
-
-.heading-47 {
-  color: #000;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 75px;
-  line-height: 75px;
-}
-
-.text-block-60 {
-  font-size: 50px;
-}
-
-.text-block-61 {
-  margin-top: 10px;
-  font-size: 40px;
-  line-height: 40px;
-}
-
-.container-248 {
-  justify-content: flex-start;
-  align-items: flex-end;
-  width: 100%;
-  max-width: none;
-  display: flex;
-}
-
-.container-249 {
-  background-color: #000;
-  width: 50%;
-  max-width: none;
-  height: 2px;
-  margin-left: 25px;
-  margin-right: 0;
-}
-
-.container-250 {
-  width: 100%;
-  max-width: none;
-  margin-top: 20px;
-  padding-right: 0;
 }
 
 @media screen and (max-width: 991px) {
@@ -4948,132 +4754,4 @@
     padding-top: 10px;
     padding-left: 10px;
   }
-}
-
-
-@font-face {
-  font-family: 'Helvetica 46 587 Ebdb 0 Ea 724';
-  src: url('../fonts/helvetica-46-light-italic-587ebdb0ea724.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helvetica 47 Condensed 587 Ebd 7 B 5 A 6 F 6';
-  src: url('../fonts/helvetica-47-light-condensed-587ebd7b5a6f6.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeueBoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeueLight.ttf') format('truetype'), url('../fonts/HelveticaNeue-LightCondObl.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Condensed';
-  src: url('../fonts/HelveticaNeueCondensedBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeueItalic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeueUltraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticanneue';
-  src: url('../fonts/HelveticaNeueUltraLightItal.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Condensed';
-  src: url('../fonts/HelveticaNeueCondensedBlack.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeue-BoldExtObl.otf') format('opentype'), url('../fonts/HelveticaNeue-BoldCondObl.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue Extended';
-  src: url('../fonts/HelveticaNeue-Extended.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeue-BlackExtObl.otf') format('opentype'), url('../fonts/HelveticaNeue-BlackCondObl.otf') format('opentype'), url('../fonts/HelveticaNeue-HeavyExt.otf') format('opentype'), url('../fonts/HelveticaNeue-HeavyCondObl.otf') format('opentype'), url('../fonts/HelveticaNeue-BlackExt.otf') format('opentype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeue-MediumExt.otf') format('opentype'), url('../fonts/HelveticaNeue-MediumCond.otf') format('opentype'), url('../fonts/HelveticaNeue-Medium.otf') format('opentype'), url('../fonts/HelveticaNeue-MediumExtObl.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue Ultraligcond';
-  src: url('../fonts/HelveticaNeue-UltraLigCond.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue Ultraligext';
-  src: url('../fonts/HelveticaNeue-UltraLigExt.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue Condensedobl';
-  src: url('../fonts/HelveticaNeue-CondensedObl.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue Condensed';
-  src: url('../fonts/HelveticaNeue-Condensed.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Helveticaneue';
-  src: url('../fonts/HelveticaNeue-ThinCond.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
 }
