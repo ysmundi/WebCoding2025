@@ -3359,6 +3359,16 @@
   margin-bottom: 20px;
 }
 
+.container-182V2 {
+  width: 100%;
+  max-width: none;
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .container-183 {
   background-color: #000;
   width: 64%;
