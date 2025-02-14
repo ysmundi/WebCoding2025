@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Feb 10 2025 21:15:53 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Feb 12 2025 20:50:49 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67a9200ff24e68c0ebd10562" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -138,13 +138,20 @@
       border-radius: 5px; /* Rounded corners */
       cursor: pointer; /* Pointer cursor */
     }
-.dataTableC{
-  font:
 
-}
     /* Style for the Info button */
     .edit-btn.info {
       background-color: #727070; /* Grey background */
+      color: white; /* White text */
+      border: none; /* No border */
+      padding: 8px 16px; /* Padding for better appearance */
+      font-size: 16px; /* Font size */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor */
+    }
+
+    .edit-btn.accept {
+      background-color: #C03C29; /* Red background */
       color: white; /* White text */
       border: none; /* No border */
       padding: 8px 16px; /* Padding for better appearance */
@@ -161,6 +168,27 @@
 
     table.dataTable tbody td.date-column::before {
       content: "Date Joined"; /* Add the heading */
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      font-size: 25px; /* Small font size for the heading */
+      color: #333;
+      font-weight: bold;/* Dark gray text color */
+    }
+
+    table#myTable2 tbody td.date-column::before {
+      content: "Date Applied"; /* Updated heading */
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      font-size: 25px;
+      color: #333;
+      font-weight: bold;
+    }
+
+
+    table2.dataTable tbody td.date-column::before {
+      content: "Date Applied"; /* Add the heading */
       position: absolute;
       top: 15px;
       left: 10px;
@@ -361,6 +389,57 @@
         </label>
       </div>
       <div class="w-layout-blockcontainer container-221 w-container">
+        <table class="display" id="myTable2">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="name-column">Row 1 Data 1</td>
+            <td class="date-column">Row 1 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 2 Data 1</td>
+            <td class="date-column">Row 2 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 3 Data 1</td>
+            <td class="date-column">Row 3 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="name-column">Row 4 Data 1</td>
+            <td class="date-column">Row 4 Data 2</td>
+            <td>
+              <div class="vertical-buttons">
+                <button class="edit-btn accept">Accept</button>
+                <button class="edit-btn info">Info</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -390,6 +469,37 @@
 
       // Add click event for edit buttons
       $('#myTable').on('click', '.edit-btn', function () {
+        const row = $(this).closest('tr');
+        const rowData = row.find('td').map(function () {
+          return $(this).text();
+        }).get();
+
+        alert('Edit this row: ' + rowData.join(', '));
+      });
+
+      // Initialize the DataTable
+      const table2 = $('#myTable2').DataTable({
+        dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+        lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+      });
+
+      // Handle custom "Show entries" dropdown
+      $('#entriesSelect').on('change', function () {
+        table2.page.len($(this).val()).draw();
+      });
+
+      // Handle custom "Show entries" dropdown
+      $('#entriesSelect2').on('change', function () {
+        table2.page.len($(this).val()).draw();
+      });
+
+      // Handle custom search input
+      $('#searchInput').on('keyup', function () {
+        table2.search(this.value).draw();
+      });
+
+      // Add click event for edit buttons
+      $('#myTable2').on('click', '.edit-btn', function () {
         const row = $(this).closest('tr');
         const rowData = row.find('td').map(function () {
           return $(this).text();
