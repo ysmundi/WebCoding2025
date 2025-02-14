@@ -4,47 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cebf18df-0966-4f4e-b69f-04b826aa3a11" name="Changes" comment="Get ready to pull backend." />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="added fonts, student-yourprofile.html, and all other files from failed merge" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="origin/Yuvraj" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Anson" />
+        <entry key="$PROJECT_DIR$" value="Yuvraj" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {}
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ysmundi&quot;
+  }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ysmundi/WebCoding2025.git&quot;,
-    &quot;accountId&quot;: &quot;097adaab-2441-464c-ad24-648429508584&quot;
+    &quot;accountId&quot;: &quot;7f9ba110-189e-4725-941a-a9e8462ae958&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.3" />
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2sxaLZ7kxuIvBoCrsewiH9LCFgf" />
+  <component name="ProjectId" id="2sv0x4dX17rNagAYvs3pTxXL0mv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,19 +41,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "true",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "com.codeium.enabled": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "Anson",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -72,74 +49,77 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "vcs.Git",
-    "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cebf18df-0966-4f4e-b69f-04b826aa3a11" name="Changes" comment="" />
-      <created>1739399624145</created>
+      <changelist id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="" />
+      <created>1739320984441</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1739399624145</updated>
-      <workItem from="1739399625645" duration="541000" />
-      <workItem from="1739405902305" duration="151000" />
-      <workItem from="1739406062128" duration="205000" />
-      <workItem from="1739406269787" duration="2685000" />
-      <workItem from="1739459364298" duration="730000" />
-      <workItem from="1739464008186" duration="78000" />
-      <workItem from="1739480759051" duration="48000" />
-      <workItem from="1740524532945" duration="2164000" />
-      <workItem from="1740531616607" duration="2199000" />
+      <updated>1739320984441</updated>
+      <workItem from="1739320985577" duration="47000" />
+      <workItem from="1739321038353" duration="5531000" />
+      <workItem from="1739329079328" duration="66000" />
+      <workItem from="1739404729977" duration="2884000" />
+      <workItem from="1739491587025" duration="1540000" />
     </task>
-    <task id="LOCAL-00001" summary=".idea fix">
+    <task id="LOCAL-00001" summary="nothing2">
       <option name="closed" value="true" />
-      <created>1739407050615</created>
+      <created>1739321013680</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1739407050615</updated>
+      <updated>1739321013680</updated>
     </task>
-    <task id="LOCAL-00002" summary="After comparison with ywebflow branch">
+    <task id="LOCAL-00002" summary="added datatables in the student home and positions pages.">
       <option name="closed" value="true" />
-      <created>1739407458150</created>
+      <created>1739329137727</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1739407458150</updated>
+      <updated>1739329137727</updated>
     </task>
-    <task id="LOCAL-00003" summary="test changes">
+    <task id="LOCAL-00003" summary="added fonts, student-yourprofile.html, and all other files from failed merge">
       <option name="closed" value="true" />
-      <created>1740533495391</created>
+      <created>1739492949667</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1740533495391</updated>
+      <updated>1739492949667</updated>
     </task>
-    <task id="LOCAL-00004" summary="Get ready to pull backend.">
-      <option name="closed" value="true" />
-      <created>1740568361265</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1740568361265</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge remote-tracking branch 'origin/Yuvraj' into Yuvraj" />
-    <MESSAGE value=".idea fix" />
-    <MESSAGE value="After comparison with ywebflow branch" />
-    <MESSAGE value="test changes" />
-    <MESSAGE value="Get ready to pull backend." />
-    <option name="LAST_COMMIT_MESSAGE" value="Get ready to pull backend." />
-    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+    <MESSAGE value="nothing2" />
+    <MESSAGE value="added datatables in the student home and positions pages." />
+    <MESSAGE value="added fonts, student-yourprofile.html, and all other files from failed merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="added fonts, student-yourprofile.html, and all other files from failed merge" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
