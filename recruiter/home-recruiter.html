@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Feb 10 2025 21:15:53 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 14 2025 17:28:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6771988e3f9bdc7ea929ace2" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -22,35 +22,54 @@
   <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
   <script src="../lib/jquery/jquery.dataTables.min.js"></script>
   <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
     /* Set the background color for the entire table */
     table.dataTable {
-      background-color: #ffffff; /* Green background */
-      color: white; /* Optional: Make the text white for better contrast */
-      padding-left: 20px; /* Add left padding */
-      padding-right: 20px; /* Add right padding */
-      padding-top: 20px; /* Add top padding */
-      padding-bottom: 20px; /* Add bottom padding */
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
     }
 
-    /* Adjust header background and text color */
+    /* Header row styling */
     table.dataTable thead th {
-      background-color: #ADBA5E; /* Same green for header */
-      color: white; /* White text */
+      background-color: #64AAC3; /* Blue background for header */
+      color: white; /* White text for header */
+      padding: 10px;
+      text-align: left; /* Center-align text */
+      font-size: 24px; /* Larger font size for header text */
+      height: 10vh; /* Set header height to 25% of the viewport height */
+      vertical-align: middle; /* Center align text vertically */
     }
 
-    /* Alternate row colors */
-    table.dataTable tbody tr:nth-child(even) {
-      background-color: #ADBA5E; /* Green for even rows */
-    }
-
+    /* Alternating row colors */
     table.dataTable tbody tr:nth-child(odd) {
       background-color: white; /* White for odd rows */
-      color: #333; /* Dark gray text for odd rows */
     }
+
+    table.dataTable tbody tr:nth-child(even) {
+      background-color: #64AAC3; /* Light blue for even rows */
+    }
+
+    /* Table cell styling */
+    table.dataTable tbody td {
+      padding: 12px;
+      font-size: 18px; /* Increased font size */
+      vertical-align: middle;
+    }
+
+    /*!* Hover effect *!*/
+    /*table.dataTable tbody tr:hover {*/
+    /*  background-color: #B3E5FC; !* Slightly darker blue on hover *!*/
+    /*}*/
 
     /* Set the first row height to 10vh */
     table.dataTable tbody tr:first-child td {
-      height: 10vh;
+      height: 30vh;
     }
 
     /* Set the height of all other rows to 30vh */
@@ -74,33 +93,21 @@
       width: 10vw; /* 10% of the viewport width */
     }
 
-    /* Increase the font size of the cell text */
-    table.dataTable tbody td {
-      font-size: 18px; /* Increase the font size as needed */
-    }
-
     /* Increase the size of the edit button */
-    table.dataTable .edit-btn {
-      font-size: 16px; /* Increase the font size as needed */
-      padding: 8px 16px; /* Increase the padding as needed */
-    }
-
-    /* Adjust row hover effect */
-    table.dataTable tbody tr:hover {
-      background-color: #4E6F28; /* Darker shade of green for hover */
-    }
-
-    /* Style for the fixed search and dropdown container */
     .datatable-controls {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px; /* Add spacing between controls and the table */
-      background-color: #fff; /* Optional: Background color for clarity */
-      padding: 10px; /* Optional: Padding for better spacing */
-      position: static; /* Change from sticky to static */
-      top: auto; /* Reset the top position */
-      z-index: auto; /* Reset the z-index */
+      justify-content: flex-end; /* Align items to the right */
+      align-items: center; /* Keep vertical alignment */
+      width: 100%; /* Ensure the container spans the full width of the screen */
+      box-sizing: border-box; /* Include padding in width calculations */
+    }
+
+    .datatable-controls label:last-child {
+      margin-left: auto; /* Push the search bar to the far right */
+    }
+
+    .datatable-controls input[type="text"] {
+      text-align: left; /* Optional: Keeps text inside the search bar aligned to the left */
     }
 
     /* Make the table container scrollable */
@@ -116,36 +123,54 @@
       color: black;
     }
 
-    table.dataTable thead th {
-      background-color: #ADBA5E;
-      color: white;
-    }
-
     .vertical-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 5px; /* Space between buttons */
-    }
-    /* Style for the applicants button */
-    .edit-btn.applicants {
-      background-color: #C03C29; /* Red background */
-      color: white; /* White text */
-      border: none; /* No border */
-      padding: 8px 16px; /* Padding for better appearance */
-      font-size: 16px; /* Font size */
-      border-radius: 5px; /* Rounded corners */
-      cursor: pointer; /* Pointer cursor */
+      height: 100%; /* Fill the entire height of the parent cell */
+      display: flex; /* Use flexbox for alignment */
+      flex-direction: column; /* Stack buttons vertically */
+      justify-content: space-around; /* Space buttons evenly */
+      align-items: center; /* Center buttons horizontally */
     }
 
-    /* Style for the Detail button */
-    .edit-btn.detail {
-      background-color: #727070; /* Grey background */
-      color: white; /* White text */
-      border: none; /* No border */
-      padding: 8px 16px; /* Padding for better appearance */
-      font-size: 16px; /* Font size */
+    /* Style for the Info button */
+    .edit-btn.applicants {
+      background-color: #64AAC3; /* Blue background */
+      color: white; /* Default white text */
+      border: 1px solid black; /* Black border */
+      padding: 0; /* Remove padding to rely on width and height */
+      font-size: 20px; /* Font size */
       border-radius: 5px; /* Rounded corners */
       cursor: pointer; /* Pointer cursor */
+      width: 90%; /* Adjust width as needed */
+      height: 45%;/* Set height to 20% of the cell */
+      display: flex; /* Use flexbox for alignment */
+      justify-content: center; /* Horizontally center the text */
+      align-items: center; /* Vertically center the text */
+      margin: auto; /* Center the button within the cell */
+      text-align: center; /* Center-align text (fallback) */
+    }
+
+
+    /* Change Info button to white in blue columns */
+    table.dataTable tbody tr:nth-child(even) .edit-btn.applicants {
+      background-color: white; /* White background for the button */
+      color: #64AAC3; /* Black text for contrast */
+    }
+
+    .edit-btn.detail {
+      background-color: #727070; /* Blue background */
+      color: white; /* Default white text */
+      border: 1px solid black; /* Black border */
+      padding: 0; /* Remove padding to rely on width and height */
+      font-size: 20px; /* Font size */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor */
+      width: 90%; /* Adjust width as needed */
+      height: 30%; /* Set ight to 20% of the cell */
+      display: flex; /* Use flexbox for alignment */
+      justify-content: center; /* Horizontally center the text */
+      align-items: center; /* Vertically center the text */
+      margin: auto; /* Center the button within the cell */
+      text-align: center; /* Center-align text (fallback) */
     }
 
     /* Add "Apply Data" heading above Date column text */
@@ -154,20 +179,84 @@
       padding-top: 20px; /* Add space for the heading */
     }
 
+    /* Default style for the "SUBMITTED" text in the date-column */
     table.dataTable tbody td.date-column::before {
-      content: "Apply Date"; /* Add the heading */
+      content: "SUBMITTED"; /* Add the heading */
       position: absolute;
-      top: 15px;
+      top: 50px;
       left: 10px;
-      font-size: 25px; /* Small font size for the heading */
-      color: #333;
-      font-weight: bold;/* Dark gray text color */
+      font-size: 25px; /* Font size for the heading */
+      font-weight: bold; /* Bold text */
+      color: black; /* Default black color for white rows */
+    }
+
+    /* Make the "SUBMITTED" text white in blue rows (even rows) */
+    table.dataTable tbody tr:nth-child(even) td.date-column::before {
+      color: white; /* Change text to white for blue rows */
+    }
+
+    /* Remove hover effect but maintain the original row colors */
+
+    /* For odd rows (white background) */
+    table.dataTable tbody tr:nth-child(odd):hover {
+      background-color: white !important; /* Explicitly set white for odd rows */
+    }
+
+    /* For even rows (blue background) */
+    table.dataTable tbody tr:nth-child(even):hover {
+      background-color: #64AAC3 !important; /* Explicitly set blue for even rows */
     }
 
     /* Increase the font size of the Name column */
     table.dataTable tbody td.name-column {
-      font-size: 20px; /* Larger font size */
+      font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+    }
+
+    table.dataTable tbody tr:nth-child(even) td.name-column,
+    table.dataTable tbody tr:nth-child(even) td.date-column {
+      color: white; /* White text for names and dates in blue rows */
+    }
+
+    table.dataTable tbody tr:nth-child(odd) td.name-column,
+    table.dataTable tbody tr:nth-child(odd) td.date-column {
+      color: black; /* Black text for names and dates in white rows */
+    }
+
+    /* Add a border to the entire table */
+    table.dataTable {
+      border: 2px solid #000; /* Black border around the table */
+      border-collapse: separate; /* Prevents collapsing borders between columns */
+      border-spacing: 0; /* Ensures no space between cells */
+    }
+
+    /* Remove borders between columns */
+    table.dataTable td,
+    table.dataTable th {
+      border: none; /* No borders between columns */
+    }
+
+    /* Optional: Add borders to rows for better structure */
+    table.dataTable tbody tr {
+      border-bottom: 1px solid #ccc; /* Light gray border between rows */
+    }
+
+    /* Set the width of the Name column to 45vw */
+    table.dataTable thead th.name-column,
+    table.dataTable tbody td.name-column {
+      width: 50%; /* 45% of the viewport width */
+    }
+
+    /* Set the width of the Date column to 22.5vw */
+    table.dataTable thead th.date-column,
+    table.dataTable tbody td.date-column {
+      width: 25%; /* 22.5% of the viewport width */
+    }
+
+    /* Set the width of the Submitted column to 22.5vw */
+    table.dataTable thead th.submitted-column,
+    table.dataTable tbody td.submitted-column {
+      width: 25%; /* 22.5% of the viewport width */
     }
 
   </style>
@@ -234,7 +323,7 @@
             <td>
               <div class="vertical-buttons">
                 <button class="edit-btn applicants">Applicants</button>
-                <button class="edit-btn detail">DETAILS</button>
+                <button class="edit-btn detail">Details</button>
               </div>
             </td>
           </tr>
@@ -244,7 +333,7 @@
             <td>
               <div class="vertical-buttons">
                 <button class="edit-btn applicants">Applicants</button>
-                <button class="edit-btn detail">DETAILS</button>
+                <button class="edit-btn detail">Details</button>
               </div>
             </td>
           </tr>
@@ -254,7 +343,7 @@
             <td>
               <div class="vertical-buttons">
                 <button class="edit-btn applicants">Applicants</button>
-                <button class="edit-btn detail">DETAILS</button>
+                <button class="edit-btn detail">Details</button>
               </div>
             </td>
           </tr>
@@ -264,7 +353,7 @@
             <td>
               <div class="vertical-buttons">
                 <button class="edit-btn applicants">Applicants</button>
-                <button class="edit-btn detail">DETAILS</button>
+                <button class="edit-btn detail">Details</button>
               </div>
             </td>
           </tr>
@@ -385,15 +474,18 @@
         table.search(this.value).draw();
       });
 
-      // Add click event for edit buttons
-      $('#myTable').on('click', '.edit-btn', function () {
-        const row = $(this).closest('tr');
-        const rowData = row.find('td').map(function () {
-          return $(this).text();
-        }).get();
-
-        alert('Edit this row: ' + rowData.join(', '));
+      // Add click event for the DETAILS button
+      $('#myTable').on('click', '.edit-btn.detail', function () {
+        // Navigate to the project info page
+        window.location.href = 'recruiter-projectinfo.html';
       });
+
+      // Add click event for the APPLICANTS button
+      $('#myTable').on('click', '.edit-btn.applicants', function () {
+        // Navigate to the project info page with the #applicants hash
+        window.location.href = 'recruiter-projectinfo.html#applicants';
+      });
+
     });
 
   </script>
