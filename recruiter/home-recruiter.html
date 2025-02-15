@@ -141,12 +141,14 @@
       border-radius: 5px; /* Rounded corners */
       cursor: pointer; /* Pointer cursor */
       width: 90%; /* Adjust width as needed */
-      height: 45%;/* Set height to 20% of the cell */
-      display: flex; /* Use flexbox for alignment */
-      justify-content: center; /* Horizontally center the text */
+      height: 30%;/* Set height to 20% of the cell */
       align-items: center; /* Vertically center the text */
       margin: auto; /* Center the button within the cell */
       text-align: center; /* Center-align text (fallback) */
+      position: relative; /* Set the button as the positioning context for the dot */
+      display: inline-flex; /* Keep the button's content aligned */
+      justify-content: center; /* Center content horizontally */
+      overflow: visible; /* Ensure the dot isn't clipped */
     }
 
 
@@ -240,6 +242,19 @@
     table.dataTable tbody tr {
       border-bottom: 1px solid #ccc; /* Light gray border between rows */
     }
+
+    /* Style for the notification dot */
+    .notification-dot {
+      position: absolute; /* Position relative to the button */
+      top: -5px; /* Adjust the position to the top-right corner */
+      right: -5px; /* Adjust the position to the top-right corner */
+      width: 15px; /* Diameter of the dot */
+      height: 15px; /* Diameter of the dot */
+      background-color: #C03C29; /* Red color for the dot */
+      border-radius: 50%; /* Make it circular */
+      z-index: 1; /* Ensure it appears above the button */
+    }
+
 
     /* Set the width of the Name column to 45vw */
     table.dataTable thead th.name-column,
@@ -342,7 +357,7 @@
             <td class="date-column">Row 3 Data 2</td>
             <td>
               <div class="vertical-buttons">
-                <button class="edit-btn applicants">Applicants</button>
+                <button class="edit-btn applicants">Applicants <span class="notification-dot"></span></button>
                 <button class="edit-btn detail">Details</button>
               </div>
             </td>
@@ -352,7 +367,7 @@
             <td class="date-column">Row 4 Data 2</td>
             <td>
               <div class="vertical-buttons">
-                <button class="edit-btn applicants">Applicants</button>
+                <button class="edit-btn applicants">Applicants <span class="notification-dot"></span></button>
                 <button class="edit-btn detail">Details</button>
               </div>
             </td>
@@ -486,6 +501,17 @@
         window.location.href = 'recruiter-projectinfo.html#applicants';
       });
 
+      // Add notification dot to the third and fourth rows
+      $('#myTable tbody tr:nth-child(3) .edit-btn.applicants').append('<span class="notification-dot"></span>');
+      $('#myTable tbody tr:nth-child(4) .edit-btn.applicants').append('<span class="notification-dot"></span>');
+
+      // Check if the URL contains the #dashboard hash
+      if (window.location.hash === "#dashboard") {
+        // Smooth scroll to the dashboard section
+        $('html, body').animate({
+          scrollTop: $('.dashboard').offset().top
+        }, 1000); // Adjust the duration (1000ms = 1 second) as needed
+      }
     });
 
   </script>
