@@ -507,6 +507,18 @@
 
         alert('Edit this row: ' + rowData.join(', '));
       });
+
+      // Check if the URL contains the #applicants hash
+      if (window.location.hash === '#applicants') {
+        // Scroll to the Applicants section
+        const target = $('.heading-37:contains("Applicants")');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000); // Smooth scroll over 1 second
+        }
+      }
+
     });
 
   </script>

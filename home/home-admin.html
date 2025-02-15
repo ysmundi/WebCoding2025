@@ -22,6 +22,12 @@
   <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
   <script src="../lib/jquery/jquery.dataTables.min.js"></script>
   <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
     /* Set the background color for the entire table */
     table.dataTable {
       width: 100%;
@@ -88,22 +94,20 @@
     }
 
     /* Increase the size of the edit button */
-    table.dataTable .edit-btn {
-      font-size: 16px; /* Increase the font size as needed */
-      padding: 8px 16px; /* Increase the padding as needed */
-    }
-
-    /* Style for the fixed search and dropdown container */
     .datatable-controls {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px; /* Add spacing between controls and the table */
-      background-color: #fff; /* Optional: Background color for clarity */
-      padding: 10px; /* Optional: Padding for better spacing */
-      position: static; /* Change from sticky to static */
-      top: auto; /* Reset the top position */
-      z-index: auto; /* Reset the z-index */
+      justify-content: flex-end; /* Align items to the right */
+      align-items: center; /* Keep vertical alignment */
+      width: 100%; /* Ensure the container spans the full width of the screen */
+      box-sizing: border-box; /* Include padding in width calculations */
+    }
+
+    .datatable-controls label:last-child {
+      margin-left: auto; /* Push the search bar to the far right */
+    }
+
+    .datatable-controls input[type="text"] {
+      text-align: left; /* Optional: Keeps text inside the search bar aligned to the left */
     }
 
     /* Make the table container scrollable */
@@ -348,8 +352,18 @@
           // Redirect to the specified URL
           window.location.href = 'home/view-recruiters-postings.html';
         });
-
       });
+
+      // Check if the URL contains the #projects hash
+      if (window.location.hash === '#projects') {
+        // Scroll to the Projects section
+        const target = $('.heading-47:contains("Projects")');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000); // Smooth scroll over 1 second
+        }
+      }
     });
 
   </script>
