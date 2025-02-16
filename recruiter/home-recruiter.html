@@ -412,7 +412,7 @@
     // Fetch data from the API and populate the table
     function fetchAndPopulateTable() {
       $.ajax({
-        url: 'http://localhost:3000/jobs/all-jobs', // Replace with your actual API URL
+        url: 'http://localhost:3000/jobs/1', // Replace with your actual API URL
         method: 'GET',
         success: function (data) {
           const tableBody = $('#myTable tbody');
@@ -426,7 +426,7 @@
                 <td>
                   <div class="vertical-buttons">
                     <button class="edit-btn applicants">Applicants</button>
-                    <button class="edit-btn detail">DETAIL</button>
+                    <button class="edit-btn detail" data-job-id="${job.job_id}">DETAIL</button>
                   </div>
                 </td>
               </tr>
@@ -452,8 +452,8 @@
 
     // Add click event for the DETAILS button
     $('#myTable').on('click', '.edit-btn.detail', function () {
-      // Navigate to the project info page
-      window.location.href = 'recruiter-projectinfo.html';
+      const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
+      window.location.href = `recruiter-projectinfo.html?jobId=${jobId}`; // Redirect with the job ID
     });
 
     // Add click event for the APPLICANTS button
