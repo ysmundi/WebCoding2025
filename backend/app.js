@@ -19,54 +19,70 @@ app.use('/js', express.static(path.join(__dirname, '../js')));
 app.use('/recruiter', express.static(path.join(__dirname, '../recruiter')));
 app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use('/lib', express.static(path.join(__dirname, '../lib')));
+app.use('/home', express.static(path.join(__dirname, '../home')));
 app.use('/jobs', jobRoutes);
 app.use('/recruiter', recruiterRoutes);
 app.use('/student', studentRoutes);
 app.use('/admin', adminRoutes);
 
+//Open recruiter's pages 
+
+//backedn connected 
 app.get('/recruiter/post-job', (req, res) => {
     res.sendFile(path.join(__dirname, '../recruiter/posting-jobs-form.html'));
 });
 
-app.get('/positions', (req, res) => {
-    res.sendFile(path.join(__dirname, '../student/student-positions.html'));
+//need to connect backend 
+app.get('/recruiter/home', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/home-recruiter.html'));
 });
 
-app.get('recruiter/home', (req, res) => {
-    res.sendFile(path.join(__dirname, '../student/student-positions.html'));
+//need to connect backend 
+app.get('/recruiter/project-info', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/recruiter-projectinfo.html'));
 });
 
-app.get('/student/apply', (req, res) => {
+app.get('/recruiter/subscriptions', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/recruiter-subscriptions.html'));
+});
+
+//need to connect backend 
+app.get('/recruiter/student-application', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/recruiter-viewstudentapplication.html'));
+});
+
+app.get('/recruiter/job-postings', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/recruiter-jobpostings.html'));
+});
+
+//Open student's pages 
+
+app.get('/student/application', (req, res) => {
     res.sendFile(path.join(__dirname, '../student/student-appicationpage.html'));
 });
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// }); 
+app.get('/student/home', (req, res) => {
+    res.sendFile(path.join(__dirname, '../student/student-home.html'));
+});
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
+app.get('/student/positions', (req, res) => {
+    res.sendFile(path.join(__dirname, '../student/student-positions.html'));
+}); 
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
+app.get('/student/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, '../student/student-yourprofile.html'));
+});
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
+//Open admin's pages 
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
+app.get('/admin/home', (req, res) => {
+    res.sendFile(path.join(__dirname, '../home/home-admin.html'));
+});
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
+app.get('/admin/recruiter-postings', (req, res) => {
+    res.sendFile(path.join(__dirname, '../home/view-recruiters-postinigs.html'));
+});
 
-// app.get('/jobs', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../student/student-positions.html'));
-// });
 
 
 module.exports = app;
