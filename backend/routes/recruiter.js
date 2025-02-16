@@ -25,7 +25,7 @@ router.post('/post-job', (req, res) => {
   
 //GET get applications 
 
-router.get('job-applications/:jobId', (req, res) => {
+router.get('/job-applications/:jobId', (req, res) => {
     const jobId = req.params.jobId;
 
     try {
@@ -37,5 +37,19 @@ router.get('job-applications/:jobId', (req, res) => {
         res.status(500).json({error: "Server error"})
     }
 })
+
+router.get('/posting-info/:jobId', (req, res) => {
+  const jobId = req.params.jobId;
+
+  try {
+      db.query('SELECT * FROM job_postings WHERE job_id = ?', [jobId], (err, results) => {
+          res.json(results);
+        });
+  }
+  catch(err) {
+      res.status(500).json({error: "Server error"})
+  }
+})
+
 
 module.exports = router;
