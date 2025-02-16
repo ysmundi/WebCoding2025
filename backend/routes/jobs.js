@@ -6,7 +6,7 @@ const router = express.Router();
 
 
   // GET /api/jobs/user/:userId - Get job postings for a specific user
-router.get('/user/:userId', (req, res) => {
+router.get('/:userId', (req, res) => {
     const userId = req.params.userId;
     try {
         db.query('SELECT * FROM job_postings WHERE user_id = ?', [userId], (err, results) => {
@@ -56,6 +56,20 @@ router.put('/update-job/:jobId', (req, res) => {
     })
   })
   
+
+  //GET get the application by id
+router.get('/application-info/:applicationId', (req, res) => {
+  const applicationId = req.params.applicationId;
+
+  try {
+      db.query('SELECT * FROM job_applications WHERE application_id = ?', [applicationId], (err, results) => {
+          res.json(results);
+        });
+  }
+  catch(err) {
+      res.status(500).json({error: "Server error"})
+  }
+})
   
   // ... other routes for getting job details, etc. ...
   
