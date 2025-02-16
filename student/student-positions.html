@@ -280,7 +280,7 @@
   <section class="section-30"></section>
   <div class="w-layout-blockcontainer container-174 w-container">
     <div class="w-layout-blockcontainer container-175 w-container">
-      <div class="text-block-30">Back</div>
+      <div class="text-block-30" id="backButton">Back</div>
     </div>
     <div class="w-layout-blockcontainer container-176 w-container"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-20"></div>
   </div>
@@ -383,6 +383,12 @@
         $('#myTable').on('click', '.edit-btn.apply', function () {
           window.location.href = 'student-appicationpage.html';
         });
+      });
+
+      // Add a click event listener to the BACK button
+      document.getElementById('backButton').addEventListener('click', function () {
+        // Redirect to the "dashboard" section of student-home.html
+        window.location.href = 'student-home.html#dashboard';
       });
     });
 
