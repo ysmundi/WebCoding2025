@@ -25,11 +25,12 @@ router.post('/post-job', (req, res) => {
   
 //GET get applications 
 
-router.get('/job-applications/:jobId', (req, res) => {
+router.get('/pending-job-applications/:jobId', (req, res) => {
+    const status = 'pending'
     const jobId = req.params.jobId;
 
     try {
-        db.query('SELECT * FROM job_applications WHERE job_id = ?', [jobId], (err, results) => {
+        db.query('SELECT * FROM job_applications WHERE job_id = ? AND status = ?', [jobId, status], (err, results) => {
             res.json(results);
           });
     }
@@ -38,6 +39,22 @@ router.get('/job-applications/:jobId', (req, res) => {
     }
 })
 
+router.get('/accepted-job-applications/:jobId', (req, res) => {
+  const status = 'accepted'
+  const jobId = req.params.jobId;
+
+  try {
+      db.query('SELECT * FROM job_applications WHERE job_id = ? AND status = ?', [jobId, status], (err, results) => {
+          res.json(results);
+        });
+  }
+  catch(err) {
+      res.status(500).json({error: "Server error"})
+  }
+})
+
+
+//get information about job 
 router.get('/posting-info/:jobId', (req, res) => {
   const jobId = req.params.jobId;
 
@@ -51,5 +68,42 @@ router.get('/posting-info/:jobId', (req, res) => {
   }
 })
 
+//update status of application 
+router.put('/accept-application/:id', (req, res) => {
+  const applicationId = req.params.id; // Get the application ID from the URL parameter
+
+  // Validate the application ID
+  if (!applicationId || isNaN(applicationId)) {
+    return res.status(400).json({ error: 'Invalid application ID' });
+  }
+
+  // SQL query to update the status and approved_date
+  const sql = `
+    UPDATE job_applications
+    SET status = 'accepted', approved_date = NOW()
+    WHERE application_id = ?
+  `;
+
+  // Execute the query
+  db.query(sql, [applicationId], (err, result) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: 'Failed to update application status' });
+    }
+
+    // Check if any rows were affected
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Application not found' });
+    }
+
+    // Return success response
+    res.json({ message: 'Application accepted successfully' });
+  });
+});
+
+//delete application 
+router.delete('/delete-application/:id', (req, res) => {
+  
+})
 
 module.exports = router;

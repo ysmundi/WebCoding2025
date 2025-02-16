@@ -29,7 +29,17 @@ router.post('/apply', (req, res) => {
   });
 
 
-//GET get the result if you got job or not 
+
+
+//update status of application 
+router.put('/accept-application/:id', (req, res) => {
+  
+})
+
+//delete application 
+router.delete('/delete-application/:id', (req, res) => {
+  
+})
 
 
 
