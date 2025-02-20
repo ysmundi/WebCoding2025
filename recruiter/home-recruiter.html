@@ -412,7 +412,7 @@
     // Fetch data from the API and populate the table
     function fetchAndPopulateTable() {
       $.ajax({
-        url: 'http://localhost:3000/jobs/1', // Replace with your actual API URL
+        url: 'http://localhost:3000/jobs/user-jobs/1', // Replace with your actual API URL
         method: 'GET',
         success: function (data) {
           const tableBody = $('#myTable tbody');
@@ -425,7 +425,6 @@
                 <td class="date-column">${new Date(job.created_at).toLocaleDateString()}</td>
                 <td>
                   <div class="vertical-buttons">
-                    <button class="edit-btn applicants">Applicants</button>
                     <button class="edit-btn detail" data-job-id="${job.job_id}">DETAIL</button>
                   </div>
                 </td>
