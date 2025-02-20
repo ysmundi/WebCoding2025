@@ -588,6 +588,8 @@
       });
     }
 
+    
+
     // Handle custom "Show entries" dropdown
     $('#entriesSelect').on('change', function () {
       table.page.len($(this).val()).draw();
@@ -634,12 +636,12 @@
     }
 
     // Fetch data from the API and populate the table
-    function fetchAndPopulateTable() {
+    function fetchAndPopulateApplicantsTable() {
       $.ajax({
         url: `http://localhost:3000/recruiter/pending-job-applications/${jobId}`, // Replace with your actual API URL
         method: 'GET',
         success: function (data) {
-          const tableBody = $('#tableSubmitted tbody');
+          const table = $('#tableSubmitted').DataTable();
           table.clear(); // Clear the existing data
 
           data.forEach((job) => {
@@ -667,16 +669,16 @@
     }
 
     // Handle custom "Show entries" dropdown
-    $('#entriesSelect').on('change', function () {
+    $('#entriesSelect2').on('change', function () {
       table.page.len($(this).val()).draw();
     });
 
     // Handle custom search input
-    $('#searchInput').on('keyup', function () {
+    $('#searchInput2').on('keyup', function () {
       table.search(this.value).draw();
     });
 
-    // Add click event for the DETAILS button
+    // Add click event for the "Accept" button
     $('#tableSubmitted').on('click', '.edit-btn.accept', function () {
       // Get the application ID from the corresponding Info button in the same row
       const applicationId = $(this).closest('tr').find('.edit-btn.info').data('application-id');
@@ -692,24 +694,29 @@
         method: 'PUT',
         success: function (response) {
           console.log('Application accepted:', response.message);
-          // Refresh the table to reflect the updated status
-          fetchAndPopulateTable();
-        },
+
+          // Remove the row from the table immediately
+          const row = $(this).closest('tr'); // Get the row that contains the "Accept" button
+          table.row(row).remove().draw(); // Remove the row and redraw the table
+
+          // Optionally, refresh the table to ensure data consistency
+          fetchAndPopulateApplicantsTable();
+        }.bind(this), // Bind `this` to the current context (the "Accept" button)
         error: function (error) {
           console.error('Error accepting application:', error.responseJSON.error);
         },
       });
     });
 
+    // Add click event for the "Info" button
     $('#tableSubmitted').on('click', '.edit-btn.info', function () {
       const applicationId = $(this).data('application-id');
       window.location.href = `recruiter-viewstudentapplication.html?applicationId=${applicationId}`; // Redirect with the application ID
     });
 
-
     // Initial data fetch and table setup
     initializeDataTable();
-    fetchAndPopulateTable();
+    fetchAndPopulateApplicantsTable();
   });
 </script>
   <script src="../js/webflow.js" type="text/javascript"></script>
