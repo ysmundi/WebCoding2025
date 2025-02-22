@@ -7,6 +7,7 @@ const studentRoutes = require('./routes/student');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const path = require('path');
+const { sessionAuth } = require('./middlewares/auth');
 
 
 const app = express();
@@ -89,6 +90,10 @@ app.get('/admin/recruiter-postings', (req, res) => {
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../login/login-1.html'));
 });
 
 
