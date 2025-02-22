@@ -26,11 +26,11 @@ router.post('/apply', (req, res) => {
   
       res.status(201).json({ message: 'Application submitted successfully', application_id: result.insertId });
     });
-  });
-
+  });           
+ 
 //get applications by id 
 router.get('/applications/:userId', (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.session.user.id;
 
   try {
       db.query('SELECT * FROM job_applications WHERE user_id = ?', [userId], (err, results) => {
