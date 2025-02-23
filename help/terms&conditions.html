@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="container">
-    <a href="#" id="backLink">Back</a>
+    <a href="#">Back</a>
     <div class="logo">
         <img src="../images/Group-108.png" alt="JOB CONN">
     </div>
@@ -80,20 +80,5 @@
         <p><em>By using our Site, you acknowledge that you have read and understood these Terms and agree to be bound by them.</em></p>
     </div>
 </div>
-
-<script>
-    // Get the previous page URL from the browser's history
-    const previousPageUrl = document.referrer;
-
-    // Add a click event listener to the "Back" link
-    document.getElementById('backLink').addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent the default link behavior
-        if (previousPageUrl) {
-            window.location.href = previousPageUrl; // Redirect to the previous page
-        } else {
-            window.history.back(); // Go back in the browser history
-        }
-    });
-</script>
 </body>
 </html>
