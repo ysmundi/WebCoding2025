@@ -342,26 +342,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="name-column">Row 1 Data 1</td>
-                    <td class="date-column">Row 1 Data 2</td>
-                    <td>Approved</td>
-                </tr>
-                <tr>
-                    <td class="name-column">Row 2 Data 1</td>
-                    <td class="date-column">Row 2 Data 2</td>
-                    <td>Approved</td>
-                </tr>
-                <tr>
-                    <td class="name-column">Row 3 Data 1</td>
-                    <td class="date-column">Row 3 Data 2</td>
-                    <td>Approved</td>
-                </tr>
-                <tr>
-                    <td class="name-column">Row 4 Data 1</td>
-                    <td class="date-column">Row 4 Data 2</td>
-                    <td>Approved</td>
-                </tr>
                 </tbody>
             </table>
         </div>
@@ -520,75 +500,92 @@
     <a class="button-3 w-button" href="#"></a>
 </div>
 <script>
-    $(document).ready(function () {
-      let table;
-  
-      // Initialize the DataTable
-      function initializeDataTable() {
-        table = $('#myTable').DataTable({
-          dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-          lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
-        });
-      }
+  $(document).ready(function () {
+    let table;
+    let userId;
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-        
-      // Fetch data from the API and populate the table
-      function fetchAndPopulateTable() {
-        $.ajax({
-          url: 'http://localhost:3000/student/applications/1', // Replace with your actual API URL
-          method: 'GET',
-          success: function (data) {
-            const tableBody = $('#myTable tbody');
-            table.clear(); // Clear the existing data
-  
-            data.forEach((job) => {
-              const row = `
-                <tr>
-                  <td class="name-column">${job.username}</td>
-                  <td class="date-column">${(job.apply_date).slice(0, 10)}</td>
-                  <td class="status-column">${capitalizeFirstLetter(job.status)}</td>
-                </tr>
-              `;
-              table.row.add($(row)).draw(false); // Add the row and redraw the table
-            });
-          },
-          error: function (error) {
-            console.error('Error fetching data:', error);
-          },
-        });
-      }
-  
-      // Handle custom "Show entries" dropdown
-      $('#entriesSelect').on('change', function () {
-        table.page.len($(this).val()).draw();
-      });
-  
-      // Handle custom search input
-      $('#searchInput').on('keyup', function () {
-        table.search(this.value).draw();
-      });
-  
-      // Add click event for the DETAILS button
-      $('#myTable').on('click', '.edit-btn.detail', function () {
-        const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
-        window.location.href = `recruiter-projectinfo.html?jobId=${jobId}`; // Redirect with the job ID
-      });
-  
-      // Add click event for the APPLICANTS button
-      $('#myTable').on('click', '.edit-btn.applicants', function () {
-        // Navigate to the project info page with the #applicants hash
-        window.location.href = 'recruiter-projectinfo.html#applicants';
-      });
-  
-      // Initial data fetch and table setup
-      initializeDataTable();
-      fetchAndPopulateTable();
+    // Function to check if a session ID exists
+    function checkSession() {
+    return $.ajax({
+        url: 'http://localhost:3000/auth/api/user',
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Recruiter") {
+                // Redirect to index.html if no session ID is found or the user is a recruiter
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
     });
-  </script>
-  
+}
+
+    // Initialize the DataTable
+    function initializeDataTable() {
+        table = $('#myTable').DataTable({
+            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        });
+    }
+
+    // Fetch data from the API and populate the table
+    function fetchAndPopulateTable() {
+        if (!userId) {
+            console.error('User ID is not available');
+            return;
+        }
+
+        $.ajax({
+            url: `http://localhost:3000/student/applications/${userId}`,
+            method: 'GET',
+            credentials: 'include', // Include cookies
+            success: function (data) {
+                const tableBody = $('#myTable tbody');
+                table.clear(); // Clear the existing data
+
+                data.forEach((job) => {
+                    const row = `
+                        <tr>
+                            <td class="name-column">${job.username}</td>
+                            <td class="date-column">${job.apply_date.slice(0, 10)}</td>
+                            <td class="status-column">${job.status.charAt(0).toUpperCase() + job.status.slice(1)}</td>
+                        </tr>
+                    `;
+                    table.row.add($(row)).draw(false); // Add the row and redraw the table
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            },
+        });
+    }
+
+    // Handle custom "Show entries" dropdown
+    $('#entriesSelect').on('change', function () {
+        table.page.len($(this).val()).draw();
+    });
+
+    // Handle custom search input
+    $('#searchInput').on('keyup', function () {
+        table.search(this.value).draw();
+    });
+
+    // Initial setup
+    checkSession().then(() => {
+        initializeDataTable();
+        fetchAndPopulateTable();
+    });
+
+    //localhost  s%3AGscAtx1CxZy_9Rvwrbm7p_moAjbpnjMT.WFnU22FyN1jX4Tx01hLmaA7xpbe%2BpGAQJBSYV71uJ%2FU  session_cookie_name
+
+
+});
+</script>
 <!-- load this lib at the bottom !-->
 <script src="../js/webflow.js" type="text/javascript"></script>
 

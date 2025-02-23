@@ -3,6 +3,8 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
 const db = require('../config/database');
+const checkUserRole = require('../middlewares/checkUserRole'); 
+
 
 const router = express.Router();
 router.use(express.json());
@@ -204,6 +206,16 @@ router.post('/logout', (req, res) => {
     res.clearCookie('session_cookie_name'); // Clear the session cookie
     res.status(200).send({ message: 'Logout successful' });
   });
+});
+
+// Server-side (Node.js/Express)
+router.get('/api/user', (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    // Send user data from the session
+    res.json({ user: req.session.user });
 });
 
 

@@ -135,7 +135,7 @@ router.put('/reject-application/:id', (req, res) => {
 })
 
 //delete application 
-router.delete('/suspend-application/:id', (req, res) => {
+router.put('/suspend-application/:id', (req, res) => {
   const applicationId = req.params.id; // Get the application ID from the URL parameter
 
   // Validate the application ID
