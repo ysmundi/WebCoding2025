@@ -7,14 +7,15 @@ const studentRoutes = require('./routes/student');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const path = require('path');
-const { sessionAuth } = require('./middlewares/auth');
 
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000' }));
+app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    credentials: true
+ }));
 
 app.use('/css', express.static(path.join(__dirname, '../css')));
 app.use('/js', express.static(path.join(__dirname, '../js')));
@@ -24,6 +25,7 @@ app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use('/lib', express.static(path.join(__dirname, '../lib')));
 app.use('/home', express.static(path.join(__dirname, '../home')));
 app.use('/login', express.static(path.join(__dirname, '../login')));
+app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/jobs', jobRoutes);
 app.use('/recruiter', recruiterRoutes);
 app.use('/student', studentRoutes);
@@ -58,6 +60,10 @@ app.get('/recruiter/student-application', (req, res) => {
 
 app.get('/recruiter/job-postings', (req, res) => {
     res.sendFile(path.join(__dirname, '../recruiter/recruiter-jobpostings.html'));
+});
+
+app.get('/recruiter/subscriptions', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recruiter/recruiter-subscriptions.html'));
 });
 
 //Open student's pages 
@@ -96,7 +102,7 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../login/login-1.html'));
 });
 
-
+ 
 
 
 module.exports = app;

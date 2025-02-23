@@ -99,69 +99,88 @@
     // Function to fetch data from the API
     // Function to extract query parameters from the URL
     // Function to extract query parameters from the URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-  
-  // Function to fetch data from the API
-  async function fetchJobDetails() {
+
+    // Function to extract query parameters from the URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Function to check if a session ID exists
+function checkSession() {
+    return $.ajax({
+        url: 'http://localhost:3000/auth/api/user',
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Recruiter") {
+                // Redirect to index.html if no session ID is found or the user is a recruiter
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
+
+// Function to fetch data from the API
+async function fetchJobDetails() {
     const jobId = getQueryParam('jobId'); // Get the job ID from the URL
 
     if (!jobId) {
-      console.error('Job ID not found in the URL');
-      return;
+        console.error('Job ID not found in the URL');
+        return;
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/recruiter/posting-info/${jobId}`); // Use the job ID in the API URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      const data = await response.json(); // Parse the JSON response
+        const response = await fetch(`http://localhost:3000/recruiter/posting-info/${jobId}`); // Use the job ID in the API URL
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json(); // Parse the JSON response
 
-      // Log the API response for debugging
-      console.log('API Response:', data);
+        // Log the API response for debugging
+        console.log('API Response:', data);
 
-      // Check if the response is an array and has at least one element
-      if (Array.isArray(data) && data.length > 0) {
-        const job = data[0]; // Access the first job in the array
+        // Check if the response is an array and has at least one element
+        if (Array.isArray(data) && data.length > 0) {
+            const job = data[0]; // Access the first job in the array
 
-        // Log the job object for debugging
-        console.log('Job Object:', job);
+            // Log the job object for debugging
+            console.log('Job Object:', job);
 
-        // Update the HTML with the fetched data
-        document.getElementById('organization_name').textContent = job.organization_name || 'None.';
-        document.getElementById('position_name').textContent = job.position_name || 'None.';
-        document.getElementById('education_requirements').textContent = job.education_requirements || 'None.';
-        document.getElementById('location').textContent = job.location_requirements || 'None.';
-        document.getElementById('salary').textContent = `$${job.salary}/Hour` || 'None'; // Format salary
-        document.getElementById('deadline').textContent = new Date(job.deadline).toLocaleDateString() || 'None.';
-
-        // Update fields with fallback values
-        document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';
-        document.getElementById('responsibilities').textContent = job.responsibilities || 'No responsibilities available.';
-        document.getElementById('about').textContent = job.about || 'No about information available.';
-        document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
-        document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
-      } else {
-        throw new Error('No job data found in the response');
-      }
-
+            // Update the HTML with the fetched data
+            document.getElementById('organization_name').textContent = job.organization_name || 'None.';
+            document.getElementById('position_name').textContent = job.position_name || 'None.';
+            document.getElementById('education_requirements').textContent = job.education_requirements || 'None.';
+            document.getElementById('location').textContent = job.location_requirements || 'None.';
+            document.getElementById('salary').textContent = job.salary ? `$${job.salary}/Hour` : 'None';
+            document.getElementById('deadline').textContent = job.deadline ? new Date(job.deadline).toLocaleDateString() : 'None.';
+            document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';
+            document.getElementById('responsibilities').textContent = job.responsibilities || 'No responsibilities available.';
+            document.getElementById('about').textContent = job.about || 'No about information available.';
+            document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
+            document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
+        } else {
+            throw new Error('No job data found in the response');
+        }
     } catch (error) {
-      console.error('Error fetching job details:', error);
-
-      // Display error messages in the HTML
-      document.getElementById('requirements').textContent = 'Failed to load requirements.';
-      document.getElementById('responsibilities').textContent = 'Failed to load responsibilities.';
-      document.getElementById('about').textContent = 'Failed to load about information.';
-      document.getElementById('nice-to-have').textContent = 'Failed to load nice-to-have information.';
-      document.getElementById('why-work-with-us').textContent = 'Failed to load why work with us information.';
+        console.error('Error fetching job details:', error);
+        document.getElementById('error-message').textContent = 'Failed to fetch job details.';
     }
-  }
+}
 
 // Call the function when the page loads
-document.addEventListener('DOMContentLoaded', fetchJobDetails);
+document.addEventListener('DOMContentLoaded', function () {
+    checkSession().then(fetchJobDetails).catch(() => {
+        // Redirect to index.html if the session check fails
+        window.location.href = '../index.html';
+    });
+});
     </script>
   
   <script>

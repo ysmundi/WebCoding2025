@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Feb 10 2025 21:15:53 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 14 2025 17:28:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67717869e48403be61d8e533" data-wf-site="676715cb815e8f01731dca22">
 <head>
     <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -28,35 +28,54 @@
     <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
     <script src="../lib/jquery/jquery.dataTables.min.js"></script>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
         /* Set the background color for the entire table */
         table.dataTable {
-            background-color: #ffffff; /* Green background */
-            color: white; /* Optional: Make the text white for better contrast */
-            padding-left: 20px; /* Add left padding */
-            padding-right: 20px; /* Add right padding */
-            padding-top: 20px; /* Add top padding */
-            padding-bottom: 20px; /* Add bottom padding */
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
         }
 
-        /* Adjust header background and text color */
+        /* Header row styling */
         table.dataTable thead th {
-            background-color: #ADBA5E; /* Same green for header */
-            color: white; /* White text */
+            background-color: #EC9440; /* Blue background for header */
+            color: white; /* White text for header */
+            padding: 10px;
+            text-align: left; /* Center-align text */
+            font-size: 24px; /* Larger font size for header text */
+            height: 10vh; /* Set header height to 25% of the viewport height */
+            vertical-align: middle; /* Center align text vertically */
         }
 
-        /* Alternate row colors */
-        table.dataTable tbody tr:nth-child(even) {
-            background-color: #ADBA5E; /* Green for even rows */
-        }
-
+        /* Alternating row colors */
         table.dataTable tbody tr:nth-child(odd) {
             background-color: white; /* White for odd rows */
-            color: #333; /* Dark gray text for odd rows */
         }
+
+        table.dataTable tbody tr:nth-child(even) {
+            background-color: #EC9440; /* Light blue for even rows */
+        }
+
+        /* Table cell styling */
+        table.dataTable tbody td {
+            padding: 12px;
+            font-size: 18px; /* Increased font size */
+            vertical-align: middle;
+        }
+
+        /*!* Hover effect *!*/
+        /*table.dataTable tbody tr:hover {*/
+        /*  background-color: #B3E5FC; !* Slightly darker blue on hover *!*/
+        /*}*/
 
         /* Set the first row height to 10vh */
         table.dataTable tbody tr:first-child td {
-            height: 10vh;
+            height: 30vh;
         }
 
         /* Set the height of all other rows to 30vh */
@@ -80,33 +99,21 @@
             width: 10vw; /* 10% of the viewport width */
         }
 
-        /* Increase the font size of the cell text */
-        table.dataTable tbody td {
-            font-size: 18px; /* Increase the font size as needed */
-        }
-
         /* Increase the size of the edit button */
-        table.dataTable .edit-btn {
-            font-size: 16px; /* Increase the font size as needed */
-            padding: 8px 16px; /* Increase the padding as needed */
-        }
-
-        /* Adjust row hover effect */
-        table.dataTable tbody tr:hover {
-            background-color: #4E6F28; /* Darker shade of green for hover */
-        }
-
-        /* Style for the fixed search and dropdown container */
         .datatable-controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px; /* Add spacing between controls and the table */
-            background-color: #fff; /* Optional: Background color for clarity */
-            padding: 10px; /* Optional: Padding for better spacing */
-            position: static; /* Change from sticky to static */
-            top: auto; /* Reset the top position */
-            z-index: auto; /* Reset the z-index */
+            justify-content: flex-end; /* Align items to the right */
+            align-items: center; /* Keep vertical alignment */
+            width: 100%; /* Ensure the container spans the full width of the screen */
+            box-sizing: border-box; /* Include padding in width calculations */
+        }
+
+        .datatable-controls label:last-child {
+            margin-left: auto; /* Push the search bar to the far right */
+        }
+
+        .datatable-controls input[type="text"] {
+            text-align: left; /* Optional: Keeps text inside the search bar aligned to the left */
         }
 
         /* Make the table container scrollable */
@@ -122,36 +129,56 @@
             color: black;
         }
 
-        table.dataTable thead th {
-            background-color: #ADBA5E;
-            color: white;
+        .vertical-buttons {
+            height: 100%; /* Fill the entire height of the parent cell */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack buttons vertically */
+            justify-content: space-around; /* Space buttons evenly */
+            align-items: center; /* Center buttons horizontally */
         }
 
-         .vertical-buttons {
-             display: flex;
-             flex-direction: column;
-             gap: 5px; /* Space between buttons */
-         }
-             /* Style for the Quit button */
-         .edit-btn.quit {
-             background-color: #C03C29; /* Red background */
-             color: white; /* White text */
-             border: none; /* No border */
-             padding: 8px 16px; /* Padding for better appearance */
-             font-size: 16px; /* Font size */
-             border-radius: 5px; /* Rounded corners */
-             cursor: pointer; /* Pointer cursor */
-         }
-
-        /* Style for the Detail button */
-        .edit-btn.detail {
-            background-color: #727070; /* Grey background */
-            color: white; /* White text */
-            border: none; /* No border */
-            padding: 8px 16px; /* Padding for better appearance */
-            font-size: 16px; /* Font size */
+        /* Style for the Info button */
+        .edit-btn.applicants {
+            background-color: #64AAC3; /* Blue background */
+            color: white; /* Default white text */
+            border: 1px solid black; /* Black border */
+            padding: 0; /* Remove padding to rely on width and height */
+            font-size: 20px; /* Font size */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor */
+            width: 90%; /* Adjust width as needed */
+            height: 30%;/* Set height to 20% of the cell */
+            align-items: center; /* Vertically center the text */
+            margin: auto; /* Center the button within the cell */
+            text-align: center; /* Center-align text (fallback) */
+            position: relative; /* Set the button as the positioning context for the dot */
+            display: inline-flex; /* Keep the button's content aligned */
+            justify-content: center; /* Center content horizontally */
+            overflow: visible; /* Ensure the dot isn't clipped */
+        }
+
+
+        /* Change Info button to white in blue columns */
+        table.dataTable tbody tr:nth-child(even) .edit-btn.applicants {
+            background-color: white; /* White background for the button */
+            color: #64AAC3; /* Black text for contrast */
+        }
+
+        .edit-btn.detail {
+            background-color: #727070; /* Blue background */
+            color: white; /* Default white text */
+            border: 1px solid black; /* Black border */
+            padding: 0; /* Remove padding to rely on width and height */
+            font-size: 20px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            width: 90%; /* Adjust width as needed */
+            height: 30%; /* Set ight to 20% of the cell */
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Horizontally center the text */
+            align-items: center; /* Vertically center the text */
+            margin: auto; /* Center the button within the cell */
+            text-align: center; /* Center-align text (fallback) */
         }
 
         /* Add "Apply Data" heading above Date column text */
@@ -160,27 +187,103 @@
             padding-top: 20px; /* Add space for the heading */
         }
 
+        /* Default style for the "SUBMITTED" text in the date-column */
         table.dataTable tbody td.date-column::before {
-            content: "Apply Date"; /* Add the heading */
+            content: "SUBMITTED"; /* Add the heading */
             position: absolute;
-            top: 15px;
+            top: 50px;
             left: 10px;
-            font-size: 25px; /* Small font size for the heading */
-            color: #333;
-            font-weight: bold;/* Dark gray text color */
+            font-size: 25px; /* Font size for the heading */
+            font-weight: bold; /* Bold text */
+            color: black; /* Default black color for white rows */
+        }
+
+        /* Make the "SUBMITTED" text white in blue rows (even rows) */
+        table.dataTable tbody tr:nth-child(even) td.date-column::before {
+            color: white; /* Change text to white for blue rows */
+        }
+
+        /* Remove hover effect but maintain the original row colors */
+
+        /* For odd rows (white background) */
+        table.dataTable tbody tr:nth-child(odd):hover {
+            background-color: white !important; /* Explicitly set white for odd rows */
+        }
+
+        /* For even rows (blue background) */
+        table.dataTable tbody tr:nth-child(even):hover {
+            background-color: #EC9440 !important; /* Explicitly set blue for even rows */
         }
 
         /* Increase the font size of the Name column */
         table.dataTable tbody td.name-column {
-            font-size: 20px; /* Larger font size */
+            font-size: 60px; /* Larger font size */
             font-weight: bold; /* Make it bold */
         }
 
-    </style>
+        table.dataTable tbody tr:nth-child(even) td.name-column,
+        table.dataTable tbody tr:nth-child(even) td.date-column {
+            color: white; /* White text for names and dates in blue rows */
+        }
 
+        table.dataTable tbody tr:nth-child(odd) td.name-column,
+        table.dataTable tbody tr:nth-child(odd) td.date-column {
+            color: black; /* Black text for names and dates in white rows */
+        }
+
+        /* Add a border to the entire table */
+        table.dataTable {
+            border: 2px solid #000; /* Black border around the table */
+            border-collapse: separate; /* Prevents collapsing borders between columns */
+            border-spacing: 0; /* Ensures no space between cells */
+        }
+
+        /* Remove borders between columns */
+        table.dataTable td,
+        table.dataTable th {
+            border: none; /* No borders between columns */
+        }
+
+        /* Optional: Add borders to rows for better structure */
+        table.dataTable tbody tr {
+            border-bottom: 1px solid #ccc; /* Light gray border between rows */
+        }
+
+        /* Style for the notification dot */
+        .notification-dot {
+            position: absolute; /* Position relative to the button */
+            top: -5px; /* Adjust the position to the top-right corner */
+            right: -5px; /* Adjust the position to the top-right corner */
+            width: 15px; /* Diameter of the dot */
+            height: 15px; /* Diameter of the dot */
+            background-color: #C03C29; /* Red color for the dot */
+            border-radius: 50%; /* Make it circular */
+            z-index: 1; /* Ensure it appears above the button */
+        }
+
+
+        /* Set the width of the Name column to 45vw */
+        table.dataTable thead th.name-column,
+        table.dataTable tbody td.name-column {
+            width: 50%; /* 45% of the viewport width */
+        }
+
+        /* Set the width of the Date column to 22.5vw */
+        table.dataTable thead th.date-column,
+        table.dataTable tbody td.date-column {
+            width: 25%; /* 22.5% of the viewport width */
+        }
+
+        /* Set the width of the Submitted column to 22.5vw */
+        table.dataTable thead th.submitted-column,
+        table.dataTable tbody td.submitted-column {
+            width: 25%; /* 22.5% of the viewport width */
+        }
+
+    </style>
 </head>
 <body>
-<section class="track" data-w-id="e7358393-15df-48ee-aaed-0fe02b9a21da" id="Events-Home">
+  <section id="Events-Home" data-w-id="e7358393-15df-48ee-aaed-0fe02b9a21da" class="track">
     <div class="camera">
         <div class="frame">
             <div class="item">
@@ -206,8 +309,8 @@
             </div>
         </div>
     </div>
-</section>
-<section class="dashboard">
+  </section>
+  <section class="dashboard">
     <div class="w-layout-blockcontainer container-179 w-container">
         <h1 class="heading-37">DASHBOARD</h1>
         <div class="w-layout-blockcontainer container-180 w-container">
@@ -235,35 +338,17 @@
                 <tr>
                     <th>Name</th>
                     <th>Date</th>
-                    <th>Action</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <% data.forEach(row => { %>
-                        <tr>
-                            <td><%= row.username %></td>
-                            <td><%= row.track %></td>
-                            <td><%= row.grade %></td>
-                            <!-- Add more <td> elements for each column if needed -->
-                        </tr>
-                    <% }); %>
-                <tr>
-                    <td class="name-column">Row 4 Data 1</td>
-                    <td class="date-column">Row 4 Data 2</td>
-                    <td>
-                        <div class="vertical-buttons">
-                            <button class="edit-btn quit">QUIT</button>
-                            <button class="edit-btn detail">DETAILS</button>
-                        </div>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>
         <div class="w-layout-blockcontainer container-180 w-container">
             <h1 class="heading-38" id="Positions">Positions</h1>
             <div class="w-layout-blockcontainer container-183 w-container"></div>
-            <a class="button-9 w-button" href="#">View More</a>
+            <a class="button-9 w-button" href="student-positions.html">View More</a>
         </div>
         <div class="w-layout-blockcontainer container-184 w-container"></div>
         <div class="w-layout-grid grid">
@@ -309,8 +394,8 @@
             </div>
         </div>
     </div>
-</section>
-<section class="tutorial" id="tutorial">
+  </section>
+  <section id="tutorial" class="tutorial">
     <div class="w-layout-blockcontainer container-37 w-container">
         <h1 class="heading-3">Tutorial</h1>
         <div class="w-layout-blockcontainer container-12 w-container">
@@ -329,182 +414,178 @@
             vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
             tristique posuere.</p>
     </div>
-</section>
-<section class="testimonials" id="testimonials">
-    <div class="slider w-slider" data-animation="slide" data-autoplay="false" data-autoplay-limit="0" data-delay="4000"
-         data-disable-swipe="false" data-duration="500" data-easing="ease" data-hide-arrows="false"
-         data-infinite="true" data-nav-spacing="5">
-        <div class="w-slider-mask">
-            <div class="slide w-slide">
-                <div class="w-layout-blockcontainer container-185 w-container">
-                    <p class="paragraph-11"><em class="italic-text-3">&quot;I can&#x27;t thank JOB CONN enough for the
-                        incredible opportunity to connect with top recruiters! The platform made it so easy to showcase
-                        my skills and connect with industry leaders. I landed an internship at Tech Innovations Inc.
-                        That turned into a full-time job offer. The personalized support and valuable resources helped
-                        me navigate the job market with confidence. I highly recommend this service to any student
-                        looking to kickstart their career!&quot;</em></p>
-                    <div class="text-block-36"><strong>Julia Anderson, Graphic Designer at Tech Innovations,
-                        INC</strong></div>
-                </div>
-            </div>
-            <div class="w-slide">
-                <div class="w-layout-blockcontainer container-32 w-container">
-                    <p class="paragraph-3"><em class="italic-text">&quot;I found my first job on this site and it stuck
-                        with me ever since!&quot;</em></p>
-                    <div class="text-block-16"><strong class="bold-text">Ann Taylor, Junior Manager at Boeing</strong>
-                    </div>
-                </div>
-            </div>
-            <div class="w-slide">
-                <div class="w-layout-blockcontainer container-186 w-container">
-                    <p class="paragraph-12"><em class="italic-text-4">&quot;Working with JOB CONN has streamlined our
-                        hiring process. Highly recommend it!&quot;</em></p>
-                    <div class="text-block-37"><strong>David Kim, Director at General Motors</strong></div>
-                </div>
-            </div>
-            <div class="w-slide">
-                <div class="w-layout-blockcontainer container-187 w-container">
-                    <p class="paragraph-13"><em class="italic-text-5">I landed my dream job through JOB CONN! The
-                        support and resources were fantastic.</em></p>
-                    <div class="text-block-38"><strong>Maya Patel, Engineering Graduate from the University of
-                        Michigan</strong></div>
-                </div>
-            </div>
-            <div class="w-slide">
-                <div class="w-layout-blockcontainer container-188 w-container">
-                    <p class="paragraph-14"><em class="italic-text-6">&quot;The candidates from JOB CONN are impressive
-                        and well-prepared. This platform is a game-changer for finding talent!&quot;</em></p>
-                    <div class="text-block-39"><strong>Melody Wu, Chief Architect at Sattlers</strong></div>
-                </div>
-            </div>
+  </section>
+  <section id="testimonials" class="testimonials">
+    <div data-delay="4000" data-animation="slide" class="slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
+      <div class="w-slider-mask">
+        <div class="slide w-slide">
+          <div class="w-layout-blockcontainer container-185 w-container">
+            <p class="paragraph-11"><em class="italic-text-3">&quot;I can&#x27;t thank JOB CONN enough for the incredible opportunity to connect with top recruiters! The platform made it so easy to showcase my skills and connect with industry leaders. I landed an internship at Tech Innovations Inc. That turned into a full-time job offer. The personalized support and valuable resources helped me navigate the job market with confidence. I highly recommend this service to any student looking to kickstart their career!&quot;</em></p>
+            <div class="text-block-36"><strong>Julia Anderson, Graphic Designer at Tech Innovations, INC</strong></div>
+          </div>
         </div>
-        <div class="w-slider-arrow-left">
-            <div class="w-icon-slider-left"></div>
+        <div class="w-slide">
+          <div class="w-layout-blockcontainer container-32 w-container">
+            <p class="paragraph-3"><em class="italic-text">&quot;I found my first job on this site and it stuck with me ever since!&quot;</em></p>
+            <div class="text-block-16"><strong class="bold-text">Ann Taylor, Junior Manager at Boeing</strong></div>
+          </div>
         </div>
-        <div class="w-slider-arrow-right">
-            <div class="w-icon-slider-right"></div>
+        <div class="w-slide">
+          <div class="w-layout-blockcontainer container-186 w-container">
+            <p class="paragraph-12"><em class="italic-text-4">&quot;Working with JOB CONN has streamlined our hiring process. Highly recommend it!&quot;</em></p>
+            <div class="text-block-37"><strong>David Kim, Director at General Motors</strong></div>
+          </div>
         </div>
-        <div class="slide-nav w-slider-nav w-round"></div>
+        <div class="w-slide">
+          <div class="w-layout-blockcontainer container-187 w-container">
+            <p class="paragraph-13"><em class="italic-text-5">I landed my dream job through JOB CONN! The support and resources were fantastic.</em></p>
+            <div class="text-block-38"><strong>Maya Patel, Engineering Graduate from the University of Michigan</strong></div>
+          </div>
+        </div>
+        <div class="w-slide">
+          <div class="w-layout-blockcontainer container-188 w-container">
+            <p class="paragraph-14"><em class="italic-text-6">&quot;The candidates from JOB CONN are impressive and well-prepared. This platform is a game-changer for finding talent!&quot;</em></p>
+            <div class="text-block-39"><strong>Melody Wu, Chief Architect at Sattlers</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-slider-arrow-left">
+        <div class="w-icon-slider-left"></div>
+      </div>
+      <div class="w-slider-arrow-right">
+        <div class="w-icon-slider-right"></div>
+      </div>
+      <div class="slide-nav w-slider-nav w-round"></div>
     </div>
-</section>
-<section class="footer">
+  </section>
+  <section class="footer">
     <div class="w-layout-blockcontainer container-189 w-container">
-        <div class="w-layout-blockcontainer container-190 w-container">
-            <div class="text-block-44"><strong class="bold-text-8">Guide</strong></div>
-            <div class="text-block-40">Your Profile</div>
-            <div class="text-block-41">Dashboard</div>
-            <div class="text-block-42">My List</div>
-            <div class="text-block-43">Potential Applicants</div>
-        </div>
-        <div class="w-layout-blockcontainer container-190 w-container">
-            <div class="text-block-44"><strong class="bold-text-8">Help</strong></div>
-            <div>Settings</div>
-            <div>Terms &amp; Coditions</div>
-            <div>Privacy Policy</div>
-        </div>
-        <div class="w-layout-blockcontainer container-190 w-container">
-            <div class="text-block-44"><strong class="bold-text-8">Contact Us</strong></div>
-            <div>jobconn@gmail.com</div>
-        </div>
-        <div class="w-layout-blockcontainer container-194 w-container"><img alt="" class="image-21"
-                                                                            loading="lazy" src="../images/Group-102.png"></div>
+      <div class="w-layout-blockcontainer container-190 w-container">
+        <div class="text-block-44"><strong class="bold-text-8">Guide</strong></div>
+        <div class="text-block-40">Your Profile</div>
+        <div class="text-block-41">Dashboard</div>
+        <div class="text-block-42">My List</div>
+        <div class="text-block-43">Potential Applicants</div>
+      </div>
+      <div class="w-layout-blockcontainer container-190 w-container">
+        <div class="text-block-44"><strong class="bold-text-8">Help</strong></div>
+        <div>Settings</div>
+        <div>Terms &amp; Coditions</div>
+        <div>Privacy Policy</div>
+      </div>
+      <div class="w-layout-blockcontainer container-190 w-container">
+        <div class="text-block-44"><strong class="bold-text-8">Contact Us</strong></div>
+        <div>jobconn@gmail.com</div>
+      </div>
+      <div class="w-layout-blockcontainer container-194 w-container"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-21"></div>
     </div>
     <div class="w-layout-blockcontainer container-191 w-container">
-        <div class="w-layout-blockcontainer container-195 w-container"></div>
-        <div class="w-layout-blockcontainer container-196 w-container"><img alt="" class="image-22"
-                                                                            loading="lazy" src="../images/image-22.png"><img
-                alt="" class="image-23" loading="lazy" src="../images/image-22.png"><img alt=""
-                                                                                         class="image-24" loading="lazy"
-                                                                                         src="../images/image-22.png"><img
-                alt="" class="image-25" loading="lazy" src="../images/image-22.png"></div>
+      <div class="w-layout-blockcontainer container-195 w-container"></div>
+      <div class="w-layout-blockcontainer container-196 w-container"><img src="../images/image-22.png" loading="lazy" alt="" class="image-22"><img src="../images/image-22.png" loading="lazy" alt="" class="image-23"><img src="../images/image-22.png" loading="lazy" alt="" class="image-24"><img src="../images/image-22.png" loading="lazy" alt="" class="image-25"></div>
     </div>
-</section>
-<div class="w-layout-blockcontainer container-5 w-container"><img alt="" class="image-2" loading="lazy"
-                                                                  src="../images/Group-102.png">
+  </section>
+  <div class="w-layout-blockcontainer container-5 w-container"><img loading="lazy" src="../images/Group-102.png" alt="" class="image-2">
     <div class="text-block-3">
-        <a class="link-4" href="#Events-Home"><strong>Home</strong></a>
+      <a href="#Events-Home" class="link-4"><strong>Home</strong></a>
     </div>
     <div class="text-block-3">
-        <a class="link-5" href="#Your-Applications"><strong>Your Applications</strong></a>
+      <a href="#Your-Applications" class="link-5"><strong>Your Applications</strong></a>
     </div>
     <div class="text-block-3">
-        <a class="link-2" href="#Positions"><strong>Positions</strong></a>
+      <a href="#Positions" class="link-2"><strong>Positions</strong></a>
     </div>
     <div class="text-block-3">
-        <a class="link" href="#tutorial"><strong>Tutorial</strong></a>
+      <a href="#tutorial" class="link"><strong>Tutorial</strong></a>
     </div>
     <a class="button-3 w-button" href="#"></a>
 </div>
 <script>
-    $(document).ready(function () {
-      let table;
-  
-      // Initialize the DataTable
-      function initializeDataTable() {
-        table = $('#myTable').DataTable({
-          dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-          lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
-        });
-      }
+  $(document).ready(function () {
+    let table;
+    let userId;
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-        
-      // Fetch data from the API and populate the table
-      function fetchAndPopulateTable() {
-        $.ajax({
-          url: 'http://localhost:3000/student/applications/1', // Replace with your actual API URL
-          method: 'GET',
-          success: function (data) {
-            const tableBody = $('#myTable tbody');
-            table.clear(); // Clear the existing data
-  
-            data.forEach((job) => {
-              const row = `
-                <tr>
-                  <td class="name-column">${job.username}</td>
-                  <td class="date-column">${(job.apply_date).slice(0, 10)}</td>
-                  <td class="status-column">${capitalizeFirstLetter(job.status)}</td>
-                </tr>
-              `;
-              table.row.add($(row)).draw(false); // Add the row and redraw the table
-            });
-          },
-          error: function (error) {
-            console.error('Error fetching data:', error);
-          },
-        });
-      }
-  
-      // Handle custom "Show entries" dropdown
-      $('#entriesSelect').on('change', function () {
-        table.page.len($(this).val()).draw();
-      });
-  
-      // Handle custom search input
-      $('#searchInput').on('keyup', function () {
-        table.search(this.value).draw();
-      });
-  
-      // Add click event for the DETAILS button
-      $('#myTable').on('click', '.edit-btn.detail', function () {
-        const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
-        window.location.href = `recruiter-projectinfo.html?jobId=${jobId}`; // Redirect with the job ID
-      });
-  
-      // Add click event for the APPLICANTS button
-      $('#myTable').on('click', '.edit-btn.applicants', function () {
-        // Navigate to the project info page with the #applicants hash
-        window.location.href = 'recruiter-projectinfo.html#applicants';
-      });
-  
-      // Initial data fetch and table setup
-      initializeDataTable();
-      fetchAndPopulateTable();
+    // Function to check if a session ID exists
+    function checkSession() {
+    return $.ajax({
+        url: 'http://localhost:3000/auth/api/user',
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Recruiter") {
+                // Redirect to index.html if no session ID is found or the user is a recruiter
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
     });
-  </script>
-  
+}
+
+    // Initialize the DataTable
+    function initializeDataTable() {
+        table = $('#myTable').DataTable({
+            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        });
+    }
+
+    // Fetch data from the API and populate the table
+    function fetchAndPopulateTable() {
+        if (!userId) {
+            console.error('User ID is not available');
+            return;
+        }
+
+        $.ajax({
+            url: `http://localhost:3000/student/applications/${userId}`,
+            method: 'GET',
+            credentials: 'include', // Include cookies
+            success: function (data) {
+                const tableBody = $('#myTable tbody');
+                table.clear(); // Clear the existing data
+
+                data.forEach((job) => {
+                    const row = `
+                        <tr>
+                            <td class="name-column">${job.username}</td>
+                            <td class="date-column">${job.apply_date.slice(0, 10)}</td>
+                            <td class="status-column">${job.status.charAt(0).toUpperCase() + job.status.slice(1)}</td>
+                        </tr>
+                    `;
+                    table.row.add($(row)).draw(false); // Add the row and redraw the table
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            },
+        });
+    }
+
+    // Handle custom "Show entries" dropdown
+    $('#entriesSelect').on('change', function () {
+        table.page.len($(this).val()).draw();
+    });
+
+    // Handle custom search input
+    $('#searchInput').on('keyup', function () {
+        table.search(this.value).draw();
+    });
+
+    // Initial setup
+    checkSession().then(() => {
+        initializeDataTable();
+        fetchAndPopulateTable();
+    });
+
+    //localhost  s%3AGscAtx1CxZy_9Rvwrbm7p_moAjbpnjMT.WFnU22FyN1jX4Tx01hLmaA7xpbe%2BpGAQJBSYV71uJ%2FU  session_cookie_name
+
+
+});
+</script>
 <!-- load this lib at the bottom !-->
 <script src="../js/webflow.js" type="text/javascript"></script>
 

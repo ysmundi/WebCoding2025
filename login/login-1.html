@@ -61,7 +61,11 @@
 
       if (response.ok) {
         // Redirect to the home page after successful login
-        window.location.href = 'home-recruiter.html';
+        if (data.user.role == "Student") {
+          window.location.href = '../student/student-home.html';
+        } else {
+          window.location.href = '../recruiter/home-recruiter.html';
+        }
       } else {
         alert(data.message);
       }

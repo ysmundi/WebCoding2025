@@ -478,137 +478,188 @@
   </section>
 <!--  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=676715cb815e8f01731dca22" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>-->
 <script>
-  // Function to fetch data from the API
   // Function to extract query parameters from the URL
-  // Function to extract query parameters from the URL
-  function getQueryParam(param) {
+function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
-  }
+}
 
-  // Function to fetch data from the API
-  async function fetchJobDetails() {
+// Function to check if a session ID exists
+function checkSession() {
+    return $.ajax({
+        url: 'http://localhost:3000/auth/api/user',
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Student") {
+                // Redirect to index.html if no session ID is found or the user is a student
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
+
+// Function to fetch data from the API
+async function fetchJobDetails() {
     const jobId = getQueryParam('jobId'); // Get the job ID from the URL
 
     if (!jobId) {
-      console.error('Job ID not found in the URL');
-      return;
+        console.error('Job ID not found in the URL');
+        return;
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/recruiter/posting-info/${jobId}`); // Use the job ID in the API URL
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      const data = await response.json(); // Parse the JSON response
+        const response = await fetch(`http://localhost:3000/recruiter/posting-info/${jobId}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch job details');
+        }
+        const data = await response.json();
+        console.log('API Response:', data);
 
-      // Check if the response is an array and has at least one element
-      if (Array.isArray(data) && data.length > 0) {
-        const job = data[0]; // Access the first job in the array
+        if (!data || data.length === 0) {
+            throw new Error('No job data found');
+        }
+
+        const job = data[0];
 
         // Update the HTML with the fetched data
         document.getElementById('organization_name').textContent = job.organization_name || 'None.';
         document.getElementById('position').textContent = job.position_name || 'None.';
         document.getElementById('position_type').textContent = "something"; // Replace with actual data if available
         document.getElementById('location').textContent = job.location_requirements || 'None.';
-        document.getElementById('salary').textContent = `$${job.salary}/Hr` || 'None';
-        document.getElementById('deadline').textContent = new Date(job.deadline).toLocaleDateString() || 'None.';
+        document.getElementById('salary').textContent = job.salary ? `$${job.salary}/Hr` : 'None';
+        document.getElementById('deadline').textContent = job.deadline ? new Date(job.deadline).toLocaleDateString() : 'None.';
         document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';
         document.getElementById('responsibilities').textContent = job.responsibilities || 'No responsibilities available.';
         document.getElementById('about').textContent = job.about || 'No about information available.';
         document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
         document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
-      } else {
-        throw new Error('No job data found in the response');
-      }
-
     } catch (error) {
-      console.error('Error fetching job details:', error);
-
-      // Display error messages in the HTML
-      document.getElementById('requirements').textContent = 'Failed to load requirements.';
-      document.getElementById('responsibilities').textContent = 'Failed to load responsibilities.';
-      document.getElementById('about').textContent = 'Failed to load about information.';
-      document.getElementById('nice-to-have').textContent = 'Failed to load nice-to-have information.';
-      document.getElementById('why-work-with-us').textContent = 'Failed to load why work with us information.';
+        console.error('Error fetching job details:', error);
+        document.getElementById('error-message').textContent = 'Failed to fetch job details.';
     }
-  }
+}
 
-  // Call the function when the page loads
-  document.addEventListener('DOMContentLoaded', fetchJobDetails);
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    checkSession().then(fetchJobDetails).catch(() => {
+        // Redirect to index.html if the session check fails
+        window.location.href = '../index.html';
+    });
+});
   </script>
 
 <script>
   $(document).ready(function () {
     let table;
 
-    // Initialize the DataTable
-    function initializeDataTable() {
-      table = $('#tableDateJoined').DataTable({
-        dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-        lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
-      });
+    // Function to extract query parameters from the URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
     }
 
-    const jobId = getQueryParam('jobId'); // Get the job ID from the URL
-
-    if (!jobId) {
-      console.error('Job ID not found in the URL');
-      return;
+    // Initialize the DataTable
+    function initializeDataTable() {
+        table = $('#tableDateJoined').DataTable({
+            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        });
     }
 
     // Fetch data from the API and populate the table
     function fetchAndPopulateTable() {
-      $.ajax({
-        url: `http://localhost:3000/recruiter/accepted-job-applications/${jobId}`, // Replace with your actual API URL
-        method: 'GET',
-        success: function (data) {
-          const tableBody = $('#tableDateJoined tbody');
-          table.clear(); // Clear the existing data
+        const jobId = getQueryParam('jobId'); // Get the job ID from the URL
 
-          data.forEach((job) => {
-            const row = `
-              <tr>
-                <td class="name-column">${job.username}</td>
-                <td class="date-column">${new Date(job.approved_date).toLocaleDateString()}</td>
-                <td>
-                  <div class="vertical-buttons">
-                    <button class="edit-btn suspend">Suspend</button>
-                    <button class="edit-btn info" data-application-id="${job.application_id}">Info</button>
-                  </div>
-                </td>
-              </tr>
-            `;
-            table.row.add($(row)).draw(false); // Add the row and redraw the table
-          });
-        },
-        error: function (error) {
-          console.error('Error fetching data:', error);
-        },
-      });
+        if (!jobId) {
+            console.error('Job ID not found in the URL');
+            return;
+        }
+
+        $.ajax({
+            url: `http://localhost:3000/recruiter/accepted-job-applications/${jobId}`,
+            method: 'GET',
+            success: function (data) {
+                if (!data || data.length === 0) {
+                    console.error('No data found');
+                    return;
+                }
+
+                const tableBody = $('#tableDateJoined tbody');
+                table.clear(); // Clear the existing data
+
+                data.forEach((job) => {
+                    const row = `
+                        <tr>
+                            <td class="name-column">${job.username}</td>
+                            <td class="date-column">${new Date(job.approved_date).toLocaleDateString()}</td>
+                            <td>
+                                <div class="vertical-buttons">
+                                    <button class="edit-btn suspend">Suspend</button>
+                                    <button class="edit-btn info" data-application-id="${job.application_id}">Info</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    table.row.add($(row)).draw(false); // Add the row and redraw the table
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching data:', error);
+            },
+        });
     }
-
-    
 
     // Handle custom "Show entries" dropdown
     $('#entriesSelect').on('change', function () {
-      table.page.len($(this).val()).draw();
+        table.page.len($(this).val()).draw();
     });
 
     // Handle custom search input
     $('#searchInput').on('keyup', function () {
-      table.search(this.value).draw();
+        table.search(this.value).draw();
     });
 
-    // Add click event for the DETAILS button
-    $('#tableDateJoined').on('click', '.edit-btn.detail', function () {
-      const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
-      window.location.href = `recruiter-projectinfo.html?jobId=${jobId}`; // Redirect with the job ID
+    // Handle click event for the Suspend button
+    $('#tableDateJoined').on('click', '.edit-btn.suspend', function () {
+        // Get the application ID from the corresponding Info button in the same row
+        const applicationId = $(this).closest('tr').find('.edit-btn.info').data('application-id');
+
+        if (!applicationId) {
+            console.error('Application ID not found');
+            return;
+        }
+
+        // Make the API call to suspend the application
+        $.ajax({
+            url: `http://localhost:3000/recruiter/suspend-application/${applicationId}`,
+            method: 'PUT',
+            success: function (response) {
+                console.log('Application suspended:', response.message);
+
+                // Remove the row from the table immediately
+                const row = $(this).closest('tr'); // Get the row that contains the "Suspend" button
+                table.row(row).remove().draw(); // Remove the row and redraw the table
+
+                // Optionally, refresh the table to ensure data consistency
+                fetchAndPopulateTable();
+            }.bind(this), // Bind `this` to the current context (the "Suspend" button)
+            error: function (error) {
+                console.error('Error suspending application:', error.responseJSON.error);
+            },
+        });
     });
 
+    // Handle click event for the Info button
     $('#tableDateJoined').on('click', '.edit-btn.info', function () {
-     const applicationId = $(this).data('application-id'); // Get the application ID from the button's data attribute
-      window.location.href = `recruiter-viewstudentapplication.html?applicationId=${applicationId}`; // Redirect with the application ID
+        const applicationId = $(this).data('application-id'); // Get the application ID from the button's data attribute
+        window.location.href = `recruiter-viewstudentapplication.html?applicationId=${applicationId}`; // Redirect with the application ID
     });
 
     // Initial data fetch and table setup
@@ -707,6 +758,8 @@
         },
       });
     });
+
+    
 
     // Add click event for the "Info" button
     $('#tableSubmitted').on('click', '.edit-btn.info', function () {

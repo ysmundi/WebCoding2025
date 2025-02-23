@@ -91,81 +91,107 @@
   <script src="../js/webflow.js" type="text/javascript"></script>
   <script>
     // Function to extract query parameters from the URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-  
-    // Function to fetch data from the API
-    async function fetchJobDetails() {
-      const applicationId = getQueryParam('applicationId'); // Get the application ID from the URL
-  
-      if (!applicationId) {
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Function to check if a session ID exists
+function checkSession() {
+    return $.ajax({
+        url: 'http://localhost:3000/auth/api/user',
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Student") {
+                // Redirect to index.html if no session ID is found or the user is a student
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
+
+// Function to fetch data from the API
+async function fetchJobDetails() {
+    const applicationId = getQueryParam('applicationId'); // Get the application ID from the URL
+
+    if (!applicationId) {
         console.error('Application ID not found in the URL');
         document.getElementById('error-message').textContent = 'Application ID not found in the URL.';
         return;
-      }
-  
-      console.log('Fetching application details for applicationId:', applicationId);
-  
-      try {
+    }
+
+    console.log('Fetching application details for applicationId:', applicationId);
+
+    try {
         // Fetch application details
         const response = await fetch(`http://localhost:3000/jobs/application-info/${applicationId}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch application details');
+            throw new Error('Failed to fetch application details');
         }
         const data = await response.json();
         console.log('Application Data:', data);
-  
+
         // Check if the response contains an error
         if (data.error) {
-          console.error('API Error:', data.error);
-          return;
+            console.error('API Error:', data.error);
+            return;
         }
-  
+
         const application = data[0];
-  
+
         // Update the HTML with the fetched data
         document.getElementById('name').textContent = application.username || 'None';
         document.getElementById('email').textContent = application.email || 'None';
         document.getElementById('phone_number').textContent = application.phone_number || 'None';
         document.getElementById('about_you').textContent = application.about_you || 'None';
-  
+
         // Fetch job details
         const second = await fetch(`http://localhost:3000/recruiter/posting-info/${application.job_id}`);
         if (!second.ok) {
-          throw new Error('Failed to fetch job details');
+            throw new Error('Failed to fetch job details');
         }
         const data_2 = await second.json();
         console.log('Job Details Data:', data_2);
-  
+
         // Check if the response is an array and has at least one element
         if (Array.isArray(data_2) && data_2.length > 0) {
-          const job = data_2[0]; // Access the first job in the array
-  
-          // Update the HTML with the fetched data
-          document.getElementById('organization_name').textContent = job.organization_name || 'None';
-          document.getElementById('position').textContent = job.position_name || 'None';
-          document.getElementById('position_type').textContent = job.position_type || 'None';
-          document.getElementById('location').textContent = job.location_requirements || 'None';
-          document.getElementById('salary').textContent = job.salary ? `$${job.salary}/Hr` : 'None';
-          document.getElementById('deadline').textContent = job.deadline ? new Date(job.deadline).toLocaleDateString() : 'None';
-          document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';
-          document.getElementById('responsibilities').textContent = job.responsibilities || 'No responsibilities available.';
-          document.getElementById('about').textContent = job.about || 'No about information available.';
-          document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
-          document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
+            const job = data_2[0]; // Access the first job in the array
+
+            // Update the HTML with the fetched data
+            document.getElementById('organization_name').textContent = job.organization_name || 'None';
+            document.getElementById('position').textContent = job.position_name || 'None';
+            document.getElementById('position_type').textContent = job.position_type || 'None';
+            document.getElementById('location').textContent = job.location_requirements || 'None';
+            document.getElementById('salary').textContent = job.salary ? `$${job.salary}/Hr` : 'None';
+            document.getElementById('deadline').textContent = job.deadline ? new Date(job.deadline).toLocaleDateString() : 'None';
+            document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';
+            document.getElementById('responsibilities').textContent = job.responsibilities || 'No responsibilities available.';
+            document.getElementById('about').textContent = job.about || 'No about information available.';
+            document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
+            document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
         } else {
-          throw new Error('No job data found in the response');
+            throw new Error('No job data found in the response');
         }
-      } catch (error) {
+    } catch (error) {
         console.error('Error fetching job details:', error);
         document.getElementById('error-message').textContent = 'Failed to fetch job details.';
-      }
     }
-  
-    // Call the function when the page loads
-    document.addEventListener('DOMContentLoaded', fetchJobDetails);
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    checkSession().then(fetchJobDetails).catch(() => {
+        // Redirect to index.html if the session check fails
+        window.location.href = '../index.html';
+    });
+});
   </script>
   
 </body>

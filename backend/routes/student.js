@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../config/database');
+const checkUserRole = require('../middlewares/checkUserRole'); 
 
 router = express.Router();
 
@@ -30,7 +31,7 @@ router.post('/apply', (req, res) => {
  
 //get applications by id 
 router.get('/applications/:userId', (req, res) => {
-  const userId = req.session.user.id;
+  const userId = req.params.userId;
 
   try {
       db.query('SELECT * FROM job_applications WHERE user_id = ?', [userId], (err, results) => {
