@@ -5245,7 +5245,7 @@
 }
 
 .select-field-15 {
-  color: #000;
+  color: #ec9440;
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 5px;
@@ -5257,7 +5257,7 @@
 }
 
 .textarea-3 {
-  color: #000;
+  color: #ec9440;
   border: 1px solid #000;
   border-radius: 5px;
   width: 80%;
@@ -5326,8 +5326,8 @@
   }
 
   .image-9 {
-    width: 15%;
-    height: 50%;
+    width: 25%;
+    height: 55%;
   }
 
   .heading-11 {
@@ -5342,20 +5342,19 @@
     height: 100%;
   }
 
-  .container-58 {
+  .container-58, .container-59 {
     width: 100%;
     max-width: none;
-    height: 40%;
+    height: 50%;
   }
 
-  .container-59 {
-    width: 100%;
+  .container-60 {
     max-width: none;
-    height: 60%;
   }
 
-  .container-60, .container-61 {
+  .container-61 {
     max-width: none;
+    padding-left: 15%;
   }
 
   .container-62 {
@@ -5476,17 +5475,19 @@
   }
 
   .container-113 {
-    width: 50%;
+    width: 100%;
     max-width: none;
-    height: 100%;
+    height: 33.3333%;
     margin-left: 15%;
     margin-right: 0;
+    padding-left: 0%;
   }
 
   .container-114 {
-    width: 50%;
+    width: 100%;
     max-width: none;
-    height: 100%;
+    height: 33.3333%;
+    padding-left: 15%;
   }
 
   .field-label-14 {
@@ -5602,6 +5603,10 @@
     margin-right: 0;
   }
 
+  .image-20 {
+    width: 90%;
+  }
+
   .container-179 {
     max-width: none;
   }
@@ -5681,6 +5686,10 @@
   .bold-text-15 {
     font-size: 18px;
     line-height: 8px;
+  }
+
+  .select-field-15 {
+    width: 21%;
   }
 }
 
@@ -5893,12 +5902,38 @@
     height: 60%;
   }
 
+  .container-61 {
+    height: 26%;
+  }
+
+  .text-field-5 {
+    width: 80%;
+  }
+
+  .container-70 {
+    width: 97%;
+  }
+
+  .container-71 {
+    flex-flow: column;
+  }
+
   .select-field-2 {
     color: #333;
+    width: 100%;
+  }
+
+  .select-field-4 {
+    color: #000;
+    width: 100%;
   }
 
   .text-field-7 {
     width: 80%;
+  }
+
+  .paragraph-5 {
+    margin-right: 0;
   }
 
   .bold-text-3 {
@@ -5911,9 +5946,9 @@
 
   .submit-button-2 {
     width: 40%;
-    height: 40%;
+    height: 30%;
     padding-top: 9px;
-    font-size: 70%;
+    font-size: 20px;
   }
 
   .container-74 {
@@ -6082,6 +6117,10 @@
     width: 60%;
   }
 
+  .container-113 {
+    width: 85%;
+  }
+
   .checkbox-field {
     margin-left: 20px;
     margin-right: 20px;
@@ -6094,7 +6133,7 @@
   }
 
   .italic-text-2 {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .field-label-15 {
@@ -6424,6 +6463,16 @@
     line-height: 20px;
   }
 
+  .image-20 {
+    width: 100%;
+    height: 30%;
+  }
+
+  .heading-33 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+
   .heading-34, .heading-35, .heading-36 {
     margin-top: 10px;
     margin-bottom: 5px;
@@ -6565,6 +6614,10 @@
     margin-left: 5%;
   }
 
+  .container-234, .container-235, .container-236, .container-237, .container-238, .container-239, .container-240, .container-241 {
+    padding-left: 10px;
+  }
+
   .text-block-54 {
     font-size: 15px;
     line-height: 15px;
@@ -6612,6 +6665,10 @@
   .container-244 {
     height: 75%;
     margin-left: 5px;
+  }
+
+  .container-245 {
+    padding-left: 10px;
   }
 
   .paragraph-16 {
@@ -6977,7 +7034,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 180vh;
+    height: auto;
     margin-top: 40px;
     display: flex;
   }
@@ -7072,6 +7129,51 @@
   .container-299 {
     flex-flow: column;
     height: 38%;
+  }
+
+  .select-field-13 {
+    color: #000;
+    width: 100%;
+  }
+
+  .select-field-14 {
+    height: 30%;
+  }
+
+  .submit-button-7 {
+    margin-right: 10px;
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  .text-field-20 {
+    width: 64%;
+    height: 30%;
+    margin-left: 5px;
+    padding: 0 5px;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .text-field-21 {
+    width: 50%;
+    height: 30%;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .select-field-15 {
+    width: 43%;
+    height: 30%;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .textarea-3 {
+    font-size: 12px;
+    line-height: 12px;
   }
 }
 
