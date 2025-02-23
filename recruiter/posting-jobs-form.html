@@ -33,17 +33,6 @@
       flex-direction: column;
     }
 
-    .field-label-18 {
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .text-field-12,
-    .text-field-13 {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
   </style>
 </head>
 <body>
@@ -114,7 +103,12 @@
             <div class="w-layout-blockcontainer container-138 w-container"><label for="field-11" class="field-label-16">Position</label><input class="text-field-10 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="" type="text" id="field-3" required=""></div>
           </div>
           <div class="w-layout-blockcontainer container-142 w-container">
-            <div class="w-layout-blockcontainer container-254 w-container"><label for="field-11" class="field-label-18">Duration</label><input class="text-field-12 w-input" maxlength="256" name="field-4" data-name="Field 4" placeholder="" type="text" id="field-4" required=""></div>
+
+            <div class="w-layout-blockcontainer container-254 w-container">
+              <label for="field-4" class="field-label-18">Duration</label>
+              <input class="text-field-12 w-input flatpickr-input" maxlength="256" name="field-4" data-name="Field 4" placeholder="" type="text" id="field-4" required="">
+            </div>
+
             <div class="w-layout-blockcontainer container-141 w-container"></div>
             <div class="w-layout-blockcontainer container-255 w-container"><label for="field-11" class="field-label-23">Location</label><input class="text-field-19 w-input" maxlength="256" name="field-10" data-name="Field 10" placeholder="" type="text" id="field-10" required=""></div>
           </div>
@@ -151,23 +145,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Initialize Flatpickr for the start date
-      flatpickr("#startDate", {
+      // Initialize Flatpickr for the "Duration" field
+      flatpickr("#field-4", {
         dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
         onChange: function (selectedDates, dateStr, instance) {
-          console.log("Start Date Selected:", dateStr);
-        },
-      });
-
-      // Initialize Flatpickr for the end date
-      flatpickr("#endDate", {
-        dateFormat: "Y-m-d", // Format the date as YYYY-MM-DD
-        onChange: function (selectedDates, dateStr, instance) {
-          console.log("End Date Selected:", dateStr);
+          console.log("Duration Selected:", dateStr);
         },
       });
     });
-
   </script>
 
 </body>
