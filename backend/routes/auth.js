@@ -42,7 +42,6 @@ router.post('/register', async (req, res) => {
     email,
     username,
     password,
-    confirm_password,
     user_type,
   } = req.body;
 
@@ -53,7 +52,6 @@ router.post('/register', async (req, res) => {
     !email ||
     !username ||
     !password ||
-    !confirm_password ||
     !user_type
   ) {
     return res.status(400).send({ message: 'All required fields must be provided' });
@@ -63,11 +61,6 @@ router.post('/register', async (req, res) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).send({ message: 'Invalid email format' });
-  }
-
-  // Validate password match
-  if (password !== confirm_password) {
-    return res.status(400).send({ message: 'Passwords do not match' });
   }
 
   try {
@@ -86,9 +79,8 @@ router.post('/register', async (req, res) => {
         email,
         username,
         password_hash,
-        confirm_password_hash,
         user_type
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         first_name,
         last_name,
@@ -98,8 +90,7 @@ router.post('/register', async (req, res) => {
         pronoun,
         email,
         username,
-        hashedPassword,
-        hashedPassword, // Assuming confirm_password_hash is the same as password_hash
+        hashedPassword, 
         user_type,
       ],
       (err, results) => {
