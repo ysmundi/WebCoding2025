@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../config/database');
-const checkUserRole = require('../middlewares/checkUserRole'); 
+const isAuthenticated = require('../middlewares/auth');
 
 router = express.Router();
 
@@ -30,7 +30,7 @@ router.post('/apply', (req, res) => {
   });           
  
 //get applications by id 
-router.get('/applications/:userId', (req, res) => {
+router.get('/applications/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
   try {
@@ -43,29 +43,17 @@ router.get('/applications/:userId', (req, res) => {
   }
 });
 
+router.get('/student-info/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
 
-//update status of application 
-router.put('/accept-application/:id', (req, res) => {
-  
-})
-
-//delete application 
-router.delete('/delete-application/:id', (req, res) => {
-  
-})
-
-router.get('/all-jobs', (req, res) => {
-  console.log("method is called");
-  const query = 'SELECT * FROM job_postings';
-
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('Error while querying the database:', err); // Log the error for debugging
-      return res.status(500).json({ error: 'Database query failed' }); // Respond with an error
-    }
-    console.log(results); // Log results if successful
-    res.json(results); // Send results to the client
-  });
+  try {
+      db.query('SELECT * FROM users_info WHERE id = ?', [userId], (err, results) => {
+          res.json(results);
+        });
+  }
+  catch(err) {
+      res.status(500).json({error: "Server error"})
+  }
 });
 
 

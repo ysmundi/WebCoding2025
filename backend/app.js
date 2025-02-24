@@ -1,21 +1,39 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan')
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 const jobRoutes = require('./routes/jobs');
 const recruiterRoutes = require('./routes/recruiter');
 const studentRoutes = require('./routes/student');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const path = require('path');
+const db = require('./config/database');
 
 
 const app = express();
+const sessionStore = new MySQLStore({}, db);
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000',
     credentials: true
  }));
+app.use(
+    session({
+      key: 'session_cookie_name', // Cookie name
+      secret: 'your_secret_key', // Secret for signing the session ID cookie
+      store: sessionStore, // Use MySQL as the session store
+      resave: false, // Prevent resaving unchanged sessions
+      saveUninitialized: false, // Don't save uninitialized sessions
+      cookie: {
+        maxAge: 1000 * 60 * 60, // 1 hour
+        httpOnly: true, // Prevent access via JavaScript
+        secure: false, // Set true if using HTTPS
+      },
+    })
+  );
 
 app.use('/css', express.static(path.join(__dirname, '../css')));
 app.use('/js', express.static(path.join(__dirname, '../js')));
