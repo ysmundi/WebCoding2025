@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../config/database');
+const isAuthenticated = require('../middlewares/auth');
 
 const router = express.Router();
 
@@ -55,7 +56,7 @@ router.get('/accepted-job-applications/:jobId', (req, res) => {
 
 
 //get information about job 
-router.get('/posting-info/:jobId', (req, res) => {
+router.get('/posting-info/:jobId', isAuthenticated, (req, res) => {
   const jobId = req.params.jobId;
 
   try {
@@ -134,7 +135,7 @@ router.put('/reject-application/:id', (req, res) => {
   });
 })
 
-//delete application 
+//suspend application 
 router.put('/suspend-application/:id', (req, res) => {
   const applicationId = req.params.id; // Get the application ID from the URL parameter
 
