@@ -3,29 +3,16 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
 const db = require('../config/database');
-const checkUserRole = require('../middlewares/checkUserRole'); 
+const checkUserRole = require('../middlewares/auth'); 
 
 
 const router = express.Router();
 router.use(express.json());
 
 // Session store using MySQL
-const sessionStore = new MySQLStore({}, db);
 
-router.use(
-  session({
-    key: 'session_cookie_name', // Cookie name
-    secret: 'your_secret_key', // Secret for signing the session ID cookie
-    store: sessionStore, // Use MySQL as the session store
-    resave: false, // Prevent resaving unchanged sessions
-    saveUninitialized: false, // Don't save uninitialized sessions
-    cookie: {
-      maxAge: 1000 * 60 * 60, // 1 hour
-      httpOnly: true, // Prevent access via JavaScript
-      secure: false, // Set true if using HTTPS
-    },
-  })
-);
+
+
 
 /**
  * @route POST /register
@@ -100,7 +87,7 @@ router.post('/register', async (req, res) => {
           }
           return res.status(500).send({ message: 'Server error' });
         }
-        res.status(201).send({ message: 'User registered successfully' });
+        res.status(201).send({ message: 'User registered successfully', user: req.session.user });
       }
     );
   } catch (error) {
