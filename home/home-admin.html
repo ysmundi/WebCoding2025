@@ -193,7 +193,18 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      line-height: 1.2;
     }
+
+    @media (max-width: 479px) {
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+        line-height: 1.2;
+      }
+
+    }
+
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
     table.dataTable tbody tr:nth-child(even) td.date-column {
