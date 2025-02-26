@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="added fonts, student-yourprofile.html, and all other files from failed merge" />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="Get ready to pull backend.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -42,6 +47,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Anson",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,7 +126,8 @@
     <MESSAGE value="nothing2" />
     <MESSAGE value="added datatables in the student home and positions pages." />
     <MESSAGE value="added fonts, student-yourprofile.html, and all other files from failed merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="added fonts, student-yourprofile.html, and all other files from failed merge" />
+    <MESSAGE value="Get ready to pull backend." />
+    <option name="LAST_COMMIT_MESSAGE" value="Get ready to pull backend." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
