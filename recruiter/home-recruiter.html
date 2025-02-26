@@ -21,6 +21,7 @@
     <!--    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
     <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
     <script src="../lib/jquery/jquery.dataTables.min.js"></script>
+    <script src="../js/config.js"></script>
   <style>
     body, html {
       margin: 0;
@@ -488,6 +489,7 @@
     </div>
     <div class="w-layout-blockcontainer container-327 w-container"></div>
   </div>
+
   <script>
     $(document).ready(function () {
       let table;
@@ -496,7 +498,7 @@
       // Function to check if a session ID exists
       function checkSession() {
           return $.ajax({
-              url: 'http://localhost:3000/auth/api/user',
+              url: `${config.apiBaseUrl}/auth/api/user`,
               method: 'GET',
               credentials: 'include', // Include cookies
               success: function (data) {
@@ -517,7 +519,7 @@
       // Check user's subscription
       function checkSubscription() {
           return $.ajax({
-              url: `http://localhost:3000/recruiter/subscription/${userId}`,
+              url: `${config.apiBaseUrl}/recruiter/subscription/${userId}`,
               method: 'GET',
               credentials: 'include', // Include cookies
               success: function (data) {
@@ -550,7 +552,7 @@
           }
   
           $.ajax({
-              url: `http://localhost:3000/jobs/user-jobs/${userId}`,
+              url: `${config.apiBaseUrl}/jobs/user-jobs/${userId}`,
               method: 'GET',
               credentials: 'include', // Include cookies
               success: function (data) {

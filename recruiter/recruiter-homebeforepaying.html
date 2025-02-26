@@ -13,6 +13,7 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="../images/webclip.png" rel="apple-touch-icon">
+  <script src="../js/config.js"></script>
 </head>
 <body>
   <section id="Events-Home" data-w-id="54d8901f-7180-98a2-a764-ca7bfe286afe" class="track">
@@ -238,7 +239,7 @@
     // Function to check if a session ID exists
     function checkSession() {
         return $.ajax({
-            url: 'http://localhost:3000/auth/api/user',
+            url: `${config.apiBaseUrl}/auth/api/user`,
             method: 'GET',
             credentials: 'include', // Include cookies
             success: function (data) {
@@ -259,7 +260,7 @@
     // Check user's subscription
     function checkSubscription() {
         return $.ajax({
-            url: `http://localhost:3000/recruiter/subscription/${userId}`,
+            url: `${config.apiBaseUrl}/recruiter/subscription/${userId}`,
             method: 'GET',
             credentials: 'include', // Include cookies
             success: function (data) {
@@ -279,7 +280,7 @@
     // Function to activate Standard subscription
     function subscribeStandard() {
         $.ajax({
-            url: `http://localhost:3000/recruiter/subscription-standard/${userId}`,
+            url: `${config.apiBaseUrl}/recruiter/subscription-standard/${userId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Standard subscription activated:', response.message);
@@ -295,7 +296,7 @@
     // Function to activate Value subscription
     function subscribeValue() {
         $.ajax({
-            url: `http://localhost:3000/recruiter/subscription-value/${userId}`,
+            url: `${config.apiBaseUrl}/recruiter/subscription-value/${userId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Value subscription activated:', response.message);
@@ -311,7 +312,7 @@
     // Function to activate Professional subscription
     function subscribeProfessional() {
         $.ajax({
-            url: `http://localhost:3000/recruiter/subscription-professional/${userId}`,
+            url: `${config.apiBaseUrl}/recruiter/subscription-professional/${userId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Professional subscription activated:', response.message);

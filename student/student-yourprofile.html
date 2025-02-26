@@ -16,7 +16,8 @@
   <link href="../css/yuvraj-webcoding-24-25.webflow.css" rel="stylesheet" type="text/css">
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="../images/webclip.png" rel="apple-touch-icon">
+  <link href="../images/webclip.png" rel="apple-touch-icon">    
+  <script src="../js/config.js"></script>
 
   <!-- Webflow Stuff -->
   <!--    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">-->
@@ -334,7 +335,7 @@
   <div class="w-layout-blockcontainer container-232 w-container">
     <div class="w-layout-blockcontainer container-289 w-container">
       <h1 class="heading-3">Information</h1>
-      <a href="../student/student-edityourprofile.html" class="link-block-9 w-inline-block"><img src="../images/image-41.png" loading="lazy" alt="" class="image-33"></a>
+      <a id="edit-button" class="link-block-9 w-inline-block"><img src="../images/image-41.png" loading="lazy" alt="" class="image-33"></a>
     </div>
     <div class="w-layout-blockcontainer container-233 w-container">
       <div class="w-layout-blockcontainer container-234 w-container">
@@ -438,50 +439,76 @@
 <script>
 let userId;
 
-  function checkSession() {
-        return $.ajax({
-            url: 'http://localhost:3000/auth/api/user',
-            method: 'GET',
-            credentials: 'include', // Include cookies
-            success: function (data) {
-                if (!data.user || !data.user.id || data.user.role === "Recruiter") {
-                    // Redirect to index.html if no session ID is found or the user is a recruiter
-                    window.location.href = '../index.html';
-                }
-                userId = data.user.id; // Store the user ID
-            },
-            error: function (error) {
-                // Redirect to index.html if there's an error (e.g., no session)
+function checkSession() {
+    return $.ajax({
+        url: `${config.apiBaseUrl}/auth/api/user`,
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role !== "Student") { // Fix: Check for "Student" role
+                // Redirect to index.html if no session ID is found or the user is not a student
                 window.location.href = '../index.html';
-                console.error('Error fetching user ID:', error);
-            },
-        });
-    }
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
 
-    async function userInfo() { 
-
+async function userInfo() {
     try {
-        const response = await fetch(`http://localhost:3000/student/student-info/${userId}`);
+        const response = await fetch(`${config.apiBaseUrl}/student/student-info/${userId}`);
         if (!response.ok) {
-            throw new Error('Failed to fetch job details');
+            throw new Error('Failed to fetch user details');
         }
-        const data = await response.json();
-        console.log('API Response:', data);
+        const user = await response.json();
+        console.log('API Response:', user);
 
-        if (!data || data.length === 0) {
-            throw new Error('No job data found');
+        if (!user || user.length === 0) {
+            throw new Error('No user data found');
         }
 
-        const user = data[0];
+        // Format the date_of_birth
+        const isoDate = user.date_of_birth; // Assuming this is the ISO date string
+        const date = new Date(isoDate);
+        const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
 
         // Update the HTML with the fetched data
-        document.getElementById('organization_name').textContent = user.organization_name || 'None.';
+        document.getElementById('name').textContent = (user.first_name + " " + user.last_name) || "None";
+        document.getElementById('date-of-birth').textContent = formattedDate || "None"; // Use the formatted date
+        document.getElementById('education').textContent = user.education || "None"
+        document.getElementById('language').textContent = user.language || "None"
+        document.getElementById('bio').textContent = user.bio || "None"
+        document.getElementById('location').textContent = user.current_residence || "None";
+        document.getElementById('preferred-job').textContent = user.job_type || "None"
 
     } catch (error) {
-        console.error('Error fetching job details:', error);
-        document.getElementById('error-message').textContent = 'Failed to fetch job details.';
+        console.error('Error fetching user details:', error);
+        document.getElementById('error-message').textContent = 'Failed to fetch user details.';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    checkSession().then(() => {
+        userInfo(); // Call userInfo after checkSession completes
+    });
+
+    const editButton = document.getElementById('edit-button');
+      if (editButton) {
+          editButton.addEventListener('click', function (event) {
+              event.preventDefault(); // Prevent the default link behavior
+                window.location.href = `student-edityourprofile.html?userId=${userId}`;
+          });
+      } 
+});
 </script>
   <script src="../js/webflow.js" type="text/javascript"></script>
 </body>

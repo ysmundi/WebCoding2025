@@ -20,6 +20,7 @@
     }(window, document);</script>
     <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="../images/webclip.png" rel="apple-touch-icon">
+    <script src="../js/config.js"></script>
 
     <!-- Webflow Stuff -->
 <!--    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">-->
@@ -593,7 +594,7 @@
     // Function to check if a session ID exists
     function checkSession() {
     return $.ajax({
-        url: 'http://localhost:3000/auth/api/user',
+        url: `${config.apiBaseUrl}/auth/api/user`,
         method: 'GET',
         credentials: 'include', // Include cookies
         success: function (data) {
@@ -627,7 +628,7 @@
         }
 
         $.ajax({
-            url: `http://localhost:3000/student/applications/${userId}`,
+            url: `${config.apiBaseUrl}/student/applications/${userId}`,
             method: 'GET',
             credentials: 'include', // Include cookies
             success: function (data) {

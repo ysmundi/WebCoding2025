@@ -43,18 +43,48 @@ router.get('/applications/:userId', isAuthenticated, (req, res) => {
 });
 
 //Get the user information
-router.get('/student-info/:userId', isAuthenticated, (req, res) => {
+router.get('/student-info/:userId', (req, res) => { //isAuthenticated, 
   const userId = req.params.userId;
 
   try {
       db.query('SELECT * FROM users_info WHERE id = ?', [userId], (err, results) => {
-          res.json(results);
+          res.json(results[0]);
         });
   }
   catch(err) {
       res.status(500).json({error: "Server error"})
   }
 });
+
+router.put('/edit-profile/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
+  const { first_name, last_name, date_of_birth, education, location, language, job_type, bio } = req.body;
+
+  const query = `UPDATE users_info
+    SET
+    first_name = ?,
+    last_name = ?,
+    date_of_birth = ?,
+    education = ?,
+    location = ?,
+    language = ?,
+    job_type = ?,
+    bio =?
+    WHERE
+    id = ?;`
+
+    db.query(query, [first_name, last_name, date_of_birth, education, location, language, job_type, bio, userId], (err, result) => {
+      if (err) {
+        console.error('Database error:', err);
+        return res.status(500).json({ error: `Failed to update user's info` });
+      } 
+      if (result === 0) {
+        console.log("User not found");
+        return res.status(404).json({ message: "User not found"});
+      }
+      res.json({ message: `User's data saved` });
+    })
+})
 
 
 

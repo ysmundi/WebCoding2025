@@ -8,7 +8,7 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST || '10.11.90.15',
     user: process.env.DB_USER || 'AppUser',
     password: process.env.DB_PASSWORD || 'Special888%',
-    database: process.env.DB_NAME || 'FBLA_Mobile_Application_2025',
+    database: process.env.DB_NAME || 'fbla_webcoding',
 });
 
 db.connect((err) => {
