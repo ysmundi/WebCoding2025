@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Feb 26 2025 15:50:37 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67a9200ff24e68c0ebd10562" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -200,17 +200,23 @@
     table.dataTable tbody td.date-column {
       position: relative;
       padding-top: 20px; /* Add space for the heading */
+      text-align: left; /* Align the content to the left */
     }
 
-    /* First table: Display "Date Joined" in the date-column */
-    #tableDateJoined tbody td.date-column::before {
-      content: "Date Joined"; /* Display "Date Joined" */
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      font-size: 25px; /* Font size for the text */
+    /* Default style for the "SUBMITTED" text in the date-column */
+    table.dataTable tbody td.date-column::before {
+      content: "Date Joined"; /* Add the heading */
+      font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+    }
+
+    /* Make the text underneath left-aligned as well */
+    table.dataTable tbody td.date-column span {
+      display: block; /* Make it a block-level element */
+      text-align: left; /* Align the text to the left */
     }
 
     /* Make the "Date Joined" text white in blue rows (even rows) */
@@ -218,15 +224,27 @@
       color: white; /* White text for blue rows */
     }
 
-    /* Second table: Keep "Submitted" in the date-column */
-    #tableSubmitted tbody td.date-column::before {
-      content: "Submitted"; /* Display "Submitted" */
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      font-size: 25px; /* Font size for the text */
+    /* Add "Apply Data" heading above Date column text */
+    table.dataTable tbody td.date-column {
+      position: relative;
+      padding-top: 20px; /* Add space for the heading */
+      text-align: left; /* Align the content to the left */
+    }
+
+    /* Default style for the "SUBMITTED" text in the date-column */
+    table.dataTable tbody td.date-column::before {
+      content: "SUBMITTED"; /* Add the heading */
+      font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+    }
+
+    /* Make the text underneath left-aligned as well */
+    table.dataTable tbody td.date-column span {
+      display: block; /* Make it a block-level element */
+      text-align: left; /* Align the text to the left */
     }
 
     /* Make the "Submitted" text white in blue rows (even rows) */
