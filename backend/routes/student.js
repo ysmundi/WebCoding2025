@@ -6,8 +6,7 @@ const isAuthenticated = require('../middlewares/auth');
 router = express.Router();
 
 //POST apply for a job 
-
-router.post('/apply', (req, res) => {
+router.post('/apply', isAuthenticated, (req, res) => {
     const { job_id, user_id, username, email, phone_number, about_you } = req.body;
   
     // Validate input
@@ -43,6 +42,7 @@ router.get('/applications/:userId', isAuthenticated, (req, res) => {
   }
 });
 
+//Get the user information
 router.get('/student-info/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 

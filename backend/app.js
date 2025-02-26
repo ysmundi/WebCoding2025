@@ -41,7 +41,7 @@ app.use('/recruiter', express.static(path.join(__dirname, '../recruiter')));
 app.use('/student', express.static(path.join(__dirname, '../student')));
 app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use('/lib', express.static(path.join(__dirname, '../lib')));
-app.use('/home', express.static(path.join(__dirname, '../home')));
+app.use('/admin', express.static(path.join(__dirname, '../admin')));
 app.use('/login', express.static(path.join(__dirname, '../login')));
 app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/jobs', jobRoutes);
@@ -105,11 +105,11 @@ app.get('/student/profile', (req, res) => {
 //Open admin's pages 
 
 app.get('/admin/home', (req, res) => {
-    res.sendFile(path.join(__dirname, '../home/home-admin.html'));
+    res.sendFile(path.join(__dirname, '../admin/home-admin.html'));
 });
 
 app.get('/admin/recruiter-postings', (req, res) => {
-    res.sendFile(path.join(__dirname, '../home/view-recruiters-postinigs.html'));
+    res.sendFile(path.join(__dirname, '../admin/view-recruiters-postinigs.html'));
 });
 
 app.get('/', (req, res) => {

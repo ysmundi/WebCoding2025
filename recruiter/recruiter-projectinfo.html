@@ -333,7 +333,7 @@
           <h1 data-w-id="019d5788-c289-4bf7-fede-ed7374e11499" class="heading-43">Back</h1>
         </div>
         <div class="w-layout-blockcontainer container-227 w-container">
-          <h1 data-w-id="607d4c7f-c9c0-625b-c0a0-5361c4c1683a" class="heading-44">Delete</h1>
+          <h1 data-w-id="607d4c7f-c9c0-625b-c0a0-5361c4c1683a" class="heading-44" id="delete">Delete</h1>
         </div>
       </div>
     </div>
@@ -576,6 +576,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    
+
     // Fetch data from the API and populate the table
     function fetchAndPopulateTable() {
         const jobId = getQueryParam('jobId'); // Get the job ID from the URL
@@ -619,6 +621,34 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         });
     }
+
+    function deletePosting(jobId) {
+      if (!jobId) {
+          console.error('Job ID not found');
+          alert('Job ID is missing. Please refresh the page and try again.');
+          return;
+      }
+
+      $.ajax({
+          url: `http://localhost:3000/recruiter/delete-posting/${jobId}`,
+          method: 'DELETE',
+          success: function (response) {
+              console.log('Posting denied:', response.message);
+              alert('Posting denied successfully!');
+              window.location.href = `home-recruiter.html`;
+          },
+          error: function (error) {
+              console.error('Error denying posting:', error.responseJSON.error);
+              alert('Failed to deny posting. Please try again.');
+          },
+          });
+      }
+
+      $('#delete').on('click', function () {
+        const jobId = getQueryParam('jobId'); 
+
+        deletePosting(jobId);
+      });
 
     // Handle custom "Show entries" dropdown
     $('#entriesSelect').on('change', function () {

@@ -5,11 +5,90 @@ const isAuthenticated = require('../middlewares/auth');
 
 const router = express.Router();
 
+//Check user subscription 
+router.get('/subscription/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
+
+  const sql = 'SELECT subscription FROM users_info WHERE id = ?';
+
+  db.query(sql, [userId], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: "Server error" });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return success response
+    res.status(201).json(result[0] );
+  })
+});
+
+//Activate standard subscription 
+router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
+
+  const sql = 'UPDATE users_info SET subscription = "Standard" WHERE id = ?';
+
+  db.query(sql, [userId], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: "Server error" });
+    }
+     
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return success response
+    res.status(201).json({ message: 'Standard subscription is activated!' });
+  })
+});
+
+//Acivate value subscription 
+router.post('/subscription-value/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
+
+  const sql = 'UPDATE users_info SET subscription = "Value" WHERE id = ?';
+
+  db.query(sql, [userId], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: "Server error" });
+    }
+     
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return success response
+    res.status(201).json({ message: 'Value subscription is activated!' });
+  })
+});
+
+//Activate professional subscription 
+router.post('/subscription-professional/:userId', isAuthenticated, (req, res) => {
+  const userId = req.params.userId;
+
+  const sql = 'UPDATE users_info SET subscription = "Professional" WHERE id = ?';
+
+  db.query(sql, [userId], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: "Server error" });
+    }
+     
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return success response
+    res.status(201).json({ message: 'Professional subscription is activated!' });
+  })
+});
+
+
+
 // POST /recruiter/post-job - Create a new job posting
-router.post('/post-job', (req, res) => {
+router.post('/post-job', isAuthenticated, (req, res) => {
     const jobData = req.body;
-    // Add user_id from authenticated user session/token
-    // ...
   
     db.query('INSERT INTO job_postings SET ?', jobData, (err, result) => {
       if (err) {
@@ -24,9 +103,8 @@ router.post('/post-job', (req, res) => {
     });
   });
   
-//GET get applications 
-
-router.get('/pending-job-applications/:jobId', (req, res) => {
+//GET get pending applications 
+router.get('/pending-job-applications/:jobId', isAuthenticated, (req, res) => {
     const status = 'pending'
     const jobId = req.params.jobId;
 
@@ -40,7 +118,8 @@ router.get('/pending-job-applications/:jobId', (req, res) => {
     }
 })
 
-router.get('/accepted-job-applications/:jobId', (req, res) => {
+//GET accepted applications 
+router.get('/accepted-job-applications/:jobId', isAuthenticated, (req, res) => {
   const status = 'accepted'
   const jobId = req.params.jobId;
 
@@ -55,8 +134,8 @@ router.get('/accepted-job-applications/:jobId', (req, res) => {
 })
 
 
-//get information about job 
-router.get('/posting-info/:jobId', isAuthenticated, (req, res) => {
+//Get information about job by its id
+router.get('/posting-info/:jobId', isAuthenticated, (req, res) => { 
   const jobId = req.params.jobId;
 
   try {
@@ -69,8 +148,8 @@ router.get('/posting-info/:jobId', isAuthenticated, (req, res) => {
   }
 })
 
-//update status of application 
-router.put('/accept-application/:id', (req, res) => {
+//PUT accept application
+router.put('/accept-application/:id', isAuthenticated, (req, res) => {
   const applicationId = req.params.id; // Get the application ID from the URL parameter
 
   // Validate the application ID
@@ -102,8 +181,8 @@ router.put('/accept-application/:id', (req, res) => {
   });
 });
 
-//delete application 
-router.put('/reject-application/:id', (req, res) => {
+//PUT reject application 
+router.put('/reject-application/:id', isAuthenticated, (req, res) => {
   const applicationId = req.params.id; // Get the application ID from the URL parameter
 
   // Validate the application ID
@@ -135,8 +214,8 @@ router.put('/reject-application/:id', (req, res) => {
   });
 })
 
-//suspend application 
-router.put('/suspend-application/:id', (req, res) => {
+//PUT suspend application 
+router.put('/suspend-application/:id', isAuthenticated, (req, res) => {
   const applicationId = req.params.id; // Get the application ID from the URL parameter
 
   // Validate the application ID
@@ -167,5 +246,73 @@ router.put('/suspend-application/:id', (req, res) => {
     res.json({ message: 'Application suspend successfully' });
   });
 })
+
+//DELETE job posting 
+router.delete('/delete-posting/:jobId', isAuthenticated, (req, res) => {
+  const jobId = req.params.jobId; // Get the job ID from the URL parameter
+
+  // Validate the job ID
+  if (!jobId || isNaN(jobId)) {
+    return res.status(400).json({ error: 'Invalid job ID' });
+  }
+
+  // Start a transaction to ensure atomicity
+  db.beginTransaction((err) => {
+    if (err) {
+      console.error('Transaction error:', err);
+      return res.status(500).json({ error: 'Failed to start transaction' });
+    }
+
+    // Step 1: Delete all applications associated with the job ID
+    const deleteApplicationsQuery = `
+      DELETE FROM job_applications
+      WHERE job_id = ?
+    `;
+
+    db.query(deleteApplicationsQuery, [jobId], (err, result) => {
+      if (err) {
+        return db.rollback(() => {
+          console.error('Database error (delete applications):', err);
+          res.status(500).json({ error: 'Failed to delete applications' });
+        });
+      }
+
+      // Step 2: Delete the job posting
+      const deletePostingQuery = `
+        DELETE FROM job_postings
+        WHERE job_id = ?
+      `;
+
+      db.query(deletePostingQuery, [jobId], (err, result) => {
+        if (err) {
+          return db.rollback(() => {
+            console.error('Database error (delete posting):', err);
+            res.status(500).json({ error: 'Failed to delete posting' });
+          });
+        }
+
+        // Check if the posting was found and deleted
+        if (result.affectedRows === 0) {
+          return db.rollback(() => {
+            res.status(404).json({ error: 'Posting not found' });
+          });
+        }
+
+        // Commit the transaction if everything is successful
+        db.commit((err) => {
+          if (err) {
+            return db.rollback(() => {
+              console.error('Commit error:', err);
+              res.status(500).json({ error: 'Failed to commit transaction' });
+            });
+          }
+
+          // Return success response
+          res.json({ message: 'Posting and associated applications deleted successfully' });
+        });
+      });
+    });
+  });
+});
 
 module.exports = router;
