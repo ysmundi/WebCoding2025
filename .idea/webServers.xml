@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="650b9e88-47aa-486a-873b-72db6479f550" name="jobconn">
+        <fileTransfer rootFolder="/var/www/FBLA/WebCoding/jobconn2025" accessType="SFTP" host="jobconn.northernhorizon.org" port="5532" sshConfigId="4080878e-a92a-4ad2-9527-24f11d9d35b6" sshConfig="naastudent@jobconn.northernhorizon.org:5532 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
