@@ -18,8 +18,8 @@
         var n = c.documentElement, t = " w-mod-";
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
     }(window, document);</script>
-    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="../images/webclip.png" rel="apple-touch-icon">
+    <link href="../images/Group-102.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../images/Group-102.png" rel="apple-touch-icon">
 
     <!-- Webflow Stuff -->
 <!--    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">-->
@@ -36,7 +36,7 @@
 
         /* Set the background color for the entire table */
         table.dataTable {
-            width: 100%;
+            width: 90vw !important;
             border-collapse: collapse;
             font-family: Arial, sans-serif;
         }
@@ -185,18 +185,25 @@
         table.dataTable tbody td.date-column {
             position: relative;
             padding-top: 20px; /* Add space for the heading */
+            text-align: left; /* Align the content to the left */
         }
 
         /* Default style for the "SUBMITTED" text in the date-column */
         table.dataTable tbody td.date-column::before {
             content: "SUBMITTED"; /* Add the heading */
-            position: absolute;
-            top: 50px;
-            left: 10px;
             font-size: 25px; /* Font size for the heading */
             font-weight: bold; /* Bold text */
             color: black; /* Default black color for white rows */
+            display: block; /* Make it a block-level element */
+            margin-bottom: 10px;
         }
+
+        /* Make the text underneath left-aligned as well */
+        table.dataTable tbody td.date-column span {
+            display: block; /* Make it a block-level element */
+            text-align: left; /* Align the text to the left */
+        }
+
 
         /* Make the "SUBMITTED" text white in blue rows (even rows) */
         table.dataTable tbody tr:nth-child(even) td.date-column::before {
