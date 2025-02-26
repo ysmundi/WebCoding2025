@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cebf18df-0966-4f4e-b69f-04b826aa3a11" name="Changes" comment="After comparison with ywebflow branch">
-      <change afterPath="$PROJECT_DIR$/student/testete.html" afterDir="false" />
+    <list default="true" id="cebf18df-0966-4f4e-b69f-04b826aa3a11" name="Changes" comment="test changes">
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-yourprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-yourprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/testete.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +17,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="origin/Yuvraj" />
@@ -88,7 +97,7 @@
       <workItem from="1739464008186" duration="78000" />
       <workItem from="1739480759051" duration="48000" />
       <workItem from="1740524532945" duration="2164000" />
-      <workItem from="1740531616607" duration="867000" />
+      <workItem from="1740531616607" duration="1964000" />
     </task>
     <task id="LOCAL-00001" summary=".idea fix">
       <option name="closed" value="true" />
@@ -106,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739407458150</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="test changes">
+      <option name="closed" value="true" />
+      <created>1740533495391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740533495391</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,7 +133,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/Yuvraj' into Yuvraj" />
     <MESSAGE value=".idea fix" />
     <MESSAGE value="After comparison with ywebflow branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="After comparison with ywebflow branch" />
+    <MESSAGE value="test changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="test changes" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
