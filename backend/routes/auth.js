@@ -1,23 +1,13 @@
 const express = require('express');
 const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
 const db = require('../config/database');
-const checkUserRole = require('../middlewares/auth'); 
 
 
 const router = express.Router();
 router.use(express.json());
 
-// Session store using MySQL
-
-
-
-
-/**
- * @route POST /register
- * @desc Register a new user
- */
+//Register new user
 router.post('/register', async (req, res) => {
   const {
     first_name,
@@ -95,10 +85,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-/**
- * @route POST /login
- * @desc Log in a user and store their session
- */
+//Log in user 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -138,10 +125,7 @@ router.post('/login', async (req, res) => {
     );
     });
 
-/**
- * @route GET /user
- * @desc Get the logged-in user's details
- */
+//Get user information
 router.get('/user', (req, res) => {
   if (!req.session.userId) {
     return res.status(401).send({ message: 'Not authenticated' });
@@ -174,10 +158,7 @@ router.get('/user', (req, res) => {
   );
 });
 
-/**
- * @route POST /logout
- * @desc Log out the user and destroy their session
- */
+//Log out user 
 router.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).send({ message: 'Logout failed' });

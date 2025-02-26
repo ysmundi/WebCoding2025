@@ -70,8 +70,10 @@
         // Redirect to the home page after successful login
         if (data.user.role == "Student") {
           window.location.href = '../student/student-home.html';
-        } else {
-          window.location.href = '../recruiter/home-recruiter.html';
+        } else if (data.user.role == 'Recruiter') {
+          window.location.href = '../recruiter/recruiter-homebeforepaying.html';
+        } else if (data.user.role == 'Admin') {
+          window.location.href = '../admin/home-admin.html';
         }
       } else {
         alert(data.message);
