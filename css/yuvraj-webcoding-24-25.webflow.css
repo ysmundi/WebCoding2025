@@ -8077,7 +8077,7 @@
 
   .container-213 {
     flex-flow: column;
-    height: 20vh;
+    height: auto;
   }
 
   .container-214 {
@@ -8568,11 +8568,21 @@
     color: #000;
   }
 
-  .dropdown-link-9, .dropdown-link-10, .dropdown-link-11 {
+  .dropdown-link-9, .dropdown-link-10 {
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 5vh;
+    display: flex;
+  }
+
+  .dropdown-link-11 {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    font-size: 14px;
+    line-height: 14px;
     display: flex;
   }
 
@@ -9033,7 +9043,7 @@
     align-items: center;
     width: 100%;
     height: 20vh;
-    display: flex;
+    display: none;
   }
 
   .container-338 {
