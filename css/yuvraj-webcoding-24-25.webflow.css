@@ -2722,6 +2722,7 @@
 }
 
 .form-block-5 {
+  flex-flow: column;
   width: 96%;
   height: 90%;
   margin-bottom: 0;
