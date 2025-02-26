@@ -43,7 +43,7 @@ router.get('/applications/:userId', isAuthenticated, (req, res) => {
 });
 
 //Get the user information
-router.get('/student-info/:userId', (req, res) => { //isAuthenticated, 
+router.get('/student-info/:userId', isAuthenticated, (req, res) => { //
   const userId = req.params.userId;
 
   try {
@@ -56,7 +56,7 @@ router.get('/student-info/:userId', (req, res) => { //isAuthenticated,
   }
 });
 
-router.put('/edit-profile/:userId', (req, res) => { //isAuthenticated, 
+router.put('/edit-profile/:userId', isAuthenticated, (req, res) => { //isAuthenticated, 
   const userId = req.params.userId;
   const { first_name, last_name, date_of_birth, education, location, language, job_type, bio } = req.body;
 
