@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Feb 23 2025 16:38:07 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67a9200ff24e68c0ebd10562" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -250,6 +250,7 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      line-height: 1.2;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -314,18 +315,32 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="pop-up">
     <div class="pop-up-item">
-      <div class="w-layout-blockcontainer container-222 w-container"><img src="../images/Group-109.png" loading="lazy" alt="">
-        <h1 class="heading-41">IMPORTANT</h1><img src="../images/Group-109.png" loading="lazy" alt="">
+      <div class="w-layout-blockcontainer container-222 w-container"><img src="../images/Group-109.png" loading="lazy" alt="" class="image-38">
+        <h1 class="heading-41">IMPORTANT</h1><img src="../images/Group-109.png" loading="lazy" alt="" class="image-37">
       </div>
       <div class="w-layout-blockcontainer container-223 w-container">
         <div class="w-layout-blockcontainer container-225 w-container">
           <h1 class="heading-42">Are you sure you want to <span class="text-span-8">completely</span> delete this project?</h1>
-          <div class="text-block-53">This is some text inside of a div block.</div>
         </div>
       </div>
       <div class="w-layout-blockcontainer container-224 w-container">
@@ -350,6 +365,71 @@
       </div>
       <div class="w-layout-blockcontainer container-200 w-container">
         <div class="text-block-46"><strong data-w-id="1bd3fe0f-de08-ec5c-6ac2-82f36df9804d" class="bold-text-9">DELETE</strong></div>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-292 w-container">
+      <div class="w-layout-blockcontainer container-293 w-container">
+        <div class="w-layout-blockcontainer container-294 w-container">
+          <h1 class="heading-40">Information</h1>
+        </div>
+        <div class="w-layout-blockcontainer container-295 w-container">
+          <a href="../recruiter/posting-jobs-form.html" class="button-13 w-button">Edit</a>
+        </div>
+      </div>
+      <div class="w-layout-blockcontainer container-203 w-container">
+        <div class="w-layout-blockcontainer container-213 w-container">
+          <div class="text-block-47"><strong>Junior Ranger</strong></div>
+          <div class="w-layout-blockcontainer container-205 w-container">
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-215 w-container">
+                <div class="text-block-48">Position Type</div>
+              </div>
+              <div class="w-layout-blockcontainer container-212 w-container">
+                <div class="text-block-49">On Site</div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Location</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">Mariposa, CA</strong></div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Salary</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">$2,000.00/Month</strong></div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Duration of Contract</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">2024 - 2025</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-layout-blockcontainer container-214 w-container">
+          <div class="text-block-52"><strong class="bold-text-12">Requirements</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong>Responsibilities</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        </div>
+      </div>
+      <div class="w-layout-blockcontainer container-204 w-container">
+        <div class="w-layout-blockcontainer container-218 w-container">
+          <div class="text-block-52"><strong class="bold-text-12">About</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong class="bold-text-12">Nice To Have</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong class="bold-text-12">Why work with us?</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        </div>
       </div>
     </div>
     <div class="w-layout-blockcontainer container-201 w-container">

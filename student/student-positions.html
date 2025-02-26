@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Feb 23 2025 16:38:07 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="679fce7689017aa5c609e6c6" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -22,6 +22,11 @@
   <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>-->
   <script src="../lib/jquery/jquery.dataTables.min.js"></script>
   <style>
+    .container-182V2 {
+      width: 100%;
+      max-width: none;
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -213,6 +218,7 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      line-height: 1.2;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -272,6 +278,21 @@
     table.dataTable thead th.submitted-column,
     table.dataTable tbody td.submitted-column {
       width: 25%; /* 22.5% of the viewport width */
+    }
+
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+      }
     }
 
   </style>

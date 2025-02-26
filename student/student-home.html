@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Feb 23 2025 16:38:07 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67717869e48403be61d8e533" data-wf-site="676715cb815e8f01731dca22">
 <head>
     <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -219,6 +219,7 @@
         table.dataTable tbody td.name-column {
             font-size: 60px; /* Larger font size */
             font-weight: bold; /* Make it bold */
+            line-height: 1.2;
         }
 
         table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -278,6 +279,21 @@
         table.dataTable thead th.submitted-column,
         table.dataTable tbody td.submitted-column {
             width: 25%; /* 22.5% of the viewport width */
+        }
+
+        @media (max-width: 700px) {
+            .container-220,  .container-221 {
+                overflow: auto;
+            }
+
+            table.dataTable {
+                width: 750px !important;
+            }
+
+            table.dataTable tbody td.name-column {
+                font-size: 40px; /* Larger font size */
+                font-weight: bold; /* Make it bold */
+            }
         }
 
     </style>
@@ -353,87 +369,92 @@
   </section>
   <section class="dashboard">
     <div class="w-layout-blockcontainer container-179 w-container">
-        <h1 class="heading-37">DASHBOARD</h1>
-        <div class="w-layout-blockcontainer container-180 w-container">
-            <h1 class="heading-38" id="Your-Applications">Your Applications</h1>
-            <div class="w-layout-blockcontainer container-181 w-container"></div>
-        </div>
-        <div class="datatable-controls">
-            <label>
-                Show
-                <select id="entriesSelect">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                entries
-            </label>
-            <label>
-                Search: <input type="text" id="searchInput">
-            </label>
-        </div>
-        <div class="w-layout-blockcontainer container-182 w-container">
-            <table class="display" id="myTable">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <div class="w-layout-blockcontainer container-180 w-container">
-            <h1 class="heading-38" id="Positions">Positions</h1>
-            <div class="w-layout-blockcontainer container-183 w-container"></div>
-            <a class="button-9 w-button" href="student-positions.html">View More</a>
-        </div>
-        <div class="w-layout-blockcontainer container-184 w-container"></div>
-        <div class="w-layout-grid grid">
-            <div class="w-layout-blockcontainer container-28 w-container"
-                 id="w-node-_19b95752-0c08-c640-f984-30c422ea9671-61d8e533">
-                <div class="w-layout-blockcontainer container-31 w-container">
-                    <div class="text-block-14">USNPS</div>
-                    <div class="text-block-14">Forest Service</div>
-                    <div class="text-block-14">Jackson, WY</div>
-                </div>
+      <h1 id="Dashboard" class="heading-37">DASHBOARD</h1>
+      <div class="w-layout-blockcontainer container-180 w-container">
+        <h1 id="Your-Applications" class="heading-38">Your Applications</h1>
+      </div>
+      <div class="w-layout-blockcontainer container-182 w-container">
+          <div class="datatable-controls">
+              <label>
+                  Show
+                  <select id="entriesSelect">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                  </select>
+                  entries
+              </label>
+              <label>
+                  Search: <input type="text" id="searchInput">
+              </label>
+          </div>
+          <div class="w-layout-blockcontainer container-182 w-container">
+              <table class="display" id="myTable">
+                  <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="w-layout-blockcontainer container-180 w-container">
+        <h1 id="Positions" class="heading-38">New Positions</h1>
+        <a href="../student/student-positions.html" target="_blank" class="button-9 w-button">View More</a>
+      </div>
+      <div class="w-layout-blockcontainer container-184 w-container"></div>
+      <div class="w-layout-grid grid">
+        <a href="../student/student-appicationpage.html" class="link-block-4 w-inline-block">
+          <div class="w-layout-blockcontainer container-28 w-container">
+            <div class="w-layout-blockcontainer container-31 w-container">
+              <div class="text-block-14">USNPS</div>
+              <div class="text-block-14">Forest Service</div>
+              <div class="text-block-14">Jackson, WY</div>
             </div>
-            <div class="w-layout-blockcontainer container-28 w-container"
-                 id="w-node-_19b95752-0c08-c640-f984-30c422ea9680-61d8e533">
-                <div class="w-layout-blockcontainer container-31 w-container">
-                    <div class="text-block-14">USNPS</div>
-                    <div class="text-block-14">Forest Service</div>
-                    <div class="text-block-14">Jackson, WY</div>
-                </div>
+          </div>
+        </a>
+        <a href="../student/student-appicationpage.html" class="link-block-3 w-inline-block">
+          <div class="w-layout-blockcontainer container-268 w-container">
+            <div class="w-layout-blockcontainer container-269 w-container">
+              <div class="text-block-71">Feitian College</div>
+              <div class="text-block-72">Graphic Designer</div>
+              <div class="text-block-73">Middletown, NY</div>
             </div>
-            <div class="w-layout-blockcontainer container-28 w-container"
-                 id="w-node-_19b95752-0c08-c640-f984-30c422ea968f-61d8e533">
-                <div class="w-layout-blockcontainer container-31 w-container">
-                    <div class="text-block-14">USNPS</div>
-                    <div class="text-block-14">Forest Service</div>
-                    <div class="text-block-14">Jackson, WY</div>
-                </div>
+          </div>
+        </a>
+        <a href="../student/student-appicationpage.html" class="link-block-5 w-inline-block">
+          <div class="w-layout-blockcontainer container-270 w-container">
+            <div class="w-layout-blockcontainer container-271 w-container">
+              <div class="text-block-92">State of Hawaii</div>
+              <div class="text-block-93">MARINE BIOLOGIST</div>
+              <div class="text-block-94">Honolulu, HI</div>
             </div>
-            <div class="w-layout-blockcontainer container-28 w-container"
-                 id="w-node-c2bb0a55-f341-32fb-e166-84cd74e73cda-61d8e533">
-                <div class="w-layout-blockcontainer container-31 w-container">
-                    <div class="text-block-14">USNPS</div>
-                    <div class="text-block-14">Forest Service</div>
-                    <div class="text-block-14">Jackson, WY</div>
-                </div>
+          </div>
+        </a>
+        <a href="../student/student-appicationpage.html" class="link-block-6 w-inline-block">
+          <div class="w-layout-blockcontainer container-328 w-container">
+            <div class="w-layout-blockcontainer container-329 w-container">
+              <div>James Huntington</div>
+              <div class="text-block-95">Photographer</div>
+              <div>NYC</div>
             </div>
-            <div class="w-layout-blockcontainer container-28 w-container"
-                 id="w-node-_32cc80ec-6a3e-83b0-6d2e-120ba615d986-61d8e533">
-                <div class="w-layout-blockcontainer container-31 w-container">
-                    <div class="text-block-14">USNPS</div>
-                    <div class="text-block-14">Forest Service</div>
-                    <div class="text-block-14">Jackson, WY</div>
-                </div>
+          </div>
+        </a>
+        <a href="../student/student-appicationpage.html" class="link-block-7 w-inline-block">
+          <div class="w-layout-blockcontainer container-330 w-container">
+            <div class="w-layout-blockcontainer container-331 w-container">
+              <div>Tennessee Medical Center</div>
+              <div class="text-block-96">Nurse (RN)</div>
+              <div>Nasheville, TN</div>
             </div>
-        </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
   <section id="tutorial" class="tutorial">
@@ -460,27 +481,43 @@
     <div class="w-layout-blockcontainer container-189 w-container">
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Guide</strong></div>
-        <div class="text-block-40">Your Profile</div>
-        <div class="text-block-41">Dashboard</div>
-        <div class="text-block-42">My List</div>
-        <div class="text-block-43">Potential Applicants</div>
+        <a href="#Events-Home" class="link-block-22 w-inline-block">
+          <div class="text-block-40">Home</div>
+        </a>
+        <a href="#Your-Applications" class="link-block-23 w-inline-block">
+          <div class="text-block-41">Your Applications</div>
+        </a>
+        <a href="../student/student-positions.html" class="link-block-24 w-inline-block">
+          <div class="text-block-42">Positions</div>
+        </a>
+        <a href="#tutorial" class="link-block-25 w-inline-block">
+          <div class="text-block-43">Tutorial</div>
+        </a>
+        <a href="../student/student-yourprofile.html" class="link-block-26 w-inline-block">
+          <div class="text-block-97">Your Profile</div>
+        </a>
       </div>
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Help</strong></div>
-        <div>Settings</div>
-        <div>Terms &amp; Coditions</div>
-        <div>Privacy Policy</div>
+          <a href="../help/terms&conditions.html" class="link-block-27 w-inline-block">
+          <div>Terms &amp; Coditions</div>
+        </a>
+          <a href="../help/privacy-policy.html" class="link-block-28 w-inline-block">
+          <div>Privacy Policy</div>
+        </a>
       </div>
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Contact Us</strong></div>
-        <div>jobconn@gmail.com</div>
+        <a href="mailto:jobconn@gmail.com?subject=Help%20Needed" class="link-block-29 w-inline-block">
+          <div>jobconn@gmail.com</div>
+        </a>
       </div>
       <div class="w-layout-blockcontainer container-194 w-container"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-21"></div>
     </div>
   </section>
   <div class="w-layout-blockcontainer container-5 w-container"><img loading="lazy" src="../images/Group-102.png" alt="" class="image-2">
     <div class="text-block-3">
-      <a href="#Events-Home" class="link-4"><strong>Home</strong></a>
+      <a href="#Events-Home" class="link-4"><strong class="bold-text-30">Home</strong></a>
     </div>
     <div class="text-block-3">
       <a href="#Your-Applications" class="link-5"><strong class="bold-text-13">Your Applications</strong></a>
@@ -499,10 +536,12 @@
         <div class="text-block-75">NAVIGATION</div>
       </div>
       <nav class="dropdown-list-3 w-dropdown-list">
-        <a href="#" class="dropdown-link-5 w-dropdown-link">Your Profile</a>
-        <a href="#" class="dropdown-link-6 w-dropdown-link">Dashboard</a>
-        <a href="#" class="dropdown-link-7 w-dropdown-link">Positions</a>
-        <a href="#" class="dropdown-link-8 w-dropdown-link">Tutorials</a>
+        <a href="#Events-Home" class="dropdown-link-5 w-dropdown-link">Home</a>
+        <a href="#Dashboard" class="dropdown-link-6 w-dropdown-link">Dashboard</a>
+        <a href="../student/student-positions.html" class="dropdown-link-7 w-dropdown-link">Positions</a>
+        <a href="#tutorial" class="dropdown-link-8 w-dropdown-link">Tutorials</a>
+        <a href="../student/student-yourprofile.html" class="dropdown-link-17 w-dropdown-link">Your Profile</a>
+        <a href="#" class="dropdown-link-18 w-dropdown-link">Log-Out</a>
       </nav>
     </div>
     <div data-hover="false" data-delay="0" class="dropdown-5 w-dropdown">
@@ -527,6 +566,25 @@
       <h1 class="heading-60">JOB CONN</h1>
     </div>
   </section>
+  <div class="w-layout-blockcontainer container-325 w-container">
+    <div class="w-layout-blockcontainer container-326 w-container">
+      <div data-hover="false" data-delay="0" class="dropdown-9 w-dropdown">
+        <div class="dropdown-toggle-7 w-dropdown-toggle"><img src="../images/image-47.png" loading="lazy" alt="" class="image-35"></div>
+        <nav class="dropdown-list-8 w-dropdown-list"><img src="../images/Group-102.png" loading="lazy" alt="" class="image-36">
+          <a href="#Events-Home" class="dropdown-link-13 w-dropdown-link">Home</a>
+          <a href="#Dashboard" class="dropdown-link-16 w-dropdown-link">Dashboard</a>
+          <a href="../student/student-positions.html" class="dropdown-link-15 w-dropdown-link">Positions</a>
+          <a href="#tutorial" class="dropdown-link-14 w-dropdown-link">Tutorial</a>
+          <a href="#" class="dropdown-link-12 w-dropdown-link">Log Out</a>
+        </nav>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-327 w-container">
+      <a href="../student/student-yourprofile.html" class="link-block-11 w-inline-block">
+        <h1 class="heading-75">John Doe</h1>
+      </a>
+    </div>
+  </div>
 <script>
   $(document).ready(function () {
     let table;
