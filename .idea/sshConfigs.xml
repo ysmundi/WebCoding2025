@@ -3,6 +3,7 @@
   <component name="SshConfigs">
     <configs>
       <sshConfig authType="PASSWORD" host="jobconn.northernhorizon.org" id="4080878e-a92a-4ad2-9527-24f11d9d35b6" port="5532" nameFormat="DESCRIPTIVE" username="naastudent" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="app.northernhorizon.org" id="55c051c0-1031-47d3-94d6-617368472cfb" port="5532" nameFormat="DESCRIPTIVE" username="ansonz" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

@@ -17,7 +17,7 @@ const sessionStore = new MySQLStore({}, db);
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000',
+app.use(cors({ origin: process.env.CLIENT_URL,
     credentials: true
  }));
 app.use(
@@ -119,8 +119,6 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../login/login-1.html'));
 });
-
- 
 
 
 module.exports = app;

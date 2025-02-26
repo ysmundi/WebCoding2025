@@ -3,9 +3,9 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="650b9e88-47aa-486a-873b-72db6479f550" name="jobconn">
-        <fileTransfer rootFolder="/var/www/FBLA/WebCoding/jobconn2025/current" accessType="SFTP" host="jobconn.northernhorizon.org" port="5532" sshConfigId="4080878e-a92a-4ad2-9527-24f11d9d35b6" sshConfig="naastudent@jobconn.northernhorizon.org:5532 password">
+        <fileTransfer rootFolder="/var/www/FBLA/WebCoding/jobconn2025" accessType="SFTP" host="app.northernhorizon.org" port="5532" sshConfigId="55c051c0-1031-47d3-94d6-617368472cfb" sshConfig="ansonz@app.northernhorizon.org:5532 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseSudo="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
