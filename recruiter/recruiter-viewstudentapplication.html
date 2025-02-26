@@ -51,10 +51,10 @@
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
           <div class="w-layout-blockcontainer container-161 w-container">
-            <div class="text-block-107">Location</div>
+            <div class="text-block-107" >Location</div>
           </div>
           <div class="w-layout-blockcontainer container-162 w-container">
-            <div class="text-block-28"><strong class="bold-text-29">Cambridge, MA</strong></div>
+            <div class="text-block-28" id="location"><strong class="bold-text-29">Cambridge, MA</strong></div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
@@ -62,15 +62,15 @@
             <div class="text-block-108">Salary</div>
           </div>
           <div class="w-layout-blockcontainer container-162 w-container">
-            <div><strong class="bold-text-6">$110,000/Hr</strong></div>
+            <div><strong class="bold-text-6" id="salary">$110,000/Hr</strong></div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
           <div class="w-layout-blockcontainer container-161 w-container">
-            <div class="text-block-106">Duration of Contract</div>
+            <div class="text-block-106">Deadline of Contract</div>
           </div>
           <div class="w-layout-blockcontainer container-162 w-container">
-            <div><strong class="bold-text-7">2024 - 2029</strong></div>
+            <div><strong class="bold-text-7" id="deadline">2024 - 2029</strong></div>
           </div>
         </div>
         <h1 class="heading-82">Requirements</h1>
@@ -89,7 +89,7 @@
             <div class="text-block-64" id="phone_number">845-121-1212</div>
             <div class="w-layout-blockcontainer container-266 w-container">
               <div class="text-block-69">View John Doe&#x27;s Profile</div>
-              <a href="#" class="button-18 w-button">View</a>
+              <a class="button-18 w-button" id="view">View</a>
             </div>
             <div class="text-block-70">John Doe&#x27;s Message</div>
             <p class="paragraph-18" id="about_you">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
@@ -132,7 +132,7 @@
             <div>Salary</div>
           </div>
           <div class="w-layout-blockcontainer container-162 w-container">
-            <div><strong class="bold-text-6" id="salary">$110,000/Hr</strong></div>
+            <div><strong class="bold-text-6" >$110,000/Hr</strong></div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
@@ -257,7 +257,6 @@
                 document.getElementById('about').textContent = job.about || 'No about information available.';
                 document.getElementById('nice-to-have').textContent = job.nice_to_have || 'No nice-to-have information available.';
                 document.getElementById('why-work-with-us').textContent = job.why_work_with_us || 'No information available.';
-
                 // Store the job_id for later use
                 window.jobId = job.job_id;
             } else {
@@ -268,6 +267,41 @@
             document.getElementById('error-message').textContent = 'Failed to fetch job details.';
         }
     }
+
+    async function viewStudentsProfile() {
+    const applicationId = getQueryParam('applicationId'); // Get the application ID from the URL
+
+    if (!applicationId) {
+        console.error('Application ID not found in the URL');
+        document.getElementById('error-message').textContent = 'Application ID not found in the URL.';
+        return;
+    }
+
+    console.log('Fetching application details for applicationId:', applicationId);
+
+    try {
+        // Fetch application details
+        const response = await fetch(`${config.apiBaseUrl}/jobs/application-info/${applicationId}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch application details');
+        }
+        const data = await response.json();
+        console.log('Application Data:', data);
+
+        // Check if the response contains an error
+        if (data.error) {
+            console.error('API Error:', data.error);
+            return;
+        }
+
+        const userId = data[0].user_id;
+        window.location.href = `recruiter-viewstudentprofile.html?userId=${userId}`;
+    } catch (err) {
+        console.error('Error fetching application details:', err);
+        document.getElementById('error-message').textContent = 'Failed to fetch application details.';
+    }
+}
+
 
     // Call the function when the page loads
     document.addEventListener('DOMContentLoaded', function () {
@@ -296,6 +330,14 @@
             });
         } else {
             console.error('Reject button not found');
+        }
+
+        const viewStudentPage = document.getElementById('view');
+        if (viewStudentPage) {
+            viewStudentPage.addEventListener('click', function (event) {
+                event.preventDefault();
+                viewStudentsProfile(); // Call the correct function
+            });
         }
     });
 

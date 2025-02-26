@@ -38,49 +38,148 @@
         <div class="w-layout-blockcontainer container-233 w-container">
           <div class="w-layout-blockcontainer container-234 w-container">
             <div class="w-layout-blockcontainer container-305 w-container">
-              <div class="text-block-54">First name:</div><input class="text-field-20 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" type="text" id="field">
+              <div class="text-block-54">First name:</div><input class="text-field-20 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" type="text" id="first-name">
             </div>
             <div class="w-layout-blockcontainer container-305 w-container">
-              <div class="text-block-54">Last name:</div><input class="text-field-20 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" type="text" id="field">
+              <div class="text-block-54">Last name:</div><input class="text-field-20 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" type="text" id="last-name">
             </div>
             <div class="w-layout-blockcontainer container-306 w-container"><input type="submit" data-wait="Please wait..." class="submit-button-7 w-button" value="DONE"></div>
           </div>
           <div class="w-layout-blockcontainer container-235 w-container">
-            <div class="text-block-54">Date of Birth:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="field-2">
+            <div class="text-block-54">Date of Birth:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="date-of-birth">
           </div>
           <div class="w-layout-blockcontainer container-236 w-container">
-            <div class="text-block-54">Education:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="field-2">
+            <div class="text-block-54">Education:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="education">
           </div>
           <div class="w-layout-blockcontainer container-237 w-container">
-            <div class="text-block-54">Location:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="field-2">
+            <div class="text-block-54">Location:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="location">
           </div>
           <div class="w-layout-blockcontainer container-238 w-container">
-            <div class="text-block-54">Language:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="field-2">
+            <div class="text-block-54">Language:</div><input class="text-field-21 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" type="text" id="language">
           </div>
           <div class="w-layout-blockcontainer container-241 w-container">
-            <div class="text-block-54">Preferred Job Type:</div><select id="field-3" name="field-3" data-name="Field 3" class="select-field-15 w-select">
+            <div class="text-block-54">Preferred Job Type:</div><select id="job_type" name="field-3" data-name="Field 3" class="select-field-15 w-select">
               <option value="None">None</option>
               <option value="Remote">Remote</option>
               <option value="On-Site">On-Site</option>
             </select>
           </div>
           <div class="w-layout-blockcontainer container-245 w-container">
-            <div class="text-block-54">Bio:</div><textarea placeholder="Example Text" maxlength="5000" id="field-4" name="field-4" data-name="Field 4" class="textarea-3 w-input"></textarea>
+            <div class="text-block-54">Bio:</div><textarea placeholder="Example Text" maxlength="5000" id="bio" name="field-4" data-name="Field 4" class="textarea-3 w-input"></textarea>
           </div>
         </div>
       </form>
-      <div class="w-form-done">
-        <div>Thank you! Your submission has been received!</div>
-      </div>
-      <div class="w-form-fail">
-        <div>Oops! Something went wrong while submitting the form.</div>
-      </div>
     </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=676715cb815e8f01731dca22" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
   <script>
-    
+  // Function to get query parameters from the URL
+  function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+  }
+
+  // Function to fetch user data and pre-fill the form
+  async function prefillForm() {
+      const userId = getQueryParam('userId');
+      if (!userId) {
+          alert('User ID not found in the URL.');
+          return;
+      }
+
+      try {
+          const response = await fetch(`http://localhost:3000/student/student-info/${userId}`, {
+              method: 'GET',
+              credentials: 'include'
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to fetch user data');
+          }
+
+          const userData = await response.json();
+          console.log('User data fetched successfully:', userData);
+
+          const isoDate = userData.date_of_birth; // Assuming this is the ISO date string
+          const date = new Date(isoDate);
+          const formattedDate = date.toISOString().split('T')[0];
+
+          document.getElementById('first-name').value = userData.first_name || '';
+          document.getElementById('last-name').value = userData.last_name || '';
+          document.getElementById('date-of-birth').value = formattedDate || '';
+          document.getElementById('education').value = userData.education || '';
+          document.getElementById('location').value = userData.location || '';
+          document.getElementById('language').value = userData.language || '';
+          document.getElementById('job_type').value = userData.job_type || 'None';
+          document.getElementById('bio').value = userData.bio || '';
+      } catch (error) {
+          console.error('Error fetching user data:', error);
+          alert('Failed to load user data. Please try again.');
+      }
+  }
+
+  // Function to update user info
+  async function updateUserInfo() {
+      const userId = getQueryParam('userId');
+      if (!userId) {
+          alert('User ID not found in the URL.');
+          return;
+      }
+
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const dateOfBirth = document.getElementById('date-of-birth').value;
+      const education = document.getElementById('education').value;
+      const location = document.getElementById('location').value;
+      const language = document.getElementById('language').value;
+      const jobType = document.getElementById('job_type').value;
+      const bio = document.getElementById('bio').value;
+
+      const requestBody = {
+          first_name: firstName,
+          last_name: lastName,
+          date_of_birth: dateOfBirth,
+          education: education,
+          location: location,
+          language: language,
+          job_type: jobType,
+          bio: bio
+      };
+
+      try {
+          const response = await fetch(`http://localhost:3000/student/edit-profile/${userId}`, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(requestBody),
+              credentials: 'include'
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to update user info');
+          }
+
+          const data = await response.json();
+          console.log('User info updated successfully:', data);
+
+          alert('Profile updated successfully!');
+          window.location.href = `student-yourprofile.html?userId=${userId}`;
+      } catch (error) {
+          console.error('Error updating user info:', error);
+          alert('Failed to update profile. Please try again.');
+      }
+  }
+
+  // Attach the prefillForm function to the page load event
+  document.addEventListener('DOMContentLoaded', prefillForm);
+
+  // Attach the updateUserInfo function to the form submission
+  document.getElementById('email-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      updateUserInfo();
+  });
   </script>
 </body>
 </html>
