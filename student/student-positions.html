@@ -477,7 +477,9 @@
 
     // Initial data fetch and table setup
     initializeDataTable();
-    checkSession().fetchAndPopulateTable();
+    checkSession().then(fetchAndPopulateTable).catch((error) => {
+        console.error('Session check failed:', error);
+    });
   });
 </script>
 

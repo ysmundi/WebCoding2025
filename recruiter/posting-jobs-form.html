@@ -180,18 +180,46 @@
     });
   }
 
+  function convertDateFormat(dateString) {
+      const [day, month, year] = dateString.split('/');
+      return `${year}-${month}-${day}`;
+  }
+
+  // Function to validate date format
+  function isValidDate(dateString) {
+      const regex = /^\d{2}\/\d{2}\/\d{4}$/; // Matches dd/mm/yyyy
+      return regex.test(dateString);
+  }
+
 document.addEventListener("DOMContentLoaded", function () {
     // Check the user's session and role before allowing form submission
     checkSession().then(() => {
         // Only attach the form submission event listener if the user is not a student
         document.getElementById("email-form").addEventListener("submit", async function (event) {
             event.preventDefault();
+            function isValidDate(dateString) {
+                const regex = /^\d{2}\/\d{2}\/\d{4}$/; // Matches dd/mm/yyyy
+                return regex.test(dateString);
+            }
+
+            const inputDate = document.getElementById("deadline").value;
+              let formattedDate;
+
+              if (isValidDate(inputDate)) {
+                  formattedDate = convertDateFormat(inputDate);
+                  console.log('Formatted Date:', formattedDate); // Output: "2023-12-25"
+              } else {
+                  console.error('Invalid date format. Please use dd/mm/yyyy.');
+                  alert('Invalid date format. Please use dd/mm/yyyy.');
+                  return; // Stop form submission if the date is invalid
+              }
+
 
             // Get form values
             const user_id = userId;
             const organization_name = document.getElementById("organization").value;
             const position_name = document.getElementById("position").value;
-            const deadline = document.getElementById("deadline").value;
+            const deadline = formattedDate;
             const education_requirements = document.getElementById("education_requirements").value;
             const location_requirements = document.getElementById("location_requirements").value;
             const salary = document.getElementById("salary").value;
