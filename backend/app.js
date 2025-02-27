@@ -11,15 +11,42 @@ const authRoutes = require('./routes/auth');
 const path = require('path');
 const db = require('./config/database');
 
-
 const app = express();
 const sessionStore = new MySQLStore({}, db);
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000',
-    credentials: true
- }));
+
+const allowedOrigins = [
+    'https://jobconn.northernhorizon.org',
+    'https://jobconnb.northernhorizon.org',
+    'http://localhost:3000',
+    'https://cors.northernhorizon.org:9084',
+];
+
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+    }
+
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+
+    next();
+});
+
+// app.use(cors({ origin: process.env.CLIENT_URL,
+//     credentials: true
+//  }));
+
 app.use(
     session({
       key: 'session_cookie_name', // Cookie name
@@ -119,8 +146,6 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../login/login-1.html'));
 });
-
- 
 
 
 module.exports = app;

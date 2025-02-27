@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="YuvrajJobConn" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="jobconn" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="YuvrajJobConn">
+      <paths name="jobconn">
         <serverdata>
           <mappings>
-            <mapping deploy="/current" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/var/www/FBLA/WebCoding/jobconn2025/current" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
