@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Feb 23 2025 16:38:07 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Feb 26 2025 15:50:37 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="67a9200ff24e68c0ebd10562" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -14,6 +14,7 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="../images/webclip.png" rel="apple-touch-icon">
+  <script src="../js/config.js"></script>
 
   <!-- Webflow Stuff -->
   <!--    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">-->
@@ -199,17 +200,23 @@
     table.dataTable tbody td.date-column {
       position: relative;
       padding-top: 20px; /* Add space for the heading */
+      text-align: left; /* Align the content to the left */
     }
 
-    /* First table: Display "Date Joined" in the date-column */
-    #tableDateJoined tbody td.date-column::before {
-      content: "Date Joined"; /* Display "Date Joined" */
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      font-size: 25px; /* Font size for the text */
+    /* Default style for the "SUBMITTED" text in the date-column */
+    table.dataTable tbody td.date-column::before {
+      content: "Date Joined"; /* Add the heading */
+      font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+    }
+
+    /* Make the text underneath left-aligned as well */
+    table.dataTable tbody td.date-column span {
+      display: block; /* Make it a block-level element */
+      text-align: left; /* Align the text to the left */
     }
 
     /* Make the "Date Joined" text white in blue rows (even rows) */
@@ -217,15 +224,27 @@
       color: white; /* White text for blue rows */
     }
 
-    /* Second table: Keep "Submitted" in the date-column */
-    #tableSubmitted tbody td.date-column::before {
-      content: "Submitted"; /* Display "Submitted" */
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      font-size: 25px; /* Font size for the text */
+    /* Add "Apply Data" heading above Date column text */
+    table.dataTable tbody td.date-column {
+      position: relative;
+      padding-top: 20px; /* Add space for the heading */
+      text-align: left; /* Align the content to the left */
+    }
+
+    /* Default style for the "SUBMITTED" text in the date-column */
+    table.dataTable tbody td.date-column::before {
+      content: "SUBMITTED"; /* Add the heading */
+      font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+    }
+
+    /* Make the text underneath left-aligned as well */
+    table.dataTable tbody td.date-column span {
+      display: block; /* Make it a block-level element */
+      text-align: left; /* Align the text to the left */
     }
 
     /* Make the "Submitted" text white in blue rows (even rows) */
@@ -250,6 +269,7 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      line-height: 1.2;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -314,18 +334,32 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="pop-up">
     <div class="pop-up-item">
-      <div class="w-layout-blockcontainer container-222 w-container"><img src="../images/Group-109.png" loading="lazy" alt="">
-        <h1 class="heading-41">IMPORTANT</h1><img src="../images/Group-109.png" loading="lazy" alt="">
+      <div class="w-layout-blockcontainer container-222 w-container"><img src="../images/Group-109.png" loading="lazy" alt="" class="image-38">
+        <h1 class="heading-41">IMPORTANT</h1><img src="../images/Group-109.png" loading="lazy" alt="" class="image-37">
       </div>
       <div class="w-layout-blockcontainer container-223 w-container">
         <div class="w-layout-blockcontainer container-225 w-container">
           <h1 class="heading-42">Are you sure you want to <span class="text-span-8">completely</span> delete this project?</h1>
-          <div class="text-block-53">This is some text inside of a div block.</div>
         </div>
       </div>
       <div class="w-layout-blockcontainer container-224 w-container">
@@ -350,6 +384,71 @@
       </div>
       <div class="w-layout-blockcontainer container-200 w-container">
         <div class="text-block-46"><strong data-w-id="1bd3fe0f-de08-ec5c-6ac2-82f36df9804d" class="bold-text-9">DELETE</strong></div>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-292 w-container">
+      <div class="w-layout-blockcontainer container-293 w-container">
+        <div class="w-layout-blockcontainer container-294 w-container">
+          <h1 class="heading-40">Information</h1>
+        </div>
+        <div class="w-layout-blockcontainer container-295 w-container">
+          <a href="../recruiter/posting-jobs-form.html" class="button-13 w-button">Edit</a>
+        </div>
+      </div>
+      <div class="w-layout-blockcontainer container-203 w-container">
+        <div class="w-layout-blockcontainer container-213 w-container">
+          <div class="text-block-47"><strong>Junior Ranger</strong></div>
+          <div class="w-layout-blockcontainer container-205 w-container">
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-215 w-container">
+                <div class="text-block-48">Position Type</div>
+              </div>
+              <div class="w-layout-blockcontainer container-212 w-container">
+                <div class="text-block-49">On Site</div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Location</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">Mariposa, CA</strong></div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Salary</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">$2,000.00/Month</strong></div>
+              </div>
+            </div>
+            <div class="w-layout-blockcontainer container-206 w-container">
+              <div class="w-layout-blockcontainer container-210 w-container">
+                <div class="text-block-50">Duration of Contract</div>
+              </div>
+              <div class="w-layout-blockcontainer container-211 w-container">
+                <div><strong class="bold-text-11">2024 - 2025</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-layout-blockcontainer container-214 w-container">
+          <div class="text-block-52"><strong class="bold-text-12">Requirements</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong>Responsibilities</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        </div>
+      </div>
+      <div class="w-layout-blockcontainer container-204 w-container">
+        <div class="w-layout-blockcontainer container-218 w-container">
+          <div class="text-block-52"><strong class="bold-text-12">About</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong class="bold-text-12">Nice To Have</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+          <div class="text-block-52"><strong class="bold-text-12">Why work with us?</strong></div>
+          <p class="paragraph-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        </div>
       </div>
     </div>
     <div class="w-layout-blockcontainer container-201 w-container">
@@ -487,7 +586,7 @@ function getQueryParam(param) {
 // Function to check if a session ID exists
 function checkSession() {
     return $.ajax({
-        url: 'http://localhost:3000/auth/api/user',
+        url: `${config.apiBaseUrl}/auth/api/user`,
         method: 'GET',
         credentials: 'include', // Include cookies
         success: function (data) {
@@ -515,7 +614,7 @@ async function fetchJobDetails() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/recruiter/posting-info/${jobId}`, {
+        const response = await fetch(`${config.apiBaseUrl}/recruiter/posting-info/${jobId}`, {
             method: 'GET', // Specify the HTTP method (GET is default, but you can explicitly set it)
             credentials: 'include', // Include cookies in the request
         });
@@ -588,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         $.ajax({
-            url: `http://localhost:3000/recruiter/accepted-job-applications/${jobId}`,
+            url: `${config.apiBaseUrl}/recruiter/accepted-job-applications/${jobId}`,
             method: 'GET',
             credentials: 'include',
             success: function (data) {
@@ -630,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       $.ajax({
-          url: `http://localhost:3000/recruiter/delete-posting/${jobId}`,
+          url: `${config.apiBaseUrl}/recruiter/delete-posting/${jobId}`,
           method: 'DELETE',
           success: function (response) {
               console.log('Posting denied:', response.message);
@@ -672,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Make the API call to suspend the application
         $.ajax({
-            url: `http://localhost:3000/recruiter/suspend-application/${applicationId}`,
+            url: `${config.apiBaseUrl}/recruiter/suspend-application/${applicationId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Application suspended:', response.message);
@@ -723,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch data from the API and populate the table
     function fetchAndPopulateApplicantsTable() {
       $.ajax({
-        url: `http://localhost:3000/recruiter/pending-job-applications/${jobId}`, // Replace with your actual API URL
+        url: `${config.apiBaseUrl}/recruiter/pending-job-applications/${jobId}`, // Replace with your actual API URL
         method: 'GET',
         success: function (data) {
           const table = $('#tableSubmitted').DataTable();
@@ -775,7 +874,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Make the API call to accept the application
       $.ajax({
-        url: `http://localhost:3000/recruiter/accept-application/${applicationId}`,
+        url: `${config.apiBaseUrl}/recruiter/accept-application/${applicationId}`,
         method: 'PUT',
         success: function (response) {
           console.log('Application accepted:', response.message);

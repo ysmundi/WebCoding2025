@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Feb 23 2025 16:38:07 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 25 2025 21:34:49 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6771990ce0e51fd9b86e0b90" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -193,6 +193,23 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      line-height: 1.2;
+    }
+
+    @media (max-width: 700px) {
+      .container-250 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+        line-height: 1.2;
+      }
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -255,7 +272,7 @@
     <div class="w-layout-blockcontainer container-39 w-container"></div>
     <h1 class="heading-4">WELCOME</h1>
     <h1 class="heading-5">Name</h1>
-    <p class="paragraph-4">Jorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosau ad litora torquent perconubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestasac scelerisque antepulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu temporurna.Curabitur vel bibendum lorem.Morbi convallis convallis diam sit amet lacinia. Aliauam in elementum tellus.<br></p>
+    <p class="paragraph-4">As an ADMIN of JOB CONN, your duty is to keep the system running smoothly and resolve any unforeseen problems that might hinder our website. This may include deactivate accounts, suspending posts, and a lot more... Please bare in mind that whatever you do, do it with all of your heart and all of your mind.<br></p>
   </section>
   <section class="section-14">
     <div class="w-layout-blockcontainer container-40 w-container">
