@@ -87,61 +87,20 @@ router.post('/subscription-professional/:userId', isAuthenticated, (req, res) =>
 
 
 // POST /recruiter/post-job - Create a new job posting
-router.post('/post-job', isAuthenticated, async (req, res) => {
+router.post('/post-job', isAuthenticated, (req, res) => {
   const jobData = req.body;
-  const userId = jobData.user_id;
 
-  try {
-      // Step 1: Get the user's subscription type
-      const userQuery = 'SELECT subscription FROM users_info WHERE user_id = ?';
-      const [user] = await db.query(userQuery, [userId]);
-
-      if (!user) {
-          return res.status(404).json({ error: 'User not found' });
-      }
-
-      const subscription = user.subscription;
-
-      // Step 2: Count the number of job postings the user has made
-      const countQuery = 'SELECT COUNT(*) AS postingCount FROM job_postings WHERE user_id = ?';
-      const [countResult] = await db.query(countQuery, [userId]);
-      const postingCount = countResult[0].postingCount;
-
-      // Step 3: Enforce subscription limits
-      let limit;
-      switch (subscription) {
-          case 'Standard':
-              limit = 3;
-              break;
-          case 'Value':
-              limit = 10;
-              break;
-          case 'Professional':
-              limit = Infinity; // Unlimited
-              break;
-          default:
-              return res.status(400).json({ error: 'Invalid subscription type' });
-      }
-
-      if (postingCount >= limit) {
-          return res.status(403).json({ 
-              error: `You have reached the maximum number of postings for your ${subscription} subscription.`,
-              limit: limit
-          });
-      }
-
-      // Step 4: Insert the new job posting
-      const insertQuery = 'INSERT INTO job_postings SET ?';
-      const [result] = await db.query(insertQuery, [jobData]);
-
-      res.status(201).json({ 
-          message: 'Job posting created successfully', 
-          jobId: result.insertId 
-      });
-  } catch (err) {
+  db.query('INSERT INTO job_postings SET ?', jobData, (err, result) => {
+    if (err) {
       console.error('Error creating job posting:', err);
       res.status(500).json({ error: 'Failed to create job posting' });
-  }
+      return;
+    }
+    res.status(201).json({ 
+      message: 'Job posting created successfully', 
+      jobId: result.insertId 
+    });
+  });
 });
 
 //GET get pending applications 
