@@ -9,7 +9,8 @@ router.use(express.json());
 
 //Register new user
 router.post('/register', async (req, res) => {
-  const {
+  console.log("registering user");
+    const {
     first_name,
     last_name,
     phone_number,
