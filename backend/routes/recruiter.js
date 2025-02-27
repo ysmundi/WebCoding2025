@@ -45,7 +45,7 @@ router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
 });
 
 //Acivate value subscription 
-router.post('/subscription-value/:userId', isAuthenticated, (req, res) => {
+router.put('/subscription-value/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
   const sql = 'UPDATE users_info SET subscription = "Value", max_postings = 10 WHERE id = ?';
@@ -65,7 +65,7 @@ router.post('/subscription-value/:userId', isAuthenticated, (req, res) => {
 });
 
 //Activate professional subscription 
-router.post('/subscription-professional/:userId', isAuthenticated, (req, res) => {
+router.put('/subscription-professional/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
   const sql = 'UPDATE users_info SET subscription = "Professional", max_postings = 11 WHERE id = ?';
