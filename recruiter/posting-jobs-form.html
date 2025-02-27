@@ -76,7 +76,7 @@
             <div class="w-layout-blockcontainer container-141 w-container"></div>
           </div>
           <div class="w-layout-blockcontainer container-142 w-container">
-            <div class="w-layout-blockcontainer container-254 w-container"><label for="field-4" class="field-label-18">Deadline</label><input class="text-field-12 w-input" maxlength="256" name="field-4" data-name="Field 4" placeholder="" type="date" id="deadline" required=""></div>
+            <div class="w-layout-blockcontainer container-254 w-container"><label for="field-4" class="field-label-18">Deadline</label><input class="text-field-12 w-input" maxlength="256" name="field-4" data-name="Field 4" placeholder="" type="text" id="deadline" required=""></div>
             <div class="w-layout-blockcontainer container-141 w-container"></div>
             <div class="w-layout-blockcontainer container-255 w-container"><label for="field-10" class="field-label-23">Location</label><input class="text-field-19 w-input" maxlength="256" name="field-10" data-name="Field 10" placeholder="" type="text" id="location" required=""></div>
           </div>
@@ -139,34 +139,18 @@
     });
   }
 
-
-  function formatDate(inputDate) {
-    // Split the input date into month, day, and year
-    const [month, day, year] = inputDate.split('/');
-
-    // Ensure month and day are two digits (e.g., '01' instead of '1')
-    const paddedMonth = month.padStart(2, '0');
-    const paddedDay = day.padStart(2, '0');
-
-    // Return the date in yyyy-mm-dd format
-    return `${year}-${paddedMonth}-${paddedDay}`;
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     // Check the user's session and role before allowing form submission
     checkSession().then(() => {
-        console.log("Session check successful, attaching form submit listener"); // Debugging
-
-        // Attach form submission event listener
+        // Only attach the form submission event listener if the user is not a student
         document.getElementById("email-form").addEventListener("submit", async function (event) {
             event.preventDefault();
-            console.log("Form submission started"); // Debugging
 
             // Get form values
             const user_id = userId;
             const organization_name = document.getElementById("organization").value;
             const position_name = document.getElementById("position").value;
-            const deadline = document.getElementById("deadline").value; // No need to reformat
+            const deadline = document.getElementById("deadline").value;
             const education_requirements = document.getElementById("education_requirements").value;
             const location_requirements = document.getElementById("location_requirements").value;
             const salary = document.getElementById("salary").value;
@@ -175,21 +159,6 @@
             const nice_to_have = document.getElementById("nice_to_have").value;
             const responsibilities = document.getElementById("responsibilities").value;
             const why_work_with_us = document.getElementById("why_work_with_us").value;
-
-            console.log("Form values:", { // Debugging
-                user_id,
-                organization_name,
-                position_name,
-                deadline,
-                education_requirements,
-                location_requirements,
-                salary,
-                about,
-                requirements,
-                nice_to_have,
-                responsibilities,
-                why_work_with_us,
-            });
 
             // Prepare API request body
             const data = {
@@ -207,8 +176,6 @@
                 why_work_with_us,
             };
 
-            console.log("Sending data to API:", data); // Debugging
-
             // Send API request
             try {
                 const response = await fetch("http://localhost:3000/recruiter/post-job", {
@@ -218,8 +185,6 @@
                     },
                     body: JSON.stringify(data),
                 });
-
-                console.log("API response:", response); // Debugging
 
                 if (response.ok) {
                     document.querySelector(".w-form-done").style.display = "block"; // Show success message
