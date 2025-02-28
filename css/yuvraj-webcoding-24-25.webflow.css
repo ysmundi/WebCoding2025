@@ -87,7 +87,7 @@
   flex-flow: row;
   width: 100vw;
   height: 400vw;
-  display: flex;
+  display: none;
 }
 
 .item {
@@ -2060,6 +2060,10 @@
 .container-105 {
   width: 4%;
   height: 5%;
+}
+
+.bold-text-4 {
+  font-family: HelveticaNeueBold, Arial, sans-serif;
 }
 
 .field-label-9 {
@@ -6066,7 +6070,7 @@
 }
 
 .bold-text-30 {
-  font-family: HelveticaNeueHeavy, Arial, sans-serif;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 .checkbox-label-4 {
@@ -6427,6 +6431,20 @@
   color: #000;
   margin-bottom: 140px;
   text-decoration: none;
+}
+
+.slider-2 {
+  width: 100vw;
+  height: 100vh;
+  position: sticky;
+}
+
+.slide-nav-2 {
+  margin-bottom: 5%;
+}
+
+.bold-text-33 {
+  font-family: HelveticaNeueBold, Arial, sans-serif;
 }
 
 @media screen and (max-width: 991px) {
@@ -8471,6 +8489,10 @@
     overflow: auto;
   }
 
+  .pop-up {
+    display: none;
+  }
+
   .container-224 {
     height: 100%;
   }
@@ -9517,6 +9539,10 @@
   .text-block-121 {
     font-size: 20px;
     line-height: 20px;
+  }
+
+  .right-arrow, .left-arrow {
+    display: none;
   }
 }
 
