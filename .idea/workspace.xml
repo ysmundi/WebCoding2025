@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/slick/slick.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/login-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/register-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/student-positions.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-positions.html" afterDir="false" />
-    </list>
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="fixed some datatables stuff" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740614780860</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed some datatables stuff">
+      <option name="closed" value="true" />
+      <created>1740725478363</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740725478363</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +183,8 @@
     <MESSAGE value="fixed misc.xml" />
     <MESSAGE value="public server running environment setup" />
     <MESSAGE value="workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="fixed some datatables stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some datatables stuff" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
