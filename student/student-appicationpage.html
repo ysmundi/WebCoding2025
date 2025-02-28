@@ -92,7 +92,18 @@
       <div class="w-layout-blockcontainer container-152 w-container">
         <div class="form-block-6 w-form">
           <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-6" data-wf-page-id="679fd888f74ee0cee34b5a97" data-wf-element-id="fda40e31-69b4-664b-04f9-48c1abaab59a">
-            <h1 class="heading-89">Apply</h1><label for="name" class="field-label-28">Name</label><input class="text-field-17 w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name" required=""><label for="email" class="field-label-27">Email Address</label><input class="text-field-18 w-input" maxlength="256" name="email" data-name="Email" placeholder="" type="email" id="email" required=""><label for="email-2" class="field-label-25">Phone Number(Optional)</label><input class="text-field-18 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" type="tel" id="email-2" required=""><label for="field" class="field-label-26">About You</label><textarea required="" placeholder="Example Text" maxlength="5000" id="field" name="field" data-name="Field" class="textarea-2 w-input"></textarea>
+            <h1 class="heading-89">Apply</h1><label for="name" class="field-label-28">Name</label>
+            <input class="text-field-17 w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name" required="">
+            <label for="email" class="field-label-27">Email Address</label><input class="text-field-18 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" type="tel" id="email-2" required="">
+            <label for="phone">Phone Number (Optional)</label>
+            <input class="text-field-18 w-input"
+                   name="phone"
+                   id="phone"
+                   type="tel"
+                   placeholder="(123) 456-7890"
+                   maxlength="14">
+            <label for="field" class="field-label-26">About You</label>
+            <textarea required="" placeholder="Example Text" maxlength="5000" id="field" name="field" data-name="Field" class="textarea-2 w-input"></textarea>
             <div class="w-layout-blockcontainer container-163 w-container"><input type="submit" data-wait="Please wait..." data-w-id="fda40e31-69b4-664b-04f9-48c1abaab5a1" class="submit-button-6 w-button" value="Submit"></div>
           </form>
           <div class="w-form-done">
@@ -182,6 +193,25 @@
     // Add a click event listener to the BACK div
     document.getElementById('backButton').addEventListener('click', function () {
       window.location.href = 'student-positions.html'; // Redirect to the student-positions.html page
+    });
+
+    document.getElementById('phone').addEventListener('input', function(e) {
+      // Allow only numbers
+      let numbers = e.target.value.replace(/\D/g, '');
+
+      // Auto-format based on input length
+      let formatted = '';
+      if (numbers.length > 0) {
+        formatted = '(' + numbers.substring(0,3);
+        if (numbers.length > 3) {
+          formatted += ') ' + numbers.substring(3,6);
+        }
+        if (numbers.length > 6) {
+          formatted += '-' + numbers.substring(6,10);
+        }
+      }
+
+      e.target.value = formatted;
     });
   </script>
 </body>
