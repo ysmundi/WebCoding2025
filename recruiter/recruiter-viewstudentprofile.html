@@ -318,13 +318,44 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
+    a { text-decoration: none; color: black; }
+
+    .container-228 {
+      background-color: #64AAC3;
+    }
+
+    .container-230 {
+      background-color: #64AAC3;
+      text-align: center;
+    }
+
+    .container-231 {
+      background-color: #64AAC3;
+    }
+
+    .text-block-55 {
+      color: #64AAC3;
+    }
+
+    .text-block-56 {
+      color: #64AAC3;
+    }
+
+    .text-block-57 {
+      color: #64AAC3;
+    }
+
+    .container-243 {
+      background-color: #64AAC3;
+    }
+
   </style>
 </head>
 <body>
   <section class="section-32">
     <div class="w-layout-blockcontainer container-228 w-container">
       <div class="w-layout-blockcontainer container-229 w-container">
-        <div class="text-block-25">BACK</div>
+        <a href="../recruiter/recruiter-viewstudentapplication.html" class="text-block-25">BACK</a>
       </div>
       <div class="w-layout-blockcontainer container-230 w-container">
         <h1 class="heading-21">Student Profile</h1>
@@ -382,25 +413,25 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-function checkSession() {
-    return $.ajax({
-        url: `${config.apiBaseUrl}/auth/api/user`,
-        method: 'GET',
-        credentials: 'include', // Include cookies
-        success: function (data) {
-            if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
-                // Redirect to index.html if no session ID is found or the user is not a student
-                window.location.href = '../index.html';
-            }
-            userId = data.user.id; // Store the user ID
-        },
-        error: function (error) {
-            // Redirect to index.html if there's an error (e.g., no session)
-            window.location.href = '../index.html';
-            console.error('Error fetching user ID:', error);
-        },
-    });
-}
+// function checkSession() {
+//     return $.ajax({
+//         url: `${config.apiBaseUrl}/auth/api/user`,
+//         method: 'GET',
+//         credentials: 'include', // Include cookies
+//         success: function (data) {
+//             if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
+//                 // Redirect to index.html if no session ID is found or the user is not a student
+//                 window.location.href = '../index.html';
+//             }
+//             userId = data.user.id; // Store the user ID
+//         },
+//         error: function (error) {
+//             // Redirect to index.html if there's an error (e.g., no session)
+//             window.location.href = '../index.html';
+//             console.error('Error fetching user ID:', error);
+//         },
+//     });
+// }
 
 async function userInfo() {
     try {

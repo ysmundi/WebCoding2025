@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="merging yuvraj and yuvraj webflow.">
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="phone number fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/home-admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/home-admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/student-appicationpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-appicationpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/home-recruiter.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/home-recruiter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-projectinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-projectinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-viewstudentapplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-viewstudentapplication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-viewstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-viewstudentprofile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740755567451</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="phone number fixed">
+      <option name="closed" value="true" />
+      <created>1740757112226</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740757112226</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +237,8 @@
     <MESSAGE value="2NOTHING" />
     <MESSAGE value="add webflow" />
     <MESSAGE value="merging yuvraj and yuvraj webflow." />
-    <option name="LAST_COMMIT_MESSAGE" value="merging yuvraj and yuvraj webflow." />
+    <MESSAGE value="phone number fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="phone number fixed" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

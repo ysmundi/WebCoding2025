@@ -20,6 +20,8 @@
     .back-button {
       text-decoration: none; /* Removes underline */
     }
+
+    a { text-decoration: none; color: black; }
   </style>
 </head>
 <body>
@@ -27,7 +29,7 @@
     <div class="w-layout-blockcontainer container-149 w-container">
       <div class="w-layout-blockcontainer container-164 w-container">
         <a class="back-button">
-          <div class="text-block-25">BACK</div>
+          <a href="../recruiter/recruiter-projectinfo.html" class="text-block-25">BACK</a>
         </a>
       </div>
     </div>
@@ -89,7 +91,7 @@
             <div class="text-block-64" id="phone_number">845-121-1212</div>
             <div class="w-layout-blockcontainer container-266 w-container">
               <div class="text-block-69">View John Doe&#x27;s Profile</div>
-              <a class="button-18 w-button" id="view">View</a>
+              <a href="../recruiter/recruiter-viewstudentprofile.html" class="button-18 w-button" id="view">View</a>
             </div>
             <div class="text-block-70">John Doe&#x27;s Message</div>
             <p class="paragraph-18" id="about_you">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
@@ -189,27 +191,27 @@
     }
 
     // Function to check if a session ID exists
-    function checkSession() {
-        return $.ajax({
-            url: `${config.apiBaseUrl}/auth/api/user`,
-            method: 'GET',
-            credentials: 'include', // Include cookies
-            success: function (data) {
-                console.log('Session Data:', data); // Log the API response
-
-                // Redirect to index.html if no session ID is found or the user is not a recruiter
-                if (!data.user || !data.user.id || data.user.role !== "Recruiter") {
-                    window.location.href = '../index.html';
-                }
-                userId = data.user.id; // Store the user ID
-            },
-            error: function (error) {
-                // Redirect to index.html if there's an error (e.g., no session)
-                window.location.href = '../index.html';
-                console.error('Error fetching user ID:', error);
-            },
-        });
-    }
+    // function checkSession() {
+    //     return $.ajax({
+    //         url: `${config.apiBaseUrl}/auth/api/user`,
+    //         method: 'GET',
+    //         credentials: 'include', // Include cookies
+    //         success: function (data) {
+    //             console.log('Session Data:', data); // Log the API response
+    //
+    //             // Redirect to index.html if no session ID is found or the user is not a recruiter
+    //             if (!data.user || !data.user.id || data.user.role !== "Recruiter") {
+    //                 window.location.href = '../index.html';
+    //             }
+    //             userId = data.user.id; // Store the user ID
+    //         },
+    //         error: function (error) {
+    //             // Redirect to index.html if there's an error (e.g., no session)
+    //             window.location.href = '../index.html';
+    //             console.error('Error fetching user ID:', error);
+    //         },
+    //     });
+    // }
 
     // Function to fetch data from the API
     async function fetchJobDetails() {
