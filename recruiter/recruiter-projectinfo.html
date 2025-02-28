@@ -177,6 +177,7 @@
     table.dataTable tbody tr:nth-child(even) .edit-btn.accept {
       background-color: white; /* White background for the button */
       color: #64AAC3; /* Black text for contrast */
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     .edit-btn.info {
@@ -201,6 +202,7 @@
       position: relative;
       padding-top: 20px; /* Add space for the heading */
       text-align: left; /* Align the content to the left */
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Default style for the "SUBMITTED" text in the date-column */
@@ -333,6 +335,80 @@
     table.dataTable thead th.submitted-column,
     table.dataTable tbody td.submitted-column {
       width: 25%; /* 22.5% of the viewport width */
+    }
+
+    /* Customize the DataTables pagination buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      color: #64AAC3 !important; /* Set the text color */
+      font-size: 20px; /* Adjust the font size */
+      font-weight: bold; /* Make the text bold */
+    }
+
+    /* Customize the page number buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button:not(.previous):not(.next) {
+      background-color: #64AAC3 !important; /* Set the background color */
+      color: white !important; /* Set the text color */
+      border-radius: 4px; /* Add some rounded corners */
+      padding: 8px; /* Add padding to the page number buttons */
+    }
+
+    /* Customize the "Previous" and "Next" buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.previous{
+      color: #64AAC3 !important; /* Set the text color */
+      font-size: 20px; /* Adjust the font size */
+      font-weight: bold; /* Make the text bold */
+      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+    }
+
+    /* Customize the "Previous" and "Next" buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+      color: #64AAC3 !important; /* Set the text color */
+      font-size: 20px; /* Adjust the font size */
+      font-weight: bold; /* Make the text bold */
+      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+    }
+
+    /* Customize the DataTables info text */
+    .dataTables_wrapper .dataTables_info {
+      color: #64AAC3 !important; /* Set the text color */
+      font-size: 20px; /* Adjust the font size */
+      font-weight: bold; /* Make the text bold */
+      padding-bottom: 12px; /* Add some padding */
+    }
+
+    /* Customize the hover effect for pagination buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
+      background-color: #64AAC3 !important; /* Set the background color on hover */
+      color: white !important; /* Set the text color on hover */
+      border-radius: 4px; /* Add some rounded corners */
+      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+    }
+
+
+    /* Customize the "Showing X to Y of Z entries" text */
+    .dataTables_wrapper .dataTables_info {
+      text-align: left; /* Align the text to the left */
+      margin-top: 10px; /* Add some top margin */
+    }
+
+    /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
     }
 
     @media (max-width: 700px) {
@@ -536,12 +612,41 @@
         <table class="display" id="tableDateJoined">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Date</th> <!-- Updated heading -->
-            <th>Action</th>
+            <th>
+              Name
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th>
+            <th>
+              Date
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th> <!-- Updated heading -->
+            <th>
+              Action
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th>
           </tr>
           </thead>
           <tbody>
+            <tr>
+              <td class="name-column">John Doe</td>
+              <td class="date-column">2025-02-28</td>
+              <td>
+                <div class="vertical-buttons">
+                  <button class="edit-btn accept">Accept</button>
+                  <button class="edit-btn info" data-application-id="12345">Info</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="name-column">Jasdf</td>
+              <td class="date-column">2025-03-07</td>
+              <td>
+                <div class="vertical-buttons">
+                  <button class="edit-btn accept">Accept</button>
+                  <button class="edit-btn info" data-application-id="12345">Info</button>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -565,7 +670,9 @@
         <table class="display" id="tableSubmitted">
           <thead>
           <tr>
-            <th>Name</th>
+            <th>
+              Name
+            </th>
             <th>Date</th> <!-- Updated heading -->
             <th>Action</th>
           </tr>
@@ -583,6 +690,40 @@ function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Add event listeners to toggle icons
+    const toggleIcons = document.querySelectorAll('.toggle-icon');
+    toggleIcons.forEach(icon => {
+      icon.addEventListener('click', function () {
+        const column = this.getAttribute('data-column'); // Get the column type (name, date, action)
+        toggleTableFormat(column); // Call the toggle function
+        this.classList.toggle('active'); // Toggle the active class for rotation
+      });
+    });
+
+    // Function to handle table formatting
+    function toggleTableFormat(column) {
+      const table = $('#tableDateJoined').DataTable(); // Replace with your table ID if needed
+
+      switch (column) {
+        case 'name':
+          // Example: Sort by name
+          table.order([0, 'asc']).draw();
+          break;
+        case 'date':
+          // Example: Sort by date
+          table.order([1, 'asc']).draw();
+          break;
+        case 'action':
+          // Example: Filter rows with specific actions
+          table.column(2).search('Accept').draw();
+          break;
+        default:
+          console.log('No action defined for this column');
+      }
+    }
+  });
 
 // // Function to check if a session ID exists
 // function checkSession() {
@@ -671,8 +812,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize the DataTable
     function initializeDataTable() {
         table = $('#tableDateJoined').DataTable({
-            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+          dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+          lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+          language: {
+            info: 'Displaying _START_ to _END_ of _TOTAL_ entries',
+            paginate: {
+              previous: 'Go Back ',
+              next: ' Go Forward'
+            }
+          }
         });
     }
 
@@ -810,6 +958,13 @@ document.addEventListener('DOMContentLoaded', function () {
       table = $('#tableSubmitted').DataTable({
         dom: 'rtip', // Remove default search bar and "Show entries" dropdown
         lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        language: {
+          info: 'Displaying _START_ to _END_ of _TOTAL_ entries',
+          paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
       });
     }
 
