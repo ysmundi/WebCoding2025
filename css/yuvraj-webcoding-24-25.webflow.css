@@ -1262,7 +1262,7 @@
 }
 
 .container-55 {
-  flex-flow: column;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -1288,7 +1288,7 @@
 }
 
 .image-9 {
-  width: 20vh;
+  width: 15vw;
   min-width: 0;
   max-width: none;
   height: auto;
@@ -1300,9 +1300,10 @@
 }
 
 .heading-11 {
+  color: #000;
   justify-content: center;
   align-items: center;
-  width: 32.412%;
+  width: 100%;
   height: 24%;
   margin-top: 15px;
   margin-bottom: 0;
@@ -3188,6 +3189,10 @@
 .textarea-2 {
   border-bottom: 5px solid #000;
   border-radius: 5px;
+  min-width: 10vw;
+  max-width: 100%;
+  min-height: 10vh;
+  max-height: 35vh;
 }
 
 .container-163 {
@@ -4282,7 +4287,7 @@
   align-items: center;
   width: 100%;
   max-width: none;
-  height: 100%;
+  height: 25%;
   display: flex;
 }
 
@@ -4414,7 +4419,7 @@
   align-items: center;
   width: 100%;
   max-width: none;
-  height: 100%;
+  height: auto;
   margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
@@ -5489,7 +5494,9 @@
 
 .bold-text-17, .bold-text-18, .bold-text-19, .bold-text-20 {
   font-family: HelveticaNeueMedium, Arial, sans-serif;
+  font-size: 18px;
   font-weight: 500;
+  line-height: 18px;
 }
 
 .image-34 {
@@ -6351,6 +6358,77 @@
   line-height: 27px;
 }
 
+.heading-91 {
+  color: #ec9440;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.container-357 {
+  background-color: #ec9440;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+}
+
+.container-358 {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 33.3333%;
+  max-width: none;
+  height: 100%;
+  display: flex;
+}
+
+.container-359 {
+  justify-content: flex-start;
+  align-items: center;
+  width: 33.3333%;
+  max-width: none;
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 7.5%;
+  display: flex;
+}
+
+.container-360 {
+  width: 33.3333%;
+  max-width: none;
+  height: 100%;
+}
+
+.text-block-121 {
+  margin-left: 0%;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.link-block-33 {
+  color: #000;
+  text-decoration: none;
+}
+
+.text-block-122 {
+  margin-bottom: 0;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.link-block-34 {
+  color: #000;
+  margin-bottom: 140px;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 991px) {
   .track {
     height: auto;
@@ -6374,7 +6452,15 @@
   }
 
   .image-2 {
+    width: 16%;
     height: 60%;
+  }
+
+  .text-block-3 {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
   .container-22 {
@@ -6413,7 +6499,7 @@
   }
 
   .image-9 {
-    width: 25%;
+    width: 75%;
     height: 55%;
   }
 
@@ -6811,7 +6897,12 @@
     line-height: 40px;
   }
 
-  .bold-text-13, .bold-text-14 {
+  .bold-text-13 {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .bold-text-14 {
     font-size: 18px;
   }
 
@@ -6951,6 +7042,10 @@
   .container-57 {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .image-9 {
+    width: 100%;
   }
 
   .section-24 {
@@ -7225,11 +7320,7 @@
     height: 50%;
   }
 
-  .bold-text-17 {
-    font-size: 15px;
-  }
-
-  .bold-text-18, .bold-text-19, .bold-text-20 {
+  .bold-text-17, .bold-text-18, .bold-text-19, .bold-text-20 {
     font-size: 15px;
     line-height: 15px;
   }
@@ -7391,6 +7482,7 @@
   .paragraph-2 {
     text-align: center;
     font-size: 12px;
+    line-height: 14px;
   }
 
   .italic-text {
@@ -7455,8 +7547,8 @@
   }
 
   .image-7 {
-    width: 60%;
-    height: 50%;
+    width: 50%;
+    height: 70%;
     display: block;
   }
 
@@ -7519,6 +7611,12 @@
     height: 40%;
   }
 
+  .section-15 {
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
   .container-54 {
     border-radius: 0;
     width: 100%;
@@ -7526,12 +7624,17 @@
     min-height: 100%;
   }
 
+  .container-55 {
+    height: auto;
+  }
+
   .container-57 {
     height: 25%;
   }
 
   .image-9 {
-    width: 35%;
+    width: 100%;
+    margin-bottom: 15px;
   }
 
   .container-58 {
@@ -8279,8 +8382,12 @@
     margin-top: 20px;
   }
 
+  .container-197 {
+    height: 8vh;
+  }
+
   .container-199 {
-    height: 75%;
+    height: 100%;
   }
 
   .heading-39 {
@@ -8290,7 +8397,7 @@
   }
 
   .text-block-45 {
-    margin-right: 5px;
+    margin-right: 10px;
     font-size: 15px;
     line-height: 15px;
   }
@@ -9401,6 +9508,15 @@
     justify-content: center;
     align-items: center;
     display: flex;
+  }
+
+  .container-358 {
+    padding-bottom: 0;
+  }
+
+  .text-block-121 {
+    font-size: 20px;
+    line-height: 20px;
   }
 }
 
