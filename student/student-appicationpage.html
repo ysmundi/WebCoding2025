@@ -14,6 +14,16 @@
   <link href="../images/Group-102.png" rel="shortcut icon" type="image/x-icon">
   <link href="../images/Group-102.png" rel="apple-touch-icon">
   <script src="../js/config.js"></script>
+  <style>
+    a { text-decoration: none; color: black; }
+    .container-335 {
+      background: #ec9440;
+    }
+
+    .heading-80 {
+      color: #ec9440;
+    }
+  </style>
 </head>
 <body>
   <div class="pop-up">
@@ -257,7 +267,14 @@
 </script>
 
 <script>
+  function showPopup() {
+      document.querySelector('.pop-up').style.display = 'flex'; // Change to 'flex' for centering
+    }
+
+    // Event listener for form submission
+
     document.addEventListener("DOMContentLoaded", function() {
+      
         document.getElementById("email-form").addEventListener("submit", async function(event) {
             event.preventDefault();
 
@@ -297,7 +314,8 @@
 
                 if (response.ok) {
                     document.querySelector(".w-form-done").style.display = "block"; // Show success message
-                    document.querySelector(".w-form-fail").style.display = "none";  // Hide error message
+                    document.querySelector(".w-form-fail").style.display = "none"; 
+                    showPopup();  // Hide error message
                     document.getElementById("email-form").reset(); // Reset form
                 } else {
                     console.error("Failed to submit the job", response.statusText);
