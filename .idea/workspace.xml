@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="index chnaged" />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="nothing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -263,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740769193976</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="nothing">
+      <option name="closed" value="true" />
+      <created>1740769313501</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1740769313501</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +302,6 @@
     <MESSAGE value="fixed some datatables stuff" />
     <MESSAGE value="pop-up's fixed" />
     <MESSAGE value="rebasing from main" />
-    <MESSAGE value="nothing" />
     <MESSAGE value="2NOTHING" />
     <MESSAGE value="add webflow" />
     <MESSAGE value="merging yuvraj and yuvraj webflow." />
@@ -303,7 +313,8 @@
     <MESSAGE value="added hover feature" />
     <MESSAGE value="more bugs fixed" />
     <MESSAGE value="index chnaged" />
-    <option name="LAST_COMMIT_MESSAGE" value="index chnaged" />
+    <MESSAGE value="nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
