@@ -21,14 +21,14 @@ router.get('/subscription/:userId', isAuthenticated, (req, res) => {
 
     // Return success response
     res.status(201).json(result[0] );
-  })
+  }) 
 });
 
 //Activate standard subscription 
 router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Standard" WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Standard", max_postings = 3 WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -45,10 +45,10 @@ router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
 });
 
 //Acivate value subscription 
-router.post('/subscription-value/:userId', isAuthenticated, (req, res) => {
+router.put('/subscription-value/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Value" WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Value", max_postings = 10 WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -65,10 +65,10 @@ router.post('/subscription-value/:userId', isAuthenticated, (req, res) => {
 });
 
 //Activate professional subscription 
-router.post('/subscription-professional/:userId', isAuthenticated, (req, res) => {
+router.put('/subscription-professional/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Professional" WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Professional", max_postings = 11 WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -87,22 +87,22 @@ router.post('/subscription-professional/:userId', isAuthenticated, (req, res) =>
 
 
 // POST /recruiter/post-job - Create a new job posting
-router.post('/post-job', isAuthenticated, (req, res) => {
-    const jobData = req.body;
-  
-    db.query('INSERT INTO job_postings SET ?', jobData, (err, result) => {
-      if (err) {
-        console.error('Error creating job posting:', err);
-        res.status(500).json({ error: 'Failed to create job posting' });
-        return;
-      }
-      res.status(201).json({ 
-        message: 'Job posting created successfully', 
-        jobId: result.insertId 
-      });
+router.post('/post-job', (req, res) => { //isAuthenticated, 
+  const jobData = req.body;
+
+  db.query('INSERT INTO job_postings SET ?', jobData, (err, result) => {
+    if (err) {
+      console.error('Error creating job posting:', err);
+      res.status(500).json({ error: 'Failed to create job posting' });
+      return;
+    }
+    res.status(201).json({ 
+      message: 'Job posting created successfully', 
+      jobId: result.insertId 
     });
   });
-  
+});
+
 //GET get pending applications 
 router.get('/pending-job-applications/:jobId', isAuthenticated, (req, res) => {
     const status = 'pending'
@@ -135,7 +135,7 @@ router.get('/accepted-job-applications/:jobId', isAuthenticated, (req, res) => {
 
 
 //Get information about job by its id
-router.get('/posting-info/:jobId', isAuthenticated, (req, res) => { 
+router.get('/posting-info/:jobId', (req, res) => { // isAuthenticated,
   const jobId = req.params.jobId;
 
   try {

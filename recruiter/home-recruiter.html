@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Feb 26 2025 15:50:37 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 28 2025 01:01:10 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6771988e3f9bdc7ea929ace2" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -220,6 +220,7 @@
     table.dataTable tbody td.name-column {
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
+      font-family: 'HelveticaNeueHeavy', sans-serif;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -279,6 +280,44 @@
     table.dataTable thead th.submitted-column,
     table.dataTable tbody td.submitted-column {
       width: 25%; /* 22.5% of the viewport width */
+    }
+
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; /* Larger font size */
+        font-weight: bold; /* Make it bold */
+      }
+
+      .container-182 {
+        width: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; 
+        font-weight: bold;
+      }
+
+      .container-182 {
+        width: auto;
+      }
     }
 
   </style>
@@ -445,6 +484,9 @@
     <div class="text-block-3">
       <a href="../recruiter/recruiter-subscriptions.html" class="link"><strong class="bold-text-17">Subscription</strong></a>
     </div>
+    <div class="text-block-3">
+      <a href="#" class="link"><strong class="bold-text-17">Log Out</strong></a>
+    </div>
   </div>
   <section class="section-33">
     <div data-hover="false" data-delay="0" class="dropdown-4 w-dropdown">
@@ -473,7 +515,7 @@
         <div class="text-block-77">CONTACT US</div>
       </div>
       <nav class="dropdown-list-5 w-dropdown-list">
-        <a href="mailto:jobconn@gmail.com?subject=Help%20Required" class="dropdown-link-11 w-dropdown-link">jobconn@gmail.com</a>
+        <a href="mailto:jobconn_fbla@g.northernacademy.org?subject=Help%20Required" class="dropdown-link-11 w-dropdown-link">jobconn_fbla@g.northernacademy.org</a>
       </nav>
     </div>
     <div class="w-layout-blockcontainer container-277 w-container">
@@ -510,7 +552,7 @@
               method: 'GET',
               credentials: 'include', // Include cookies
               success: function (data) {
-                  if (!data.user || !data.user.id || data.user.role === "Student") {
+                  if (!data.user || !data.user.id || data.user.role != "Recruiter") {
                       // Redirect to index.html if no session ID is found or the user is a student
                       window.location.href = '../index.html';
                   }

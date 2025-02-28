@@ -344,46 +344,6 @@
     </table>
   </div>
   <div style="height: 60px;"></div>
-<!-- 
-  <script>
-    $(document).ready(function () {
-      // Initialize the DataTable
-      const table = $('#myTable').DataTable({
-        dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-        lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
-      });
-
-      // Handle custom "Show entries" dropdown
-      $('#entriesSelect').on('change', function () {
-        table.page.len($(this).val()).draw();
-      });
-
-      // Handle custom search input
-      $('#searchInput').on('keyup', function () {
-        table.search(this.value).draw();
-      });
-
-      // Add click event for edit buttons
-      $('#myTable').on('click', '.edit-btn', function () {
-        const row = $(this).closest('tr');
-        const rowData = row.find('td').map(function () {
-          return $(this).text();
-        }).get();
-
-        // Redirect to student-applicationpage.html when APPLY button is clicked
-        $('#myTable').on('click', '.edit-btn.apply', function () {
-          window.location.href = 'student-appicationpage.html';
-        });
-      });
-
-      // Add a click event listener to the BACK button
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Redirect to the "dashboard" section of student-home.html
-        window.location.href = 'student-home.html#dashboard';
-      });
-    });
-
-  </script> -->
 
 <script>
   $(document).ready(function () {
@@ -477,7 +437,9 @@
 
     // Initial data fetch and table setup
     initializeDataTable();
-    checkSession().fetchAndPopulateTable();
+    checkSession().then(fetchAndPopulateTable).catch((error) => {
+        console.error('Session check failed:', error);
+    });
   });
 </script>
 
