@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="fixed some datatables stuff" />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="nothing agiane">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,10 +25,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Yuvraj" />
+        <entry key="$PROJECT_DIR$" value="Yuvraj-Webflow" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -52,7 +55,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
     "JavaScript Debug.login-1.html.executor": "Run",
+    "JavaScript Debug.recruiter-projectinfo.html.executor": "Run",
     "JavaScript Debug.student-home.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -65,12 +70,13 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "Yuvraj",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/imacbig01/IdeaProjects/WebCoding2025/recruiter/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "debugger.dataViews.python.type.renderers",
     "show.migrate.to.gradle.popup": "false",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
@@ -80,6 +86,11 @@
     <force-push-targets>
       <force-push-target remote-path="origin" branch="Anson" />
     </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/recruiter/test" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -158,7 +169,151 @@
       <option name="project" value="LOCAL" />
       <updated>1740725478363</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="rebasing from main">
+      <option name="closed" value="true" />
+      <created>1740751980402</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1740751980402</updated>
+    </task>
+    <task id="LOCAL-00009" summary="nothing">
+      <option name="closed" value="true" />
+      <created>1740752111131</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740752111131</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2NOTHING">
+      <option name="closed" value="true" />
+      <created>1740754063246</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740754063246</updated>
+    </task>
+    <task id="LOCAL-00011" summary="merging yuvraj and yuvraj webflow.">
+      <option name="closed" value="true" />
+      <created>1740755567451</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740755567451</updated>
+    </task>
+    <task id="LOCAL-00012" summary="phone number fixed">
+      <option name="closed" value="true" />
+      <created>1740757112226</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740757112226</updated>
+    </task>
+    <task id="LOCAL-00013" summary="bugs fixed">
+      <option name="closed" value="true" />
+      <created>1740760422281</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740760422281</updated>
+    </task>
+    <task id="LOCAL-00014" summary="asd">
+      <option name="closed" value="true" />
+      <created>1740760643469</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1740760643469</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fixed previous/next under the datatable.">
+      <option name="closed" value="true" />
+      <created>1740760950267</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1740760950267</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added indicator to datatable.">
+      <option name="closed" value="true" />
+      <created>1740763634106</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1740763634106</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added hover feature">
+      <option name="closed" value="true" />
+      <created>1740764185803</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1740764185803</updated>
+    </task>
+    <task id="LOCAL-00018" summary="more bugs fixed">
+      <option name="closed" value="true" />
+      <created>1740768393164</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1740768393164</updated>
+    </task>
+    <task id="LOCAL-00019" summary="index chnaged">
+      <option name="closed" value="true" />
+      <created>1740769193976</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1740769193976</updated>
+    </task>
+    <task id="LOCAL-00020" summary="nothing">
+      <option name="closed" value="true" />
+      <created>1740769313501</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1740769313501</updated>
+    </task>
+    <task id="LOCAL-00021" summary="index changed">
+      <option name="closed" value="true" />
+      <created>1740774601318</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1740774601319</updated>
+    </task>
+    <task id="LOCAL-00022" summary="datatables changes made.">
+      <option name="closed" value="true" />
+      <created>1740775790109</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1740775790109</updated>
+    </task>
+    <task id="LOCAL-00023" summary="index fixed">
+      <option name="closed" value="true" />
+      <created>1740776380520</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1740776380520</updated>
+    </task>
+    <task id="LOCAL-00024" summary="testimonials changed">
+      <option name="closed" value="true" />
+      <created>1740777551296</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1740777551296</updated>
+    </task>
+    <task id="LOCAL-00025" summary="nothing agiane">
+      <option name="closed" value="true" />
+      <created>1740778314986</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1740778314986</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,15 +331,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nothing2" />
-    <MESSAGE value="added datatables in the student home and positions pages." />
     <MESSAGE value="added fonts, student-yourprofile.html, and all other files from failed merge" />
     <MESSAGE value="Get ready to pull backend." />
     <MESSAGE value="fixed misc.xml" />
     <MESSAGE value="public server running environment setup" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="fixed some datatables stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed some datatables stuff" />
+    <MESSAGE value="pop-up's fixed" />
+    <MESSAGE value="rebasing from main" />
+    <MESSAGE value="2NOTHING" />
+    <MESSAGE value="add webflow" />
+    <MESSAGE value="merging yuvraj and yuvraj webflow." />
+    <MESSAGE value="phone number fixed" />
+    <MESSAGE value="bugs fixed" />
+    <MESSAGE value="asd" />
+    <MESSAGE value="fixed previous/next under the datatable." />
+    <MESSAGE value="added indicator to datatable." />
+    <MESSAGE value="added hover feature" />
+    <MESSAGE value="more bugs fixed" />
+    <MESSAGE value="index chnaged" />
+    <MESSAGE value="nothing" />
+    <MESSAGE value="index changed" />
+    <MESSAGE value="datatables changes made." />
+    <MESSAGE value="index fixed" />
+    <MESSAGE value="testimonials changed" />
+    <MESSAGE value="nothing agiane" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing agiane" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

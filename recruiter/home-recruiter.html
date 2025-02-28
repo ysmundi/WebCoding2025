@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 28 2025 01:01:10 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 28 2025 14:58:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6771988e3f9bdc7ea929ace2" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
@@ -327,10 +327,11 @@
     <div class="w-slider-mask">
       <div class="w-slide">
         <section class="section-6">
-          <div class="text-block-5">JOB FEST</div>
-          <div class="text-block-6">10/20 - 10/25</div>
-          <div class="w-layout-blockcontainer container-7 w-container"></div>
-          <p class="paragraph">The Job Fest is an exciting opportunity for students in the New York City area to connect directly with top recruiters from leading companies. Over the course of a week, students will have the chance to attend networking events, participate in mock interviews, and learn about the latest job opportunities in their fields of interest. Recruiters will be on-site to engage with students, review resumes, and conduct on-the-spot interviews, making this an invaluable chance for students to make meaningful connections and potentially secure internships or full-time roles. With a range of industries represented, from tech and finance to marketing and non-profit, the Job Fest promises to be a dynamic and career-boosting experience for all attendees.</p>
+          <div class="text-block-6">ARLINGTON MEMORIAL HALL,TX</div>
+          <div class="text-block-5">JOB CONVENTION</div>
+          <div class="w-layout-blockcontainer container-361 w-container">
+            <div class="text-block-123">FEB. 29</div><img src="../images/image-58.svg" loading="lazy" alt="" class="image-43"><img src="../images/Group-125.svg" loading="lazy" alt="" class="image-44">
+          </div>
         </section>
       </div>
       <div class="w-slide">
@@ -381,7 +382,9 @@
       <div class="w-icon-slider-right"></div>
     </div>
     <div class="slide-nav-2 w-slider-nav w-round"></div>
-  <!-- </div>    <div class="camera">
+  </div>
+  <section id="Events-Home" data-w-id="84ea9720-06ce-8c0e-3fe8-0e1948fb256d" class="track">
+    <div class="camera">
       <div class="frame">
         <div class="item">
           <section class="section-6">
@@ -432,7 +435,7 @@
           </section>
         </div>
       </div>
-    </div> -->
+    </div>
   </section>
   <section class="dashboard">
     <div class="w-layout-blockcontainer container-179 w-container">
@@ -491,7 +494,7 @@
     <div class="w-layout-blockcontainer container-189 w-container">
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Navigation</strong></div>
-        <a href="#Events-Home" class="link-block-15 w-inline-block">
+        <a href="#new-events" class="link-block-15 w-inline-block">
           <div class="text-block-40">Home</div>
         </a>
         <a href="#dashboard" class="link-block-16 w-inline-block">
@@ -602,26 +605,26 @@
       let table;
       let userId;
   
-      // Function to check if a session ID exists
-      function checkSession() {
-          return $.ajax({
-              url: `${config.apiBaseUrl}/auth/api/user`,
-              method: 'GET',
-              credentials: 'include', // Include cookies
-              success: function (data) {
-                  if (!data.user || !data.user.id || data.user.role != "Recruiter") {
-                      // Redirect to index.html if no session ID is found or the user is a student
-                      window.location.href = '../index.html';
-                  }
-                  userId = data.user.id; // Store the user ID
-              },
-              error: function (error) {
-                  // Redirect to index.html if there's an error (e.g., no session)
-                  window.location.href = '../index.html';
-                  console.error('Error fetching user ID:', error);
-              },
-          });
-      }
+      // // Function to check if a session ID exists
+      // function checkSession() {
+      //     return $.ajax({
+      //         url: `${config.apiBaseUrl}/auth/api/user`,
+      //         method: 'GET',
+      //         credentials: 'include', // Include cookies
+      //         success: function (data) {
+      //             if (!data.user || !data.user.id || data.user.role != "Recruiter") {
+      //                 // Redirect to index.html if no session ID is found or the user is a student
+      //                 window.location.href = '../index.html';
+      //             }
+      //             userId = data.user.id; // Store the user ID
+      //         },
+      //         error: function (error) {
+      //             // Redirect to index.html if there's an error (e.g., no session)
+      //             window.location.href = '../index.html';
+      //             console.error('Error fetching user ID:', error);
+      //         },
+      //     });
+      // }
   
       // Check user's subscription
       function checkSubscription() {
