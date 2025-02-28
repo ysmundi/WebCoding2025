@@ -58,7 +58,7 @@
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById('email').value;
+      const email = (document.getElementById('email').value).replaceAll(" ", "");
       const password = document.getElementById('password').value;
 
       const response = await fetch(`${config.apiBaseUrl}/auth/login`, {

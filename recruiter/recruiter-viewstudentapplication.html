@@ -262,8 +262,8 @@
                 document.getElementById('organization_name').textContent = job.organization_name || 'None';
                 document.getElementById('position').textContent = job.position_name || 'None';
                 document.getElementById('education_requirements').textContent = job.education_requirements || 'None.';
-                document.getElementById('position_type').textContent = job.job_type || 'None';
-                document.getElementById('location').textContent = job.location_requirements || 'None';
+                document.getElementById('position_type').textContent = job.location_requirements || 'None';
+                document.getElementById('location').textContent = job.location || 'None';
                 document.getElementById('salary').textContent = job.salary ? `$${job.salary}/Hr` : 'None';
                 document.getElementById('deadline').textContent = job.deadline ? new Date(job.deadline).toLocaleDateString() : 'None';
                 document.getElementById('requirements').textContent = job.requirements || 'No requirements available.';

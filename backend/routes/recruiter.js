@@ -21,7 +21,7 @@ router.get('/subscription/:userId', isAuthenticated, (req, res) => {
 
     // Return success response
     res.status(201).json(result[0] );
-  })
+  }) 
 });
 
 //Activate standard subscription 
@@ -87,7 +87,7 @@ router.put('/subscription-professional/:userId', isAuthenticated, (req, res) => 
 
 
 // POST /recruiter/post-job - Create a new job posting
-router.post('/post-job', isAuthenticated, (req, res) => {
+router.post('/post-job', (req, res) => { //isAuthenticated, 
   const jobData = req.body;
 
   db.query('INSERT INTO job_postings SET ?', jobData, (err, result) => {
@@ -135,7 +135,7 @@ router.get('/accepted-job-applications/:jobId', isAuthenticated, (req, res) => {
 
 
 //Get information about job by its id
-router.get('/posting-info/:jobId', isAuthenticated, (req, res) => { 
+router.get('/posting-info/:jobId', (req, res) => { // isAuthenticated,
   const jobId = req.params.jobId;
 
   try {

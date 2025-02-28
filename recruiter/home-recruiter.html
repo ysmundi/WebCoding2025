@@ -281,6 +281,25 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
+    @media (max-width: 700px) {
+      .container-220,  .container-221 {
+        overflow: auto;
+      }
+
+      table.dataTable {
+        width: 750px !important;
+      }
+
+      table.dataTable tbody td.name-column {
+        font-size: 40px; 
+        font-weight: bold;
+      }
+
+      .container-182 {
+        width: auto;
+      }
+    }
+
   </style>
 </head>
 <body class="body-4">
@@ -510,7 +529,7 @@
               method: 'GET',
               credentials: 'include', // Include cookies
               success: function (data) {
-                  if (!data.user || !data.user.id || data.user.role === "Student") {
+                  if (!data.user || !data.user.id || data.user.role != "Recruiter") {
                       // Redirect to index.html if no session ID is found or the user is a student
                       window.location.href = '../index.html';
                   }

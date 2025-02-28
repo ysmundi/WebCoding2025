@@ -125,7 +125,7 @@
         // Get form values
         const first_name = document.getElementById('first_name').value;
         const last_name = document.getElementById('last-name').value; // Corrected ID
-        const email = document.getElementById('email').value;
+        const email = (document.getElementById('email').value).rplaceAll(" ", "");
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const user_type = document.getElementById('role').value;
@@ -153,7 +153,7 @@
         };
 
         try {
-            const response = await fetch('${config.apiBaseUrl}/register', {
+            const response = await fetch(`${config.apiBaseUrl}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
