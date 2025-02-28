@@ -196,6 +196,7 @@
       font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Make the "SUBMITTED" text white in blue rows (even rows) */
@@ -220,6 +221,7 @@
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
       line-height: 1.2;
+      font-family: 'HelveticaNeueHeavy', sans-serif;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -334,6 +336,25 @@
     .dataTables_wrapper .dataTables_info {
       text-align: left; /* Align the text to the left */
       margin-top: 10px; /* Add some top margin */
+    }
+
+    /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
     }
 
     @media (max-width: 700px) {

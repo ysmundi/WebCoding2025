@@ -224,6 +224,25 @@
             background-color: #EC9440 !important; /* Explicitly set blue for even rows */
         }
 
+        /* Style for the toggle icons */
+        .toggle-icon {
+          cursor: pointer;
+          margin-left: 8px;
+          font-size: 16px;
+          color: white; /* Default icon color */
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* Change icon color and rotate on hover */
+        th:hover .toggle-icon {
+          color: black; /* Change color on hover */
+        }
+
+        /* Rotate the icon when active */
+        .toggle-icon.active {
+          transform: rotate(180deg);
+        }
+
         /* Increase the font size of the Name column */
         table.dataTable tbody td.name-column {
             font-size: 60px; /* Larger font size */
@@ -289,6 +308,61 @@
         table.dataTable thead th.submitted-column,
         table.dataTable tbody td.submitted-column {
             width: 25%; /* 22.5% of the viewport width */
+        }
+
+        /* Customize the DataTables pagination buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          color: #EC9440 !important; /* Set the text color */
+          font-size: 20px; /* Adjust the font size */
+          font-weight: bold; /* Make the text bold */
+        }
+
+        /* Customize the page number buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+        .dataTables_wrapper .dataTables_paginate .paginate_button:not(.previous):not(.next) {
+          background-color: #EC9440 !important; /* Set the background color */
+          color: white !important; /* Set the text color */
+          border-radius: 4px; /* Add some rounded corners */
+          padding: 8px; /* Add padding to the page number buttons */
+        }
+
+        /* Customize the "Previous" and "Next" buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.previous{
+          color: #EC9440 !important; /* Set the text color */
+          font-size: 20px; /* Adjust the font size */
+          font-weight: bold; /* Make the text bold */
+          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+        }
+
+        /* Customize the "Previous" and "Next" buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+          color: #EC9440 !important; /* Set the text color */
+          font-size: 20px; /* Adjust the font size */
+          font-weight: bold; /* Make the text bold */
+          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+        }
+
+        /* Customize the DataTables info text */
+        .dataTables_wrapper .dataTables_info {
+          color: #EC9440 !important; /* Set the text color */
+          font-size: 20px; /* Adjust the font size */
+          font-weight: bold; /* Make the text bold */
+          padding-bottom: 12px; /* Add some padding */
+        }
+
+        /* Customize the hover effect for pagination buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
+          background-color: #EC9440 !important; /* Set the background color on hover */
+          color: white !important; /* Set the text color on hover */
+          border-radius: 4px; /* Add some rounded corners */
+          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+        }
+
+
+        /* Customize the "Showing X to Y of Z entries" text */
+        .dataTables_wrapper .dataTables_info {
+          text-align: left; /* Align the text to the left */
+          margin-top: 10px; /* Add some top margin */
         }
 
         @media (max-width: 700px) {
