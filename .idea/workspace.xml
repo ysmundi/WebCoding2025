@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="index fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="testimonials changed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -298,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740776380520</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="testimonials changed">
+      <option name="closed" value="true" />
+      <created>1740777551296</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1740777551296</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +321,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nothing2" />
     <MESSAGE value="added datatables in the student home and positions pages." />
     <MESSAGE value="added fonts, student-yourprofile.html, and all other files from failed merge" />
     <MESSAGE value="Get ready to pull backend." />
@@ -341,7 +345,8 @@
     <MESSAGE value="index changed" />
     <MESSAGE value="datatables changes made." />
     <MESSAGE value="index fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="index fixed" />
+    <MESSAGE value="testimonials changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="testimonials changed" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
