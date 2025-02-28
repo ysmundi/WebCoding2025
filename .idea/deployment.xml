@@ -6,7 +6,7 @@
       <paths name="jobconn">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/FBLA/WebCoding/jobconn2025/current" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
