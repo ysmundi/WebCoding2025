@@ -57,14 +57,14 @@
       <div class="w-layout-blockcontainer container-154 w-container">
         <h1 class="heading-48">Basic Information</h1>
         <div class="text-block-114" id="organization_name">University of Harvard</div>
-        <h1 class="heading-29" id="position_name"><span class="text-span-7">LECTURER</span></h1>
-        <div class="text-block-111" id="education_requirements">Master Degree in Theoretical Physics</div>
+        <h1 class="heading-29 postion_name" id="position_name"><span class="text-span-7">LECTURER</span></h1>
+        <div class="text-block-111 education_requirements" id="education_requirements">Master Degree in Theoretical Physics</div>
         <div class="w-layout-blockcontainer container-155 w-container">
           <div class="w-layout-blockcontainer container-159 w-container">
             <div class="text-block-26">Position Type</div>
           </div>
           <div class="w-layout-blockcontainer container-160 w-container">
-            <div class="text-block-27" id="position_type">On Site</div>
+            <div class="text-block-27 position_type" id="position_type">On Site</div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
@@ -72,7 +72,7 @@
             <div class="text-block-113">Location</div>
           </div>
           <div class="w-layout-blockcontainer container-162 w-container">
-            <div class="text-block-28" id="location"><strong>Cambridge, MA</strong></div>
+            <div class="text-block-28 location" id="location"><strong>Cambridge, MA</strong></div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
@@ -234,6 +234,7 @@
 
                 // Log the job object for debugging
                 console.log('Job Object:', job);
+
 
                 // Update the HTML with the fetched data
                 document.getElementById('organization_name').textContent = job.organization_name || 'None.';
