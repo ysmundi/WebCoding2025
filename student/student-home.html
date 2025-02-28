@@ -550,7 +550,7 @@
           <div class="text-block-97">Your Profile</div>
         </a>
         <a href="#" class="link-block-26 w-inline-block">
-          <div class="text-block-97">Log Out</div>
+          <div class="text-block-97 logout">Log dOut</div> 
         </a>
       </div>
       <div class="w-layout-blockcontainer container-190 w-container">
@@ -586,7 +586,7 @@
     </div>
     <a href="../student/student-yourprofile.html" class="button-3 w-button">YM</a>
     <div class="text-block-3">
-      <a href="#tutorial" class="link"><strong class="bold-text-15">Log Out</strong></a>
+      <div class="logout" id="logout"><strong class="bold-text-15">Log Out</strong></div>
     </div>
   </div>
   <section class="section-33">
@@ -634,13 +634,13 @@
           <a href="#Dashboard" class="dropdown-link-16 w-dropdown-link">Dashboard</a>
           <a href="../student/student-positions.html" class="dropdown-link-15 w-dropdown-link">Positions</a>
           <a href="#tutorial" class="dropdown-link-14 w-dropdown-link">Tutorial</a>
-          <a href="#" class="dropdown-link-12 w-dropdown-link">Log Out</a>
+          <a href="#" class="dropdown-link-12 w-dropdown-link logout">Log Out</a>
         </nav>
       </div>
     </div>
     <div class="w-layout-blockcontainer container-327 w-container">
       <a href="../student/student-yourprofile.html" class="link-block-11 w-inline-block">
-        <h1 class="heading-75">John Doe</h1>
+        <h1 class="heading-75" id="username-phone">Profile</h1>
       </a>
     </div>
   </div>
@@ -661,6 +661,7 @@
                 window.location.href = '../index.html';
             }
             userId = data.user.id; // Store the user ID
+            username = data.user.username;
         },
         error: function (error) {
             // Redirect to index.html if there's an error (e.g., no session)
@@ -668,7 +669,8 @@
             console.error('Error fetching user ID:', error);
         },
     });
-}
+    }
+
 
     // Initialize the DataTable
     function initializeDataTable() {
@@ -720,15 +722,41 @@
         table.search(this.value).draw();
     });
 
+
+    // Logout function
+    function logout() {
+          $.ajax({
+              url: `${config.apiBaseUrl}/auth/logout`,
+              method: 'POST',
+              success: function (response) {
+                  window.location.href = `../index.html`;
+              },
+              error: function (error) {
+                  console.error('Error logging out:', error.responseJSON.error);
+                  alert('Failed to log out. Please try again.');
+              },
+          });
+      }
+
+      // Attach logout event listener
+      $('.logout').on('click', function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+          logout(); // Call the logout function
+      });
+
     // Initial setup
     checkSession().then(() => {
         initializeDataTable();
         fetchAndPopulateTable();
+        fetchUserName();
     });
+
+
+
 
     //localhost  s%3AGscAtx1CxZy_9Rvwrbm7p_moAjbpnjMT.WFnU22FyN1jX4Tx01hLmaA7xpbe%2BpGAQJBSYV71uJ%2FU  session_cookie_name
 
-
+    
 });
 </script>
 <!-- load this lib at the bottom !-->
