@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Feb 26 2025 15:50:37 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Feb 28 2025 01:01:10 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="679fd888f74ee0cee34b5a97" data-wf-site="676715cb815e8f01731dca22">
 <head>
   <meta charset="utf-8">
@@ -14,12 +14,16 @@
   <link href="../images/Group-102.png" rel="shortcut icon" type="image/x-icon">
   <link href="../images/Group-102.png" rel="apple-touch-icon">
   <script src="../js/config.js"></script>
+
+  <style>
+    a { text-decoration: none; color: black; }
+  </style>
 </head>
 <body>
   <div class="pop-up">
     <div class="pop-up-item">
       <div class="w-layout-blockcontainer container-222 w-container">
-        <h1 class="heading-80">SUCCESS</h1>
+        <h1 class="heading-91">SUCCESS</h1>
       </div>
       <div class="w-layout-blockcontainer container-223 w-container">
         <div class="w-layout-blockcontainer container-225 w-container">
@@ -36,7 +40,7 @@
   <div class="w-layout-blockcontainer container-116 w-container">
     <div class="w-layout-blockcontainer container-149 w-container">
       <div class="w-layout-blockcontainer container-164 w-container">
-        <a href="javascript:history.back()"><div class="text-block-25">BACK</div></a>
+        <a href="javascript:history.back()"><div class="text-block-25" id="backButton">BACK</div></a>
       </div>
     </div>
     <h1 class="heading-21">APPLY</h1>
@@ -89,7 +93,18 @@
       <div class="w-layout-blockcontainer container-152 w-container">
         <div class="form-block-6 w-form">
           <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-6" data-wf-page-id="679fd888f74ee0cee34b5a97" data-wf-element-id="fda40e31-69b4-664b-04f9-48c1abaab59a">
-            <h1 class="heading-89">Apply</h1><label for="name" class="field-label-28">Name</label><input class="text-field-17 w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name" required=""><label for="email" class="field-label-27">Email Address</label><input class="text-field-18 w-input" maxlength="256" name="email" data-name="Email" placeholder="" type="email" id="email" required=""><label for="email-2" class="field-label-25">Phone Number(Optional)</label><input class="text-field-18 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" type="tel" id="phone-number" ><label for="field" class="field-label-26">About You</label><textarea required="" placeholder="Example Text" maxlength="5000" id="about-you" name="field" data-name="Field" class="textarea-2 w-input"></textarea>
+            <h1 class="heading-89">Apply</h1><label for="name" class="field-label-28">Name</label>
+            <input class="text-field-17 w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name" required="">
+            <label for="email" class="field-label-27">Email Address</label><input class="text-field-18 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" type="tel" id="email" required="">
+            <label for="phone">Phone Number (Optional)</label>
+            <input class="text-field-18 w-input"
+                   name="phone-number"
+                   id="phone"
+                   type="tel"
+                   placeholder="(123) 456-7890"
+                   maxlength="14">
+            <label for="field" class="field-label-26">About You</label>
+            <textarea required="" placeholder="Example Text" maxlength="5000" id="field" name="field" data-name="Field" class="textarea-2 w-input"></textarea>
             <div class="w-layout-blockcontainer container-163 w-container"><input type="submit" data-wait="Please wait..." data-w-id="fda40e31-69b4-664b-04f9-48c1abaab5a1" class="submit-button-6 w-button" value="Submit"></div>
           </form>
           <div class="w-form-done">
@@ -109,14 +124,14 @@
       <div class="w-layout-blockcontainer container-154 w-container">
         <h1 class="heading-48">Basic Information</h1>
         <div>University of Harvard</div>
-        <h1 class="heading-29"><span class="text-span-7">LECTURER</span></h1>
+        <h1><span class="text-span-15">LECTURER</span></h1>
         <div>Master Degree in Theoretical Physics</div>
         <div class="w-layout-blockcontainer container-155 w-container">
           <div class="w-layout-blockcontainer container-159 w-container">
             <div class="text-block-26">Position Type</div>
           </div>
-          <div class="w-layout-blockcontainer container-160 w-container">
-            <div class="text-block-27">On Site</div>
+          <div class="w-layout-blockcontainer container-346 w-container">
+            <div class="text-block-115"><strong>ON-SITE</strong></div>
           </div>
         </div>
         <div class="w-layout-blockcontainer container-156 w-container">
@@ -310,6 +325,24 @@
             }
         });
     });
-</script>
+    document.getElementById('phone').addEventListener('input', function(e) {
+      // Allow only numbers
+      let numbers = e.target.value.replace(/\D/g, '');
+
+      // Auto-format based on input length
+      let formatted = '';
+      if (numbers.length > 0) {
+        formatted = '(' + numbers.substring(0,3);
+        if (numbers.length > 3) {
+          formatted += ') ' + numbers.substring(3,6);
+        }
+        if (numbers.length > 6) {
+          formatted += '-' + numbers.substring(6,10);
+        }
+      }
+
+      e.target.value = formatted;
+    });
+  </script>
 </body>
 </html>
