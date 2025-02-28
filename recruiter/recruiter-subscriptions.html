@@ -18,7 +18,7 @@
 <body class="body-5">
   <section class="section-29">
     <div class="w-layout-blockcontainer container-340 w-container">
-      <a href="#" class="link-block-34 w-inline-block">
+      <a href="home-recruiter.html" class="link-block-34 w-inline-block">
         <div class="text-block-122"><strong>Back</strong></div>
       </a>
       <h1 class="heading-30">Plans for you!</h1>
@@ -75,25 +75,25 @@
   <script src="../js/webflow.js" type="text/javascript"></script>
 
   <script>
-    function checkSession() {
-    return $.ajax({
-        url: `${config.apiBaseUrl}/auth/api/user`,
-        method: 'GET',
-        credentials: 'include', // Include cookies
-        success: function (data) {
-            if (!data.user || !data.user.id || data.user.role != "Recruiter") {
-                // Redirect to index.html if no session ID is found or the user is a student
-                window.location.href = '../index.html';
-            }
-            userId = data.user.id; // Store the user ID
-        },
-        error: function (error) {
-            // Redirect to index.html if there's an error (e.g., no session)
-            window.location.href = '../index.html';
-            console.error('Error fetching user ID:', error);
-        },
-    }); 
-  } 
+  //   function checkSession() {
+  //   return $.ajax({
+  //       url: `${config.apiBaseUrl}/auth/api/user`,
+  //       method: 'GET',
+  //       credentials: 'include', // Include cookies
+  //       success: function (data) {
+  //           if (!data.user || !data.user.id || data.user.role != "Recruiter") {
+  //               // Redirect to index.html if no session ID is found or the user is a student
+  //               window.location.href = '../index.html';
+  //           }
+  //           userId = data.user.id; // Store the user ID
+  //       },
+  //       error: function (error) {
+  //           // Redirect to index.html if there's an error (e.g., no session)
+  //           window.location.href = '../index.html';
+  //           console.error('Error fetching user ID:', error);
+  //       },
+  //   });
+  // }
 
   document.addEventListener('DOMContentLoaded', function () {
     checkSession()  

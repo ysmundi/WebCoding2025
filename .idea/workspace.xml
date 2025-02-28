@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="add webflow">
-      <change afterPath="$PROJECT_DIR$/home/home-admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Group-125.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/image-58.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/normalize.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/webflow.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/webflow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/yuvraj-webcoding-24-25.webflow.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/yuvraj-webcoding-24-25.webflow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/view-recruiters-postings.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/view-recruiters-postings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/login-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruiter/home-recruiter.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/home-recruiter.html" afterDir="false" />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="merging yuvraj and yuvraj webflow.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/home-admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/home-admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/student-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-appicationpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-appicationpage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740754063246</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="merging yuvraj and yuvraj webflow.">
+      <option name="closed" value="true" />
+      <created>1740755567451</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740755567451</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +228,8 @@
     <MESSAGE value="nothing" />
     <MESSAGE value="2NOTHING" />
     <MESSAGE value="add webflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="add webflow" />
+    <MESSAGE value="merging yuvraj and yuvraj webflow." />
+    <option name="LAST_COMMIT_MESSAGE" value="merging yuvraj and yuvraj webflow." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
