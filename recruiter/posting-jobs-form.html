@@ -140,6 +140,12 @@
     });
   }
 
+
+  function showPopup() {
+      document.querySelector('.pop-up').style.display = 'flex'; // Change to 'flex' for centering
+    }
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Check the user's session and role before allowing form submission
     checkSession().then(() => {
@@ -195,7 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     document.querySelector(".w-form-done").style.display = "block"; // Show success message
-                    document.querySelector(".w-form-fail").style.display = "none";  // Hide error message
+                    document.querySelector(".w-form-fail").style.display = "none"; 
+                    showPopup(); // Hide error message
                     document.getElementById("email-form").reset(); // Reset form
                 } else {
                     console.error("Failed to submit the job", response.statusText);
