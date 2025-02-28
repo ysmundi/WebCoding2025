@@ -86,7 +86,7 @@ app.get('/recruiter/post-job', (req, res) => {
 
 //need to connect backend 
 app.get('/recruiter/home', (req, res) => {
-    res.sendFile(path.join(__dirname, '../recruiter/home-recruiter.html'));
+    res.sendFile(path.join(__dirname, '../recruiter/test.html'));
 });
 
 //need to connect backend 
