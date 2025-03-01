@@ -4017,7 +4017,7 @@
   width: 50%;
   max-width: none;
   height: 100%;
-  margin-top: 25px;
+  margin-top: 0;
   display: flex;
 }
 
@@ -9093,7 +9093,7 @@
     margin-top: 20px;
     padding-bottom: 0;
     padding-right: 0;
-    display: flex;
+    display: none;
   }
 
   .container-293 {
