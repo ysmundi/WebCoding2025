@@ -28,7 +28,7 @@ router.get('/subscription/:userId', isAuthenticated, (req, res) => {
 router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Standard", max_postings = 3 WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Standard" WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -48,7 +48,7 @@ router.put('/subscription-standard/:userId', isAuthenticated, (req, res) => {
 router.put('/subscription-value/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Value", max_postings = 10 WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Value" WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -68,7 +68,7 @@ router.put('/subscription-value/:userId', isAuthenticated, (req, res) => {
 router.put('/subscription-professional/:userId', isAuthenticated, (req, res) => {
   const userId = req.params.userId;
 
-  const sql = 'UPDATE users_info SET subscription = "Professional", max_postings = 11 WHERE id = ?';
+  const sql = 'UPDATE users_info SET subscription = "Professional" WHERE id = ?';
 
   db.query(sql, [userId], (error, result) => {
     if (error) {
@@ -313,6 +313,48 @@ router.delete('/delete-posting/:jobId', isAuthenticated, (req, res) => {
       });
     });
   });
+});
+
+
+router.get('/limit-job-postings/:userId', async (req, res) => {
+  let userId = req.params.userId
+
+  const query = "SELECT subscription FROM users_info WHERE id = ?";
+  const count = 'SELECT COUNT(*) AS postings FROM job_postings WHERE user_id = ?';
+
+  db.query(query, [userId], async (error, result) => {
+    if(error) {
+      res.status(500).json({ error: "Server errror" });
+    } else if (result === 0) {
+      res.status(401).json({message: "User not found"})
+    } else {
+
+      const subscription = result[0].subscription;
+      
+      db.query(count, [userId], async (err, results) => {
+        const postings = results[0].postings;
+
+        if(subscription == "Standard"){
+          if (postings >= 3){
+            res.status(400).json({ message: 'Posting is not avaliable'});
+          } else {
+            res.status(200).json({ message: "Posting is avaliable"});
+          }
+        } else if (subscription == "Value") { 
+          if (postings >= 10) {
+            res.status(400).json({ meassage: 'Posting is not avaliable'});
+          } else { 
+            res.status(200).json({ message: "Posting is avaliable"});
+          }
+        } else if (subscription == "Professional") {
+          res.status(200).json({ message: "Posting is avaliable"});
+        } else {
+          res.status(400).json({ message: "Posting is not avaliable"});
+        }
+
+      })
+    }
+  })
 });
 
 module.exports = router;

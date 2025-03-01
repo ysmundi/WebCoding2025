@@ -393,7 +393,7 @@
           <h1 class="heading-40">Information</h1>
         </div>
         <div class="w-layout-blockcontainer container-295 w-container">
-          <a href="../recruiter/posting-jobs-form.html" class="button-13 w-button">Edit</a>
+          <div class="button-13 w-button edit">Edit</div>
         </div>
       </div>
       <div class="w-layout-blockcontainer container-203 w-container">
@@ -502,7 +502,7 @@
         </div>
         <div class="w-layout-blockcontainer container-204 w-container">
           <div class="w-layout-blockcontainer container-213 w-container">
-            <a href="../recruiter/posting-jobs-form.html" class="button-13 w-button">Edit</a>
+            <div class="button-13 w-button edit">Edit</div>
           </div>
           <div class="w-layout-blockcontainer container-218 w-container">
             <div class="text-block-52"><strong class="bold-text-12">About</strong></div>
@@ -684,6 +684,13 @@ document.addEventListener('DOMContentLoaded', function () {
             lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
         });
     }
+
+    $('.edit').on('click', function (event) {
+      event.preventDefault();
+      jobId = getQueryParam('jobId');
+      window.location.href = `edit-posting.html?jobId=${jobId}`
+    });
+
 
     
 

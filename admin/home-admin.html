@@ -271,7 +271,7 @@
   <section class="section-13">
     <div class="w-layout-blockcontainer container-349 w-container">
       <a href="#" class="link-block-31 w-inline-block">
-        <div class="text-block-116"><strong class="bold-text-31">Log Out</strong></div>
+        <div class="text-block-116"><strong class="bold-text-31" id="logout">Log Out</strong></div>
       </a>
     </div><img src="../images/Group-124.svg" loading="lazy" alt="" class="image-41">
     <div class="w-layout-blockcontainer container-39 w-container"></div>
@@ -413,6 +413,26 @@ $(document).ready(function () {
       },
     });
   }
+
+  function logout() {
+          $.ajax({
+              url: `${config.apiBaseUrl}/auth/logout`,
+              method: 'POST',
+              success: function (response) {
+                  window.location.href = `../index.html`;
+              },
+              error: function (error) {
+                  console.error('Error logging out:', error.responseJSON.error);
+                  alert('Failed to log out. Please try again.');
+              },
+          });
+      }
+
+      // Attach logout event listener
+      $('#logout').on('click', function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+          logout(); // Call the logout function
+      });
 
   // Handle custom "Show entries" dropdown
   $('#entriesSelect').on('change', function () {
