@@ -413,25 +413,25 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-// function checkSession() {
-//     return $.ajax({
-//         url: `${config.apiBaseUrl}/auth/api/user`,
-//         method: 'GET',
-//         credentials: 'include', // Include cookies
-//         success: function (data) {
-//             if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
-//                 // Redirect to index.html if no session ID is found or the user is not a student
-//                 window.location.href = '../index.html';
-//             }
-//             userId = data.user.id; // Store the user ID
-//         },
-//         error: function (error) {
-//             // Redirect to index.html if there's an error (e.g., no session)
-//             window.location.href = '../index.html';
-//             console.error('Error fetching user ID:', error);
-//         },
-//     });
-// }
+function checkSession() {
+    return $.ajax({
+        url: `${config.apiBaseUrl}/auth/api/user`,
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
+                // Redirect to index.html if no session ID is found or the user is not a student
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
 
 async function userInfo() {
     try {
