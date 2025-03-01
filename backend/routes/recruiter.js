@@ -2,8 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../config/database');
 const isAuthenticated = require('../middlewares/auth');
+const nodemailer = require('nodemailer');
 
 const router = express.Router();
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.sendgrid.net',
+  port: 587,
+  secure: false,
+  auth: {
+      user: 'apikey',
+      pass: "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", // Load API key from .env
+  },
+});
 
 //Check user subscription 
 router.get('/subscription/:userId', isAuthenticated, (req, res) => {
@@ -336,20 +347,20 @@ router.get('/limit-job-postings/:userId', async (req, res) => {
 
         if(subscription == "Standard"){
           if (postings >= 3){
-            res.status(400).json({ message: 'Posting is not avaliable'});
+            res.status(400).json({ message: 'Posting is not avaliable your posing is already 3/3'});
           } else {
             res.status(200).json({ message: "Posting is avaliable"});
           }
         } else if (subscription == "Value") { 
           if (postings >= 10) {
-            res.status(400).json({ meassage: 'Posting is not avaliable'});
+            res.status(400).json({ meassage: 'Posting is not avaliable your posing is already 10/10'});
           } else { 
             res.status(200).json({ message: "Posting is avaliable"});
           }
         } else if (subscription == "Professional") {
           res.status(200).json({ message: "Posting is avaliable"});
         } else {
-          res.status(400).json({ message: "Posting is not avaliable"});
+          res.status(400).json({ message: "Posting is not avaliable, subscripe to any of packages"});
         }
 
       })

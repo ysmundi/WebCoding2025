@@ -197,6 +197,54 @@
       line-height: 1.2;
     }
 
+        /* Pagination container */
+        .dataTables_wrapper .dataTables_paginate {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        /* Page number buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          color: #64AAC3 !important;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 8px 12px;
+          margin: 0 5px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        /* Current page button */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+        /* Hover effect */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+            /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
+    }
+
     @media (max-width: 700px) {
       .container-250 {
         overflow: auto;
@@ -381,6 +429,14 @@ $(document).ready(function () {
     table = $('#myTable').DataTable({
       dom: 'lrtip', // Include default length menu and search input
       lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+      language: {
+            info: '',
+            infoEmpty: '',
+            paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
     });
     console.log('DataTable Initialized:', table); // Log the DataTable instance
   }

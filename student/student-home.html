@@ -311,60 +311,53 @@
             width: 25%; /* 22.5% of the viewport width */
         }
 
-        /* Customize the DataTables pagination buttons */
+            /* Pagination container */
+            .dataTables_wrapper .dataTables_paginate {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        /* Page number buttons */
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-          color: #EC9440 !important; /* Set the text color */
-          font-size: 20px; /* Adjust the font size */
-          font-weight: bold; /* Make the text bold */
+          color: #EC9440 !important;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 8px 12px;
+          margin: 0 5px;
+          border-radius: 4px;
+          cursor: pointer;
         }
 
-        /* Customize the page number buttons */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-        .dataTables_wrapper .dataTables_paginate .paginate_button:not(.previous):not(.next) {
-          background-color: #EC9440 !important; /* Set the background color */
-          color: white !important; /* Set the text color */
-          border-radius: 4px; /* Add some rounded corners */
-          padding: 8px; /* Add padding to the page number buttons */
+        /* Current page button */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #EC9440 !important;
+          color: white !important;
         }
 
-        /* Customize the "Previous" and "Next" buttons */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.previous{
-          color: #EC9440 !important; /* Set the text color */
-          font-size: 20px; /* Adjust the font size */
-          font-weight: bold; /* Make the text bold */
-          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
+        /* Hover effect */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: #EC9440 !important;
+          color: white !important;
         }
 
-        /* Customize the "Previous" and "Next" buttons */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.next {
-          color: #EC9440 !important; /* Set the text color */
-          font-size: 20px; /* Adjust the font size */
-          font-weight: bold; /* Make the text bold */
-          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
-        }
+            /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
-        /* Customize the DataTables info text */
-        .dataTables_wrapper .dataTables_info {
-          color: #EC9440 !important; /* Set the text color */
-          font-size: 20px; /* Adjust the font size */
-          font-weight: bold; /* Make the text bold */
-          padding-bottom: 12px; /* Add some padding */
-        }
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
 
-        /* Customize the hover effect for pagination buttons */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
-          background-color: #EC9440 !important; /* Set the background color on hover */
-          color: white !important; /* Set the text color on hover */
-          border-radius: 4px; /* Add some rounded corners */
-          padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
-        }
-
-
-        /* Customize the "Showing X to Y of Z entries" text */
-        .dataTables_wrapper .dataTables_info {
-          text-align: left; /* Align the text to the left */
-          margin-top: 10px; /* Add some top margin */
-        }
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
+    }
 
         @media (max-width: 700px) {
             .container-220,  .container-221 {
@@ -528,9 +521,9 @@
               <table class="display" id="myTable">
                   <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Date</th>
-                      <th>Status</th>
+                      <th>Name<span class="toggle-icon" data-column="name">▼</span></th>
+                      <th>Date<span class="toggle-icon" data-column="name">▼</span></th>
+                      <th>Status<span class="toggle-icon" data-column="name">▼</span></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -548,7 +541,7 @@
       </div>
       <div class="w-layout-blockcontainer container-184 w-container"></div>
       <div class="w-layout-grid grid">
-        <a href="../student/student-appicationpage.html" class="link-block-4 w-inline-block">
+        <a href="../student/student-appicationpage.html?jobId=62" class="link-block-4 w-inline-block">
           <div class="w-layout-blockcontainer container-28 w-container">
             <div class="w-layout-blockcontainer container-31 w-container">
               <div class="text-block-14">USNPS</div>
@@ -557,7 +550,7 @@
             </div>
           </div>
         </a>
-        <a href="../student/student-appicationpage.html" class="link-block-3 w-inline-block">
+        <a href="../student/student-appicationpage.html?jobId=63" class="link-block-3 w-inline-block">
           <div class="w-layout-blockcontainer container-268 w-container">
             <div class="w-layout-blockcontainer container-269 w-container">
               <div class="text-block-71">Feitian College</div>
@@ -566,7 +559,7 @@
             </div>
           </div>
         </a>
-        <a href="../student/student-appicationpage.html" class="link-block-5 w-inline-block">
+        <a href="../student/student-appicationpage.html?jobId=64" class="link-block-5 w-inline-block">
           <div class="w-layout-blockcontainer container-270 w-container">
             <div class="w-layout-blockcontainer container-271 w-container">
               <div class="text-block-92">State of Hawaii</div>
@@ -575,7 +568,7 @@
             </div>
           </div>
         </a>
-        <a href="../student/student-appicationpage.html" class="link-block-6 w-inline-block">
+        <a href="../student/student-appicationpage.html?jobId=65" class="link-block-6 w-inline-block">
           <div class="w-layout-blockcontainer container-328 w-container">
             <div class="w-layout-blockcontainer container-329 w-container">
               <div>James Huntington</div>
@@ -589,7 +582,7 @@
             <div class="w-layout-blockcontainer container-331 w-container">
               <div>Tennessee Medical Center</div>
               <div class="text-block-96">Nurse (RN)</div>
-              <div>Nasheville, TN</div>
+              <div>Nashville, TN</div>
             </div>
           </div>
         </a>
@@ -753,6 +746,13 @@
         table = $('#myTable').DataTable({
             dom: 'rtip', // Remove default search bar and "Show entries" dropdown
             lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+            language: {
+            info: '',
+            paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
         });
     }
 
