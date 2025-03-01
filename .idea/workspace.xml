@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="nothign" />
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="nothignasdfasdfasd">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/401.html" beforeDir="false" afterPath="$PROJECT_DIR$/401.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/home-admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/home-admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/view-recruiters-postings.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view-recruiters-postings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/yuvraj-webcoding-24-25.webflow.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/webcoding-24-25.webflow.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/home-admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/home-admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/view-recruiters-postings.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/view-recruiters-postings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/login-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-code.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-code.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-recruiter1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-recruiter1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-recruiter2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-recruiter2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-student1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-student1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/register-student2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/register-student2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/home-recruiter.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/home-recruiter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/posting-jobs-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/posting-jobs-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-homebeforepaying.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-projectinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-projectinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-subscriptions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-viewstudentapplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-viewstudentapplication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruiter/recruiter-viewstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruiter/recruiter-viewstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-appicationpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-appicationpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-edityourprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-edityourprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-positions.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-positions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-viewjob.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-viewjob.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/student-yourprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/student-yourprofile.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -327,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740783950244</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="nothignasdfasdfasd">
+      <option name="closed" value="true" />
+      <created>1740783975865</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1740783975865</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +384,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed misc.xml" />
     <MESSAGE value="public server running environment setup" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="fixed some datatables stuff" />
@@ -370,7 +408,8 @@
     <MESSAGE value="nothing agiane" />
     <MESSAGE value="fixing more of the home page" />
     <MESSAGE value="nothign" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothign" />
+    <MESSAGE value="nothignasdfasdfasd" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothignasdfasdfasd" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
