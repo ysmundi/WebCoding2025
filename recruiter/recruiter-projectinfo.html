@@ -177,6 +177,7 @@
     table.dataTable tbody tr:nth-child(even) .edit-btn.accept {
       background-color: white; /* White background for the button */
       color: #64AAC3; /* Black text for contrast */
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     .edit-btn.info {
@@ -201,6 +202,7 @@
       position: relative;
       padding-top: 20px; /* Add space for the heading */
       text-align: left; /* Align the content to the left */
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Default style for the "SUBMITTED" text in the date-column */
@@ -333,6 +335,54 @@
     table.dataTable thead th.submitted-column,
     table.dataTable tbody td.submitted-column {
       width: 25%; /* 22.5% of the viewport width */
+    }
+
+/* Pagination container */
+.dataTables_wrapper .dataTables_paginate {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Page number buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: #64AAC3 !important;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Current page button */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: #64AAC3 !important;
+  color: white !important;
+}
+
+/* Hover effect */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #64AAC3 !important;
+  color: white !important;
+}
+
+    /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
     }
 
     @media (max-width: 700px) {
@@ -565,9 +615,18 @@
         <table class="display" id="tableSubmitted">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Date</th> <!-- Updated heading -->
-            <th>Action</th>
+            <th>
+              Name
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th>
+            <th>
+              Date
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th> <!-- Updated heading -->
+            <th>
+              Action
+              <span class="toggle-icon" data-column="name">▼</span>
+            </th>
           </tr>
           </thead>
           <tbody>
@@ -680,8 +739,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize the DataTable
     function initializeDataTable() {
         table = $('#tableDateJoined').DataTable({
-            dom: 'rtip', // Remove default search bar and "Show entries" dropdown
-            lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+          dom: 'rtip', // Remove default search bar and "Show entries" dropdown
+          lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+          language: {
+            info: '',
+            paginate: {
+              previous: 'Go Back ',
+              next: ' Go Forward'
+            }
+          }
         });
     }
 
@@ -819,6 +885,13 @@ document.addEventListener('DOMContentLoaded', function () {
       table = $('#tableSubmitted').DataTable({
         dom: 'rtip', // Remove default search bar and "Show entries" dropdown
         lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+        language: {
+          info: '',
+          paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
       });
     }
 
