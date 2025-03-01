@@ -542,7 +542,7 @@
       <a href="../recruiter/recruiter-subscriptions.html" class="link"><strong class="bold-text-17">Subscription</strong></a>
     </div>
     <div class="text-block-3">
-      <a href="#" class="link"><strong class="bold-text-17">Log Out</strong></a>
+      <div class="link logout"><strong class="bold-text-17">Log Out</strong></div>
     </div>
   </div>
   <section class="section-33">
@@ -590,7 +590,7 @@
           <a href="../recruiter/posting-jobs-form.html" class="dropdown-link-15 w-dropdown-link">Post A Job</a>
           <a href="#tutorial" class="dropdown-link-14 w-dropdown-link">Tutorial</a>
           <div class="text-block-3">Standard</div>
-          <a href="#" class="dropdown-link-12 w-dropdown-link">Log Out</a>
+          <div class="dropdown-link-12 w-dropdown-link logout">Log Out</div>
         </nav>
       </div>
     </div>
@@ -708,6 +708,27 @@
       $('#myTable').on('click', '.edit-btn.applicants', function () {
           const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
           window.location.href = `recruiter-projectinfo.html?jobId=${jobId}#applicants`; // Redirect with the job ID and hash
+      });
+
+      // Logout function
+    function logout() {
+          $.ajax({
+              url: `${config.apiBaseUrl}/auth/logout`,
+              method: 'POST',
+              success: function (response) {
+                  window.location.href = `../index.html`;
+              },
+              error: function (error) {
+                  console.error('Error logging out:', error.responseJSON.error);
+                  alert('Failed to log out. Please try again.');
+              },
+          });
+      }
+
+      // Attach logout event listener
+      $('.logout').on('click', function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+          logout(); // Call the logout function
       });
   
       // Initial data fetch and table setup
