@@ -395,15 +395,6 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="name-column">Software Engineer</td>
-        <td class="date-column">02/28/2025</td>
-        <td>
-          <div class="vertical-buttons">
-            <button class="edit-btn apply" data-job-id="1">APPLY</button>
-          </div>
-        </td>
-      </tr>
       </tbody>
     </table>
   </div>
@@ -411,25 +402,25 @@
 
 <script>
   $(document).ready(function () {
-//     function checkSession() {
-//     return $.ajax({
-//         url: `${config.apiBaseUrl}/auth/api/user`,
-//         method: 'GET',
-//         credentials: 'include', // Include cookies
-//         success: function (data) {
-//             if (!data.user || !data.user.id || data.user.role === "Recruiter") {
-//                 // Redirect to index.html if no session ID is found or the user is a recruiter
-//                 window.location.href = '../index.html';
-//             }
-//             userId = data.user.id; // Store the user ID
-//         },
-//         error: function (error) {
-//             // Redirect to index.html if there's an error (e.g., no session)
-//             window.location.href = '../index.html';
-//             console.error('Error fetching user ID:', error);
-//         },
-//     });
-// }
+    function checkSession() {
+    return $.ajax({
+        url: `${config.apiBaseUrl}/auth/api/user`,
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Recruiter") {
+                // Redirect to index.html if no session ID is found or the user is a recruiter
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
     let table;
 
     // Initialize the DataTable
