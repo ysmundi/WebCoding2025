@@ -23,7 +23,7 @@
         <div class="text-block-6">ARLINGTON MEMORIAL HALL,TX</div>
         <div class="text-block-5">JOB CONVENTION</div>
         <div class="w-layout-blockcontainer container-361 w-container">
-          <div class="text-block-123">FEB. 29</div><img src="../images/image-58.svg" loading="lazy" alt="" class="image-43"><img src="../images/Group-125.svg" loading="lazy" alt="" class="image-44">
+          <div class="text-block-123">FEB. 29</div>
         </div>
       </section>
     </div>
@@ -302,25 +302,25 @@
     let userId;
 
     // Function to check if a session ID exists
-    // function checkSession() {
-    //     return $.ajax({
-    //         url: `${config.apiBaseUrl}/auth/api/user`,
-    //         method: 'GET',
-    //         credentials: 'include', // Include cookies
-    //         success: function (data) {
-    //             if (!data.user || !data.user.id || data.user.role != "Recruiter") {
-    //                 // Redirect to index.html if no session ID is found or the user is a student
-    //                 window.location.href = '../index.html';
-    //             }
-    //             userId = data.user.id; // Store the user ID
-    //         },
-    //         error: function (error) {
-    //             // Redirect to index.html if there's an error (e.g., no session)
-    //             window.location.href = '../index.html';
-    //             console.error('Error fetching user ID:', error);
-    //         },
-    //     });
-    // }
+    function checkSession() {
+        return $.ajax({
+            url: `${config.apiBaseUrl}/auth/api/user`,
+            method: 'GET',
+            credentials: 'include', // Include cookies
+            success: function (data) {
+                if (!data.user || !data.user.id || data.user.role != "Recruiter") {
+                    // Redirect to index.html if no session ID is found or the user is a student
+                    window.location.href = '../index.html';
+                }
+                userId = data.user.id; // Store the user ID
+            },
+            error: function (error) {
+                // Redirect to index.html if there's an error (e.g., no session)
+                window.location.href = '../index.html';
+                console.error('Error fetching user ID:', error);
+            },
+        });
+    }
 
     // Check user's subscription
     function checkSubscription() {
@@ -330,7 +330,7 @@
             credentials: 'include', // Include cookies
             success: function (data) {
                 if (data.subscription && data.subscription !== 'None') {
-                    // Redirect to test.html if the user has a subscription
+                    // Redirect to home-recruiter.html if the user has a subscription
                     window.location.href = 'home-recruiter.html';
                 }
             },

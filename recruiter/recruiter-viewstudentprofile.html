@@ -73,12 +73,12 @@
 
     /* Set the first row height to 10vh */
     table.dataTable tbody tr:first-child td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the height of all other rows to 30vh */
     table.dataTable tbody tr:not(:first-child) td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the width of the columns */
@@ -221,15 +221,16 @@
       color: white; /* White text for blue rows */
     }
 
-    /* Second table: Keep "Submitted" in the date-column */
-    #tableSubmitted tbody td.date-column::before {
-      content: "Date Joined"; /* Display "Submitted" */
-      position: absolute;
-      top: 50px;
+    /* Default style for the "SUBMITTED" text in the date-column */
+    table.dataTable tbody td.date-column::before {
+      content: "Date Joined"; /* Add the heading */
       left: 10px;
-      font-size: 25px; /* Font size for the text */
+      font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Make the "Submitted" text white in blue rows (even rows) */
@@ -413,25 +414,25 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-// function checkSession() {
-//     return $.ajax({
-//         url: `${config.apiBaseUrl}/auth/api/user`,
-//         method: 'GET',
-//         credentials: 'include', // Include cookies
-//         success: function (data) {
-//             if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
-//                 // Redirect to index.html if no session ID is found or the user is not a student
-//                 window.location.href = '../index.html';
-//             }
-//             userId = data.user.id; // Store the user ID
-//         },
-//         error: function (error) {
-//             // Redirect to index.html if there's an error (e.g., no session)
-//             window.location.href = '../index.html';
-//             console.error('Error fetching user ID:', error);
-//         },
-//     });
-// }
+function checkSession() {
+    return $.ajax({
+        url: `${config.apiBaseUrl}/auth/api/user`,
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role !== "Recruiter") { // Fix: Check for "Student" role
+                // Redirect to index.html if no session ID is found or the user is not a student
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
 
 async function userInfo() {
     try {

@@ -70,12 +70,12 @@
 
     /* Set the first row height to 10vh */
     table.dataTable tbody tr:first-child td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the height of all other rows to 30vh */
     table.dataTable tbody tr:not(:first-child) td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the width of the columns */
@@ -186,11 +186,13 @@
     /* Default style for the "SUBMITTED" text in the date-column */
     table.dataTable tbody td.date-column::before {
       content: "SUBMITTED"; /* Add the heading */
+      left: 10px;
       font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
       display: block; /* Make it a block-level element */
       margin-bottom: 10px;
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Make the text underneath left-aligned as well */
@@ -330,7 +332,7 @@
           <div class="text-block-6">ARLINGTON MEMORIAL HALL,TX</div>
           <div class="text-block-5">JOB CONVENTION</div>
           <div class="w-layout-blockcontainer container-361 w-container">
-            <div class="text-block-123">FEB. 29</div><img src="../images/image-58.svg" loading="lazy" alt="" class="image-43"><img src="../images/Group-125.svg" loading="lazy" alt="" class="image-44">
+            <div class="text-block-123">FEB. 29</div>
           </div>
         </section>
       </div>
@@ -466,12 +468,13 @@
         </label>
       </div>
       <div class="w-layout-blockcontainer container-182 w-container">
+<!--        <div class="w-layout-blockcontainer container-182V2 w-container">-->
         <table class="display" id="myTable">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th>Name<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Date<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Action<span class="toggle-icon" data-column="name">▼</span></th>
           </tr>
           </thead>
           <tbody>
@@ -545,7 +548,7 @@
       <a href="../recruiter/recruiter-subscriptions.html" class="link"><strong class="bold-text-17">Subscription</strong></a>
     </div>
     <div class="text-block-3">
-      <a href="#" class="link"><strong class="bold-text-17">Log Out</strong></a>
+      <div class="link logout"><strong class="bold-text-17">Log Out</strong></div>
     </div>
   </div>
   <section class="section-33">
@@ -593,7 +596,7 @@
           <a href="../recruiter/posting-jobs-form.html" class="dropdown-link-15 w-dropdown-link">Post A Job</a>
           <a href="#tutorial" class="dropdown-link-14 w-dropdown-link">Tutorial</a>
           <div class="text-block-3">Standard</div>
-          <a href="#" class="dropdown-link-12 w-dropdown-link">Log Out</a>
+          <div class="dropdown-link-12 w-dropdown-link logout">Log Out</div>
         </nav>
       </div>
     </div>
@@ -605,26 +608,26 @@
       let table;
       let userId;
   
-      // // Function to check if a session ID exists
-      // function checkSession() {
-      //     return $.ajax({
-      //         url: `${config.apiBaseUrl}/auth/api/user`,
-      //         method: 'GET',
-      //         credentials: 'include', // Include cookies
-      //         success: function (data) {
-      //             if (!data.user || !data.user.id || data.user.role != "Recruiter") {
-      //                 // Redirect to index.html if no session ID is found or the user is a student
-      //                 window.location.href = '../index.html';
-      //             }
-      //             userId = data.user.id; // Store the user ID
-      //         },
-      //         error: function (error) {
-      //             // Redirect to index.html if there's an error (e.g., no session)
-      //             window.location.href = '../index.html';
-      //             console.error('Error fetching user ID:', error);
-      //         },
-      //     });
-      // }
+      //Function to check if a session ID exists
+      function checkSession() {
+          return $.ajax({
+              url: `${config.apiBaseUrl}/auth/api/user`,
+              method: 'GET',
+              credentials: 'include', // Include cookies
+              success: function (data) {
+                  if (!data.user || !data.user.id || data.user.role != "Recruiter") {
+                      // Redirect to index.html if no session ID is found or the user is a student
+                      window.location.href = '../index.html';
+                  }
+                  userId = data.user.id; // Store the user ID
+              },
+              error: function (error) {
+                  // Redirect to index.html if there's an error (e.g., no session)
+                  window.location.href = '../index.html';
+                  console.error('Error fetching user ID:', error);
+              },
+          });
+      }
   
       // Check user's subscription
       function checkSubscription() {
@@ -711,6 +714,27 @@
       $('#myTable').on('click', '.edit-btn.applicants', function () {
           const jobId = $(this).data('job-id'); // Get the job ID from the button's data attribute
           window.location.href = `recruiter-projectinfo.html?jobId=${jobId}#applicants`; // Redirect with the job ID and hash
+      });
+
+      // Logout function
+    function logout() {
+          $.ajax({
+              url: `${config.apiBaseUrl}/auth/logout`,
+              method: 'POST',
+              success: function (response) {
+                  window.location.href = `../index.html`;
+              },
+              error: function (error) {
+                  console.error('Error logging out:', error.responseJSON.error);
+                  alert('Failed to log out. Please try again.');
+              },
+          });
+      }
+
+      // Attach logout event listener
+      $('.logout').on('click', function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+          logout(); // Call the logout function
       });
   
       // Initial data fetch and table setup
