@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="added fonts, student-yourprofile.html, and all other files from failed merge" />
+    <list default="true" id="eec9b8e8-41e1-469f-a3c7-6ade2fd834ab" name="Changes" comment="add webflow" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +17,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -24,12 +25,12 @@
     &quot;assignee&quot;: &quot;ysmundi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ysmundi/WebCoding2025.git&quot;,
-    &quot;accountId&quot;: &quot;7f9ba110-189e-4725-941a-a9e8462ae958&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ysmundi/WebCoding2025.git",
+    "accountId": "0c07c3fa-a6de-47cd-a966-29b35d9e05a7"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -42,6 +43,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Bach",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -63,7 +65,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="" />
+      <changelist id="eec9b8e8-41e1-469f-a3c7-6ade2fd834ab" name="Changes" comment="add webflow" />
       <created>1739320984441</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -73,6 +75,7 @@
       <workItem from="1739329079328" duration="66000" />
       <workItem from="1739404729977" duration="2884000" />
       <workItem from="1739491587025" duration="1540000" />
+      <workItem from="1740804502011" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="nothing2">
       <option name="closed" value="true" />
