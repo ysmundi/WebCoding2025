@@ -469,12 +469,13 @@
         </label>
       </div>
       <div class="w-layout-blockcontainer container-182 w-container">
+<!--        <div class="w-layout-blockcontainer container-182V2 w-container">-->
         <table class="display" id="myTable">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th>Name<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Date<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Action<span class="toggle-icon" data-column="name">▼</span></th>
           </tr>
           </thead>
           <tbody>
@@ -497,7 +498,7 @@
     <div class="w-layout-blockcontainer container-189 w-container">
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Navigation</strong></div>
-        <a href="#Events-Home" class="link-block-15 w-inline-block">
+        <a href="#new-events" class="link-block-15 w-inline-block">
           <div class="text-block-40">Home</div>
         </a>
         <a href="#dashboard" class="link-block-16 w-inline-block">
@@ -608,7 +609,7 @@
       let table;
       let userId;
   
-      // Function to check if a session ID exists
+      //Function to check if a session ID exists
       function checkSession() {
           return $.ajax({
               url: `${config.apiBaseUrl}/auth/api/user`,
