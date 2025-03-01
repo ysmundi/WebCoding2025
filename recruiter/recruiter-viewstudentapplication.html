@@ -20,6 +20,10 @@
     .back-button {
       text-decoration: none; /* Removes underline */
     }
+
+    .text-block-25 {
+      color:black;
+    }
   </style>
 </head>
 <body>
@@ -27,7 +31,10 @@
     <div class="w-layout-blockcontainer container-149 w-container">
       <div class="w-layout-blockcontainer container-164 w-container">
         <a class="back-button">
-          <div class="text-block-25">BACK</div>
+          <div class="text-block-25" style=" color: black; padding: 10px;">
+            <a href="javascript:window.history.back();" style="color: black; text-decoration: none;">Back</a>
+        </div>
+        
         </a>
       </div>
     </div>
@@ -94,8 +101,7 @@
             <div class="text-block-70">John Doe&#x27;s Message</div>
             <p class="paragraph-18" id="about_you">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
             <div class="w-layout-blockcontainer container-263 w-container">
-              <a href="#" class="button-16 w-button" id="reject-button">Decline</a>
-              <a href="#" class="button-17 w-button" id="accept-button">Accept</a>
+              <a class="button-16 w-button" id="suspend-button">Suspend</a>
             </div>
           </div>
         </div>
@@ -325,22 +331,13 @@
         const applicationId = getQueryParam('applicationId');
 
         // Add event listener for the Accept button
-        const acceptButton = document.getElementById('accept-button');
-        if (acceptButton) {
-            acceptButton.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent the default link behavior
-                acceptApplication(applicationId);
-            });
-        } else {
-            console.error('Accept button not found');
-        }
 
         // Add event listener for the Reject button
-        const rejectButton = document.getElementById('reject-button');
+        const rejectButton = document.getElementById('suspend-button');
         if (rejectButton) {
             rejectButton.addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent the default link behavior
-                rejectApplication(applicationId);
+                suspendApplication(applicationId);
             });
         } else {
             console.error('Reject button not found');
@@ -381,7 +378,7 @@
     }
 
     // Function to reject an application
-    function rejectApplication(applicationId) {
+    function suspendApplication(applicationId) {
         const jobId = window.jobId; // Retrieve the job_id from the global scope
         if (!jobId) {
             console.error('Job ID not found');
@@ -390,7 +387,7 @@
         }
 
         $.ajax({
-            url: `${config.apiBaseUrl}/recruiter/reject-application/${applicationId}`,
+            url: `${config.apiBaseUrl}/recruiter/suspend-application/${applicationId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Application rejected:', response.message);
