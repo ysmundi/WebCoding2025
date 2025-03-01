@@ -283,60 +283,34 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
-    /* Customize the DataTables pagination buttons */
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-      color: #EC9440 !important; /* Set the text color */
-      font-size: 20px; /* Adjust the font size */
-      font-weight: bold; /* Make the text bold */
-    }
+            /* Pagination container */
+            .dataTables_wrapper .dataTables_paginate {
+          text-align: center;
+          margin-top: 10px;
+        }
 
-    /* Customize the page number buttons */
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-    .dataTables_wrapper .dataTables_paginate .paginate_button:not(.previous):not(.next) {
-      background-color: #EC9440 !important; /* Set the background color */
-      color: white !important; /* Set the text color */
-      border-radius: 4px; /* Add some rounded corners */
-      padding: 8px; /* Add padding to the page number buttons */
-    }
+        /* Page number buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          color: #EC9440 !important;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 8px 12px;
+          margin: 0 5px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
 
-    /* Customize the "Previous" and "Next" buttons */
-    .dataTables_wrapper .dataTables_paginate .paginate_button.previous{
-      color: #EC9440 !important; /* Set the text color */
-      font-size: 20px; /* Adjust the font size */
-      font-weight: bold; /* Make the text bold */
-      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
-    }
+        /* Current page button */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #EC9440 !important;
+          color: white !important;
+        }
 
-    /* Customize the "Previous" and "Next" buttons */
-    .dataTables_wrapper .dataTables_paginate .paginate_button.next {
-      color: #EC9440 !important; /* Set the text color */
-      font-size: 20px; /* Adjust the font size */
-      font-weight: bold; /* Make the text bold */
-      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
-    }
-
-    /* Customize the DataTables info text */
-    .dataTables_wrapper .dataTables_info {
-      color: #EC9440 !important; /* Set the text color */
-      font-size: 20px; /* Adjust the font size */
-      font-weight: bold; /* Make the text bold */
-      padding-bottom: 12px; /* Add some padding */
-    }
-
-    /* Customize the hover effect for pagination buttons */
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
-      background-color: #EC9440 !important; /* Set the background color on hover */
-      color: white !important; /* Set the text color on hover */
-      border-radius: 4px; /* Add some rounded corners */
-      padding: 8px 12px; /* Add the same vertical padding as the page number buttons */
-    }
-
-
-    /* Customize the "Showing X to Y of Z entries" text */
-    .dataTables_wrapper .dataTables_info {
-      text-align: left; /* Align the text to the left */
-      margin-top: 10px; /* Add some top margin */
-    }
+        /* Hover effect */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: #EC9440 !important;
+          color: white !important;
+        }
 
     /* Style for the toggle icons */
     .toggle-icon {
@@ -409,9 +383,9 @@
     <table class="display" id="myTable">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Action</th>
+        <th>Name<span class="toggle-icon" data-column="name">▼</span></th>
+        <th>Date<span class="toggle-icon" data-column="name">▼</span></th>
+        <th>Action<span class="toggle-icon" data-column="name">▼</span></th>
       </tr>
       </thead>
       <tbody>
@@ -422,26 +396,26 @@
   <div style="height: 60px;"></div>
 
 <script>
-//   $(document).ready(function () {
-//     function checkSession() {
-//     return $.ajax({
-//         url: `${config.apiBaseUrl}/auth/api/user`,
-//         method: 'GET',
-//         credentials: 'include', // Include cookies
-//         success: function (data) {
-//             if (!data.user || !data.user.id || data.user.role === "Recruiter") {
-//                 // Redirect to index.html if no session ID is found or the user is a recruiter
-//                 window.location.href = '../index.html';
-//             }
-//             userId = data.user.id; // Store the user ID
-//         },
-//         error: function (error) {
-//             // Redirect to index.html if there's an error (e.g., no session)
-//             window.location.href = '../index.html';
-//             console.error('Error fetching user ID:', error);
-//         },
-//     });
-// }
+  $(document).ready(function () {
+    function checkSession() {
+    return $.ajax({
+        url: `${config.apiBaseUrl}/auth/api/user`,
+        method: 'GET',
+        credentials: 'include', // Include cookies
+        success: function (data) {
+            if (!data.user || !data.user.id || data.user.role === "Recruiter") {
+                // Redirect to index.html if no session ID is found or the user is a recruiter
+                window.location.href = '../index.html';
+            }
+            userId = data.user.id; // Store the user ID
+        },
+        error: function (error) {
+            // Redirect to index.html if there's an error (e.g., no session)
+            window.location.href = '../index.html';
+            console.error('Error fetching user ID:', error);
+        },
+    });
+}
     let table;
 
     // Initialize the DataTable
@@ -450,7 +424,7 @@
         dom: 'rtip', // Remove default search bar and "Show entries" dropdown
         lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
         language: {
-          info: 'Displaying _START_ to _END_ of _TOTAL_ entries',
+          info: '',
           paginate: {
             previous: 'Go Back ',
             next: ' Go Forward'
@@ -523,6 +497,7 @@
     checkSession().then(fetchAndPopulateTable).catch((error) => {
         console.error('Session check failed:', error);
     });
+  });
 </script>
 
   <!--  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=676715cb815e8f01731dca22" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>-->
