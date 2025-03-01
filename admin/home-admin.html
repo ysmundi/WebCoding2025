@@ -69,12 +69,12 @@
 
     /* Set the first row height to 10vh */
     table.dataTable tbody tr:first-child td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the height of all other rows to 30vh */
     table.dataTable tbody tr:not(:first-child) td {
-      height: 30vh;
+      height: 20vh;
     }
 
     /* Set the width of the columns */
@@ -164,12 +164,13 @@
     /* Default style for the "SUBMITTED" text in the date-column */
     table.dataTable tbody td.date-column::before {
       content: "SUBMITTED"; /* Add the heading */
-      position: absolute;
-      top: 50px;
       left: 10px;
       font-size: 25px; /* Font size for the heading */
       font-weight: bold; /* Bold text */
       color: black; /* Default black color for white rows */
+      display: block; /* Make it a block-level element */
+      margin-bottom: 10px;
+      font-family: 'HelveticaNeueMedium', sans-serif;
     }
 
     /* Make the "SUBMITTED" text white in blue rows (even rows) */
@@ -194,6 +195,54 @@
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
       line-height: 1.2;
+    }
+
+        /* Pagination container */
+        .dataTables_wrapper .dataTables_paginate {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        /* Page number buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          color: #64AAC3 !important;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 8px 12px;
+          margin: 0 5px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        /* Current page button */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+        /* Hover effect */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+            /* Style for the toggle icons */
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
+    }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
     }
 
     @media (max-width: 700px) {
@@ -291,9 +340,9 @@
         <table class="display" id="myTable">
           <thead>
           <tr>
-            <th class="name-column">Name</th>
-            <th class="date-column">Date</th>
-            <th class="submitted-column">Action</th>
+            <th class="name-column">Name<span class="toggle-icon" data-column="name">▼</span></th>
+            <th class="date-column">Date<span class="toggle-icon" data-column="name">▼</span></th>
+            <th class="submitted-column">Action<span class="toggle-icon" data-column="name">▼</span></th>
           </tr>
           </thead>
           <tbody>
@@ -380,6 +429,14 @@ $(document).ready(function () {
     table = $('#myTable').DataTable({
       dom: 'lrtip', // Include default length menu and search input
       lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+      language: {
+            info: '',
+            infoEmpty: '',
+            paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
     });
     console.log('DataTable Initialized:', table); // Log the DataTable instance
   }

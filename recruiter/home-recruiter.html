@@ -31,7 +31,7 @@
 
     /* Set the background color for the entire table */
     table.dataTable {
-      width: 100%;
+      width: 90vw !important;
       border-collapse: collapse;
       font-family: Arial, sans-serif;
     }
@@ -223,6 +223,7 @@
       font-size: 60px; /* Larger font size */
       font-weight: bold; /* Make it bold */
       font-family: 'HelveticaNeueHeavy', sans-serif;
+      line-height: 1.2;
     }
 
     table.dataTable tbody tr:nth-child(even) td.name-column,
@@ -284,43 +285,71 @@
       width: 25%; /* 22.5% of the viewport width */
     }
 
-    @media (max-width: 700px) {
-      .container-220,  .container-221 {
-        overflow: auto;
-      }
-
-      table.dataTable {
-        width: 750px !important;
-      }
-
-      table.dataTable tbody td.name-column {
-        font-size: 40px; /* Larger font size */
-        font-weight: bold; /* Make it bold */
-      }
-
-      .container-182 {
-        width: auto;
-      }
+    .toggle-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 16px;
+      color: white; /* Default icon color */
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    @media (max-width: 700px) {
-      .container-220,  .container-221 {
-        overflow: auto;
-      }
-
-      table.dataTable {
-        width: 750px !important;
-      }
-
-      table.dataTable tbody td.name-column {
-        font-size: 40px; 
-        font-weight: bold;
-      }
-
-      .container-182 {
-        width: auto;
-      }
+    /* Change icon color and rotate on hover */
+    th:hover .toggle-icon {
+      color: black; /* Change color on hover */
     }
+
+    /* Rotate the icon when active */
+    .toggle-icon.active {
+      transform: rotate(180deg);
+    }
+
+                /* Pagination container */
+                .dataTables_wrapper .dataTables_paginate {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        /* Page number buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          color: #64AAC3 !important;
+          font-size: 20px;
+          font-weight: bold;
+          padding: 8px 12px;
+          margin: 0 5px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        /* Current page button */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+        /* Hover effect */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: #64AAC3 !important;
+          color: white !important;
+        }
+
+    @media (max-width: 700px) {
+            .container-220,  .container-221 {
+                overflow: auto;
+            }
+
+            table.dataTable {
+                width: 750px !important;
+            }
+
+            table.dataTable tbody td.name-column {
+                font-size: 40px; /* Larger font size */
+                font-weight: bold; /* Make it bold */
+            }
+
+            .container-182 {
+                width: auto;
+            }
+        }
 
   </style>
 </head>
@@ -469,12 +498,13 @@
         </label>
       </div>
       <div class="w-layout-blockcontainer container-182 w-container">
+<!--        <div class="w-layout-blockcontainer container-182V2 w-container">-->
         <table class="display" id="myTable">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th>Name<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Date<span class="toggle-icon" data-column="name">▼</span></th>
+            <th>Action<span class="toggle-icon" data-column="name">▼</span></th>
           </tr>
           </thead>
           <tbody>
@@ -497,7 +527,7 @@
     <div class="w-layout-blockcontainer container-189 w-container">
       <div class="w-layout-blockcontainer container-190 w-container">
         <div class="text-block-44"><strong class="bold-text-8">Navigation</strong></div>
-        <a href="#Events-Home" class="link-block-15 w-inline-block">
+        <a href="#new-events" class="link-block-15 w-inline-block">
           <div class="text-block-40">Home</div>
         </a>
         <a href="#dashboard" class="link-block-16 w-inline-block">
@@ -608,7 +638,7 @@
       let table;
       let userId;
   
-      // Function to check if a session ID exists
+      //Function to check if a session ID exists
       function checkSession() {
           return $.ajax({
               url: `${config.apiBaseUrl}/auth/api/user`,
@@ -672,6 +702,13 @@
           table = $('#myTable').DataTable({
               dom: 'rtip', // Remove default search bar and "Show entries" dropdown
               lengthMenu: [10, 25, 50, 100], // Set options for "Show entries"
+              language: {
+            info: '',
+            paginate: {
+            previous: 'Go Back ',
+            next: ' Go Forward'
+          }
+        }
           });
       }
   
