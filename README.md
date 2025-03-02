@@ -15,9 +15,8 @@ JobConn is a web platform designed to connect students with job opportunities wh
 ## Tech Stack
 - **Frontend**: HTML, CSS
 - **Backend**: Node.js
-- **Database**: [Specify database if used]
+- **Database**: MySql
 - **Email Service**: SendGrid API
-- **Hosting**: [Specify hosting provider if applicable]
 
 ## Deployment
 The website is live at: [JobConn](https://jobconn.northernhorizon.org/)
