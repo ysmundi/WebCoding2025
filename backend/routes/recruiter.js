@@ -7,13 +7,13 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.sendgrid.net',
-  port: 587,
-  secure: false,
-  auth: {
-      user: 'apikey',
-      pass: "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", // Load API key from .env
-  },
+    host: 'smtp.sendgrid.net',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'apikey',
+        pass: "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", // Load API key from .env
+    },
 });
 
 //Check user subscription
@@ -167,11 +167,11 @@ router.put('/accept-application/:id', isAuthenticated, (req, res) => {
     } else {
         // SQL query to update the status and approved_date
         const sql = `
-        UPDATE job_applications
-        SET status        = 'accepted',
-            approved_date = NOW()
-        WHERE application_id = ?
-    `;
+            UPDATE job_applications
+            SET status        = 'accepted',
+                approved_date = NOW()
+            WHERE application_id = ?
+        `;
 
         // Execute the query
         db.query(sql, [applicationId], (err, result) => {
@@ -234,10 +234,10 @@ router.put('/suspend-application/:id', isAuthenticated, (req, res) => {
     } else {
         // SQL query to update the status and approved_date
         const sql = `
-        UPDATE job_applications
-        SET status = 'suspended'
-        WHERE application_id = ?
-    `;
+            UPDATE job_applications
+            SET status = 'suspended'
+            WHERE application_id = ?
+        `;
 
         // Execute the query
         db.query(sql, [applicationId], (err, result) => {
@@ -287,10 +287,10 @@ router.delete('/delete-posting/:jobId', isAuthenticated, (req, res) => {
                     } else {
                         // Step 2: Delete the job posting
                         const deletePostingQuery = `
-                        DELETE
-                        FROM job_postings
-                        WHERE job_id = ?
-                    `;
+                            DELETE
+                            FROM job_postings
+                            WHERE job_id = ?
+                        `;
 
                         db.query(deletePostingQuery, [jobId], (err, result) => {
                             if (err) {
@@ -345,27 +345,27 @@ router.get('/limit-job-postings/:userId', async (req, res) => {
                 db.query(count, [userId], async (err, results) => {
                     const postings = results[0].postings;
 
-        if(subscription == "Standard"){
-          if (postings >= 3){
-            res.status(400).json({ message: 'Posting is not avaliable your posing is already 3/3'});
-          } else {
-            res.status(200).json({ message: "Posting is avaliable"});
-          }
-        } else if (subscription == "Value") {
-          if (postings >= 10) {
-            res.status(400).json({ meassage: 'Posting is not avaliable your posing is already 10/10'});
-          } else {
-            res.status(200).json({ message: "Posting is avaliable"});
-          }
-        } else if (subscription == "Professional") {
-          res.status(200).json({ message: "Posting is avaliable"});
-        } else {
-          res.status(400).json({ message: "Posting is not avaliable, subscripe to any of packages"});
+                    if (subscription == "Standard") {
+                        if (postings >= 3) {
+                            res.status(400).json({message: 'Posting is not avaliable your posing is already 3/3'});
+                        } else {
+                            res.status(200).json({message: "Posting is avaliable"});
+                        }
+                    } else if (subscription == "Value") {
+                        if (postings >= 10) {
+                            res.status(400).json({meassage: 'Posting is not avaliable your posing is already 10/10'});
+                        } else {
+                            res.status(200).json({message: "Posting is avaliable"});
+                        }
+                    } else if (subscription == "Professional") {
+                        res.status(200).json({message: "Posting is avaliable"});
+                    } else {
+                        res.status(400).json({message: "Posting is not avaliable, subscripe to any of packages"});
+                    }
+                })
+            }
         }
-
-      })
-    }
-  })
+    })
 });
 
 module.exports = router;

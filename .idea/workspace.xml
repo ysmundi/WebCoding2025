@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="recruter.js fix">
+    <list default="true" id="a021d935-1c4d-4525-a1d3-1b45d6b3541a" name="Changes" comment="before second pull from branch bach">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/recruiter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/recruiter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,8 @@
       <workItem from="1740854082862" duration="1597000" />
       <workItem from="1740855716184" duration="516000" />
       <workItem from="1740858166970" duration="3218000" />
-      <workItem from="1740864007762" duration="143000" />
+      <workItem from="1740864007762" duration="3220000" />
+      <workItem from="1740886535735" duration="3295000" />
     </task>
     <task id="LOCAL-00001" summary="nothing2">
       <option name="closed" value="true" />
@@ -213,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740860566370</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="before second pull from branch bach">
+      <option name="closed" value="true" />
+      <created>1740864331592</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740864331592</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +251,8 @@
     <MESSAGE value="public server setup" />
     <MESSAGE value="commits before pulling updates from bach branch" />
     <MESSAGE value="recruter.js fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="recruter.js fix" />
+    <MESSAGE value="before second pull from branch bach" />
+    <option name="LAST_COMMIT_MESSAGE" value="before second pull from branch bach" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
