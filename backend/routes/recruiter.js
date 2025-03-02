@@ -7,13 +7,13 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.sendgrid.net',
-    port: 587,
-    secure: false,
-    auth: {
-        user: 'apikey',
-        pass: "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", // Load API key from .env
-    },
+  host: 'smtp.sendgrid.net',
+  port: 587,
+  secure: false,
+  auth: {
+      user: 'apikey',
+      pass: "SendGridApiKey", // Load API key from .env
+  },
 });
 
 //Check user subscription
@@ -32,7 +32,6 @@ router.get('/subscription/:userId', isAuthenticated, (req, res) => {
                 res.status(201).json(result[0]);
             }
         }
-
     })
 });
 
@@ -161,101 +160,247 @@ router.get('/posting-info/:jobId', (req, res) => { // isAuthenticated,
 router.put('/accept-application/:id', isAuthenticated, (req, res) => {
     const applicationId = req.params.id; // Get the application ID from the URL parameter
 
-    // Validate the application ID
-    if (!applicationId || isNaN(applicationId)) {
-        return res.status(400).json({error: 'Invalid application ID'});
-    } else {
-        // SQL query to update the status and approved_date
-        const sql = `
-            UPDATE job_applications
-            SET status        = 'accepted',
-                approved_date = NOW()
-            WHERE application_id = ?
-        `;
+  // Validate the application ID
+  if (!applicationId || isNaN(applicationId)) {
+      return res.status(400).json({ error: 'Invalid application ID' });
+  }
 
-        // Execute the query
-        db.query(sql, [applicationId], (err, result) => {
-            if (err) {
-                console.error('Database error:', err);
-                return res.status(500).json({error: 'Failed to update application status'});
-            } else {
-                if (result.affectedRows === 0) {
-                    return res.status(404).json({error: 'Application not found'});
-                } else {
-                    // Return success response
-                    res.json({message: 'Application accepted successfully'});
-                }
-            }
-        });
-    }
+  // SQL query to update the status and approved_date
+  const updateSql = `
+      UPDATE job_applications
+      SET status = 'accepted', approved_date = NOW()
+      WHERE application_id = ?
+  `;
+
+  // Execute the update query
+  db.query(updateSql, [applicationId], (err, result) => {
+      if (err) {
+          console.error('Database error:', err);
+          return res.status(500).json({ error: 'Failed to update application status' });
+      }
+
+      // Check if any rows were affected
+      if (result.affectedRows === 0) {
+          return res.status(404).json({ error: 'Application not found' });
+      }
+
+      // Fetch the student's email associated with the application
+      const selectSql = `
+          SELECT ui.email
+          FROM job_applications ja
+          JOIN users_info ui ON ja.user_id = ui.id
+          WHERE ja.application_id = ?
+      `;
+
+      db.query(selectSql, [applicationId], (error, results) => {
+          if (error) {
+              console.error('Database error:', error);
+              return res.status(500).json({ error: 'Failed to fetch student email' });
+          }
+
+          // Check if any results were returned
+          if (results.length === 0) {
+              return res.status(404).json({ error: 'Student email not found' });
+          }
+
+          const email = results[0].email; // Get the email from the first row
+
+          // Email content for acceptance
+          const mailOptions = {
+              from: 'jobconn_fbla@g.northernacademy.org', // Sender address
+              to: email, // Recipient address
+              subject: 'Congratulations! Your Job Application Has Been Accepted', // Email subject
+              html: `
+                  <p>Dear Student,</p>
+                  <p>We are thrilled to inform you that your job application has been accepted! Congratulations on this achievement!</p>
+                  <p>This is a great opportunity for you to showcase your skills and grow professionally. The recruiter will be in touch with you shortly to discuss the next steps.</p>
+                  <p>If you have any questions or need further assistance, please feel free to reach out to us. We are here to support you throughout this process.</p>
+                  <p>Best of luck in your new role!</p>
+                  <p>Best regards,</p>
+                  <p>Richard Vu</p>
+                  <p>Admin Team</p>
+                  <p>JOB CONN</p>
+                  <p>jobconn_fbla@northernacademy.org</p>
+              `, // HTML body
+          };
+
+          // Send the email
+          transporter.sendMail(mailOptions, (error, info) => {
+              if (error) {
+                  console.error('Error sending email:', error);
+                  return res.status(500).json({ message: 'Failed to send acceptance email' });
+              }
+
+              console.log('Email sent:', info.response);
+              res.status(200).json({ message: 'Application accepted successfully', email });
+          });
+      });
+  });
 });
 
 //PUT reject application 
 router.put('/reject-application/:id', isAuthenticated, (req, res) => {
     const applicationId = req.params.id; // Get the application ID from the URL parameter
 
-    // Validate the application ID
-    if (!applicationId || isNaN(applicationId)) {
-        return res.status(400).json({error: 'Invalid application ID'});
-    } else {
-        // SQL query to update the status and approved_date
-        const sql = `
-            UPDATE job_applications
-            SET status = 'rejected'
-            WHERE application_id = ?
-        `;
+  // Validate the application ID
+  if (!applicationId || isNaN(applicationId)) {
+      return res.status(400).json({ error: 'Invalid application ID' });
+  }
 
-        // Execute the query
-        db.query(sql, [applicationId], (err, result) => {
-            if (err) {
-                console.error('Database error:', err);
-                return res.status(500).json({error: 'Failed to update application status'});
-            } else {
-                // Check if any rows were affected
-                if (result.affectedRows === 0) {
-                    return res.status(404).json({error: 'Application not found'});
-                } else {
-                    // Return success response
-                    res.json({message: 'Application reject successfully'});
-                }
+  // SQL query to update the status to 'rejected'
+  const updateSql = `
+      UPDATE job_applications
+      SET status = 'rejected'
+      WHERE application_id = ?
+  `;
 
-            }
-        });
-    }
-})
+  // Execute the update query
+  db.query(updateSql, [applicationId], (err, result) => {
+      if (err) {
+          console.error('Database error:', err);
+          return res.status(500).json({ error: 'Failed to update application status' });
+      }
+
+      // Check if any rows were affected
+      if (result.affectedRows === 0) {
+          return res.status(404).json({ error: 'Application not found' });
+      }
+
+      // Fetch the student's email associated with the application
+      const selectSql = `
+          SELECT ui.email
+          FROM job_applications ja
+          JOIN users_info ui ON ja.user_id = ui.id
+          WHERE ja.application_id = ?
+      `;
+
+      db.query(selectSql, [applicationId], (error, results) => {
+          if (error) {
+              console.error('Database error:', error);
+              return res.status(500).json({ error: 'Failed to fetch student email' });
+          }
+
+          // Check if any results were returned
+          if (results.length === 0) {
+              return res.status(404).json({ error: 'Student email not found' });
+          }
+
+          const email = results[0].email; // Get the email from the first row
+
+          // Email content for rejection
+          const mailOptions = {
+              from: 'jobconn_fbla@g.northernacademy.org', // Sender address
+              to: email, // Recipient address
+              subject: 'Your Job Application Has Been Rejected', // Email subject
+              html: `
+                  <p>Dear Student,</p>
+                  <p>We regret to inform you that your job application has been rejected. We appreciate the time and effort you invested in applying for this position.</p>
+                  <p>While this particular opportunity did not work out, we encourage you to apply for other positions that match your skills and interests. We believe that the right opportunity is out there for you.</p>
+                  <p>If you have any questions or would like feedback on your application, please feel free to reach out to us. We are here to support you in your job search journey.</p>
+                  <p>Thank you for your understanding, and we wish you the best of luck in your future endeavors.</p>
+                  <p>Best regards,</p>
+                  <p>Richard Vu</p>
+                  <p>Admin Team</p>
+                  <p>JOB CONN</p>
+                  <p>jobconn_fbla@northernacademy.org</p>
+              `, // HTML body
+          };
+
+          // Send the email
+          transporter.sendMail(mailOptions, (error, info) => {
+              if (error) {
+                  console.error('Error sending email:', error);
+                  return res.status(500).json({ message: 'Failed to send rejection email' });
+              }
+
+              console.log('Email sent:', info.response);
+              res.status(200).json({ message: 'Application rejected successfully', email });
+          });
+      });
+  });
+});
 
 //PUT suspend application 
 router.put('/suspend-application/:id', isAuthenticated, (req, res) => {
     const applicationId = req.params.id; // Get the application ID from the URL parameter
 
-    // Validate the application ID
-    if (!applicationId || isNaN(applicationId)) {
-        return res.status(400).json({error: 'Invalid application ID'});
-    } else {
-        // SQL query to update the status and approved_date
-        const sql = `
-            UPDATE job_applications
-            SET status = 'suspended'
-            WHERE application_id = ?
-        `;
+  // Validate the application ID
+  if (!applicationId || isNaN(applicationId)) {
+      return res.status(400).json({ error: 'Invalid application ID' });
+  }
 
-        // Execute the query
-        db.query(sql, [applicationId], (err, result) => {
-            if (err) {
-                console.error('Database error:', err);
-                return res.status(500).json({error: 'Failed to update application status'});
-            } else {
-                // Check if any rows were affected
-                if (result.affectedRows === 0) {
-                    return res.status(404).json({error: 'Application not found'});
-                } else {
-                    // Return success response
-                    res.json({message: 'Application suspend successfully'});
-                }
-            }
-        });
-    }
-})
+  // SQL query to update the status to 'suspended'
+  const updateSql = `
+      UPDATE job_applications
+      SET status = 'suspended'
+      WHERE application_id = ?
+  `;
+
+  // Execute the update query
+  db.query(updateSql, [applicationId], (err, result) => {
+      if (err) {
+          console.error('Database error:', err);
+          return res.status(500).json({ error: 'Failed to update application status' });
+      }
+
+      // Check if any rows were affected
+      if (result.affectedRows === 0) {
+          return res.status(404).json({ error: 'Application not found' });
+      }
+
+      // Fetch the student's email associated with the application
+      const selectSql = `
+          SELECT ui.email
+          FROM job_applications ja
+          JOIN users_info ui ON ja.user_id = ui.id
+          WHERE ja.application_id = ?
+      `;
+
+      db.query(selectSql, [applicationId], (error, results) => {
+          if (error) {
+              console.error('Database error:', error);
+              return res.status(500).json({ error: 'Failed to fetch student email' });
+          }
+
+          // Check if any results were returned
+          if (results.length === 0) {
+              return res.status(404).json({ error: 'Student email not found' });
+          }
+
+          const email = results[0].email; // Get the email from the first row
+
+          // Email content for suspension
+          const mailOptions = {
+              from: 'jobconn_fbla@g.northernacademy.org', // Sender address
+              to: email, // Recipient address
+              subject: 'Your Job Application Has Been Suspended', // Email subject
+              html: `
+                  <p>Dear Student,</p>
+                  <p>We regret to inform you that your job application has been suspended. This decision was made after careful consideration of the current circumstances.</p>
+                  <p>If you believe this suspension is in error or have any questions, please feel free to reach out to us. We are here to assist you and provide any necessary clarification.</p>
+                  <p>We appreciate your understanding and cooperation during this time. We encourage you to continue exploring other opportunities on our platform.</p>
+                  <p>Thank you for your patience, and we wish you the best in your job search.</p>
+                  <p>Best regards,</p>
+                  <p>Richard Vu</p>
+                  <p>Admin Team</p>
+                  <p>JOB CONN</p>
+                  <p>jobconn_fbla@northernacademy.org</p>
+              `, // HTML body
+          };
+
+          // Send the email
+          transporter.sendMail(mailOptions, (error, info) => {
+              if (error) {
+                  console.error('Error sending email:', error);
+                  return res.status(500).json({ message: 'Failed to send suspension email' });
+              }
+
+              console.log('Email sent:', info.response);
+              res.status(200).json({ message: 'Application suspended successfully', email });
+          });
+      });
+  });
+});
 
 //DELETE job posting 
 router.delete('/delete-posting/:jobId', isAuthenticated, (req, res) => {

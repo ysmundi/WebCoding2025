@@ -96,7 +96,8 @@
             <div class="text-block-70">John Doe&#x27;s Message</div>
             <p class="paragraph-18" id="about_you">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
             <div class="w-layout-blockcontainer container-263 w-container">
-              <a class="button-16 w-button" id="suspend-button">Suspend</a>
+                <a class="button-16 w-button reject-button" id="reject-button">Decline</a>
+                <a class="button-17 w-button acceptButton" id="accept-button">Accept</a>
             </div>
           </div>
         </div>
@@ -326,13 +327,22 @@
         const applicationId = getQueryParam('applicationId');
 
         // Add event listener for the Accept button
+        const acceptButton = document.getElementById('accept-button');
+        if (acceptButton) {
+            acceptButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default link behavior
+                acceptApplication(applicationId);
+            });
+        } else {
+            console.error('Accept button not found');
+        }
 
         // Add event listener for the Reject button
-        const rejectButton = document.getElementById('suspend-button');
+        const rejectButton = document.getElementById('reject-button');
         if (rejectButton) {
             rejectButton.addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent the default link behavior
-                suspendApplication(applicationId);
+                rejectApplication(applicationId);
             });
         } else {
             console.error('Reject button not found');
@@ -373,7 +383,7 @@
     }
 
     // Function to reject an application
-    function suspendApplication(applicationId) {
+    function rejectApplication(applicationId) {
         const jobId = window.jobId; // Retrieve the job_id from the global scope
         if (!jobId) {
             console.error('Job ID not found');
@@ -382,7 +392,7 @@
         }
 
         $.ajax({
-            url: `${config.apiBaseUrl}/recruiter/suspend-application/${applicationId}`,
+            url: `${config.apiBaseUrl}/recruiter/reject-application/${applicationId}`,
             method: 'PUT',
             success: function (response) {
                 console.log('Application rejected:', response.message);

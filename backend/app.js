@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const morgan = require('morgan')
+//const morgan = require('morgan')
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const jobRoutes = require('./routes/jobs');
@@ -14,7 +14,7 @@ const db = require('./config/database');
 const app = express();
 const sessionStore = new MySQLStore({}, db);
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(express.json());
 
 const allowedOrigins = [
