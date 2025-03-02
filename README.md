@@ -6,7 +6,7 @@ JobConn is a web platform designed to connect students with job opportunities wh
 ## Features
 - **Student Job Search**: Students can browse and apply for job listings approved by an admin.
 - **Recruiter Job Posting**: Recruiters can post job openings, which require admin approval before becoming visible to students.
-- **Admin Job Moderation**: The admin reviews job postings and approves or rejects them before they are displayed.
+- **Admin Job Moderation**: Admin can review job postings and approve or reject them before they are displayed.
 - **Email Notification System** (via SendGrid API):
   - Recruiters are notified when their job posting is approved or rejected.
   - Students receive notifications when their applications are accepted, rejected, or if their account is suspended.
