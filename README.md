@@ -1,4 +1,4 @@
-# JobConn
+# JobConn - FBLA Website Coding and Development Event
 
 ## Overview
 JobConn is a web platform designed to connect students with job opportunities while allowing schools and recruiters to efficiently manage the hiring process. The platform ensures a seamless recruitment experience by providing an approval-based job posting system and automated email notifications.
@@ -21,3 +21,10 @@ JobConn is a web platform designed to connect students with job opportunities wh
 
 ## Deployment
 The website is live at: [JobConn](https://jobconn.northernhorizon.org/)
+
+## Contact
+For any questions or further information, please contact JobConn at [jobconn_fbla@g.northernacademy.org](jobconn_fbla@g.northernacademy.org).
+
+---
+
+Thank you for reviewing JobConn! We hope you find the platform innovative and useful.
