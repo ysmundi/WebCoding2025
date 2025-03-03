@@ -5,8 +5,8 @@ dotenv.config();
 
 //Connecting to database
 const db = mysql.createConnection({
-    // host: '10.11.90.15',
-    host: 'localhost',
+    host: '10.11.90.15',
+    // host: 'localhost',
     user: 'AppUser',
     password: 'Special888%',
     database: 'fbla_webcoding',
